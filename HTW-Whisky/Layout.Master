@@ -20,17 +20,15 @@
         </div>
 
         <div id="body" class="clearfix">
-            <div id="content_main" class="clearfix">
-                <form id="formMain" runat="server">
+            <form id="formMain" runat="server">
+                <div id="content_main" class="clearfix">
                     <asp:ContentPlaceHolder ID="phMain" runat="server"></asp:ContentPlaceHolder>
-                </form>
-            </div>
+                </div>
 
-            <div id="toolbar" class="clearfix">
-                <form id="formToolbar" runat="server">
+                <div id="toolbar" class="clearfix">
                     <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
 
         <div id="footer">
