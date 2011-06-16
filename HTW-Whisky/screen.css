@@ -1,0 +1,59 @@
+﻿body 
+{
+    font-family: Calibri, Arial, MS Sans Serif;
+    font-size: 1em;
+}
+
+div#wrapper 
+{
+    width: 900px;
+    margin: 0 auto;
+}
+
+div#header
+{
+    border: 1px solid black;
+    height: 80px;
+}
+
+div#navigation
+{
+    border: 1px solid black;
+    height: 20px;
+}
+
+div#body 
+{
+    padding: 10px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+div#body div#content_main 
+{
+    float:left;
+    border: 1px solid black;
+    width: 750px;
+}
+
+div#body div#toolbar
+{
+    float: right;
+    border: 1px solid black;
+    width: 120px;
+}
+
+div#footer 
+{
+    border: 1px solid black;
+    height: 50px;
+}
+
+.clearfix:after
+{
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
