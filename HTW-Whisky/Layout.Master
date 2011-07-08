@@ -5,18 +5,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>TasteWhisky</title>
-    <link href="screen.css" rel="stylesheet" type="text/css" />
+    <link href="css/screen.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <div id="wrapper">
         <div id="header">
-            <asp:ContentPlaceHolder ID="phHeader" runat="server"></asp:ContentPlaceHolder>
+            <img src="/img/banner.png" alt="banner" />
         </div>
 
         <div id="navigation">
-            <asp:ContentPlaceHolder ID="phNav" runat="server"></asp:ContentPlaceHolder>
+            <ul>
+                <li>Testseite 1</li>
+                <li>Testseite 2</li>
+                <li>Testseite 3</li>
+            </ul>
         </div>
 
         <div id="body" class="clearfix">
