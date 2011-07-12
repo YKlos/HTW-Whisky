@@ -69,6 +69,9 @@
         <asp:Button ID="btnAddWhisky" runat="server" Text="Whisky Hinzufügen" 
             onclick="btnAddWhisky_Click" />
     </p>
+    <p>
+        <asp:Label ID="lblWhiskyAdded" runat="server" Text=""></asp:Label>
+    </p>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="phToolbar" runat="server">
     Das ist die Toolbox
