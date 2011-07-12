@@ -50,7 +50,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AddType.aspx" />
+    <Content Include="Type\AddType.aspx" />
     <Content Include="App_Data\Database1.mdf" />
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -66,11 +66,11 @@
     <Content Include="TestPage.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddType.aspx.cs">
+    <Compile Include="Type\AddType.aspx.cs">
       <DependentUpon>AddType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddType.aspx.designer.cs">
+    <Compile Include="Type\AddType.aspx.designer.cs">
       <DependentUpon>AddType.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\WhiskyAppDataset.Designer.cs">
@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />
+    <Folder Include="Whisky\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Code\WhiskyAppDataset.xsc">
