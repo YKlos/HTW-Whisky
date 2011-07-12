@@ -18,6 +18,7 @@ namespace HTW_Whisky
         {
             typenTableAdapter TypeAdapter = new typenTableAdapter();
             TypeAdapter.Insert(tbxTypeName.Text);
+            lblTypeAdded.Text = "Typ hinzugefügt";
         }
     }
 }

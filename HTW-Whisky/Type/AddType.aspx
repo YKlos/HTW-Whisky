@@ -10,6 +10,9 @@
         <asp:Button ID="btnAddType" runat="server" Text="Typ hinzufügen" 
             onclick="btnAddType_Click" />
     </p>
+    <p>
+        <asp:Label ID="lblTypeAdded" runat="server" Text=""></asp:Label>
+    </p>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
 </asp:Content>
