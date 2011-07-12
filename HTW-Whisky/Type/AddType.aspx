@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
-    <p>
-        <asp:Label ID="lblTypeName" runat="server" Text="Label">Names des Typs:</asp:Label><asp:TextBox ID="tbxTypeName" runat="server"></asp:TextBox>
+    <p class="clearfix">
+        <asp:Label ID="lblTypeName" runat="server" Text="Name des Typs" class="label"></asp:Label><asp:TextBox ID="tbxTypeName" runat="server"></asp:TextBox>
     </p>
 
     <p>

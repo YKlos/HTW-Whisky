@@ -13,6 +13,15 @@ namespace HTW_Whisky {
     public partial class WebForm1 {
         
         /// <summary>
+        /// lblWhiskyName-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWhiskyName;
+        
+        /// <summary>
         /// tbxWhiskyName-Steuerelement
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace HTW_Whisky {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxWhiskyName;
+        
+        /// <summary>
+        /// lblAroma-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAroma;
         
         /// <summary>
         /// tbxAroma-Steuerelement
@@ -31,6 +49,15 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.TextBox tbxAroma;
         
         /// <summary>
+        /// lblGeschmack-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGeschmack;
+        
+        /// <summary>
         /// tbxGeschmack-Steuerelement
         /// </summary>
         /// <remarks>
@@ -38,6 +65,15 @@ namespace HTW_Whisky {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxGeschmack;
+        
+        /// <summary>
+        /// lblAbgang-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAbgang;
         
         /// <summary>
         /// tbxAbgang-Steuerelement
@@ -49,6 +85,15 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.TextBox tbxAbgang;
         
         /// <summary>
+        /// lblFasstyp-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFasstyp;
+        
+        /// <summary>
         /// tbxFasstyp-Steuerelement
         /// </summary>
         /// <remarks>
@@ -56,6 +101,15 @@ namespace HTW_Whisky {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxFasstyp;
+        
+        /// <summary>
+        /// lblJahrgang-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblJahrgang;
         
         /// <summary>
         /// tbxJahrgang-Steuerelement
@@ -67,6 +121,33 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.TextBox tbxJahrgang;
         
         /// <summary>
+        /// lblBeschreibung-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBeschreibung;
+        
+        /// <summary>
+        /// tbxBeschreibung-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbxBeschreibung;
+        
+        /// <summary>
+        /// lblAlkoholgehalt-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlkoholgehalt;
+        
+        /// <summary>
         /// tbxAlkoholgehalt-Steuerelement
         /// </summary>
         /// <remarks>
@@ -76,6 +157,15 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.TextBox tbxAlkoholgehalt;
         
         /// <summary>
+        /// lblLiter-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLiter;
+        
+        /// <summary>
         /// tbxLiter-Steuerelement
         /// </summary>
         /// <remarks>
@@ -83,6 +173,15 @@ namespace HTW_Whisky {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxLiter;
+        
+        /// <summary>
+        /// lblTyp-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTyp;
         
         /// <summary>
         /// ddlTyp-Steuerelement
@@ -103,13 +202,13 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.ObjectDataSource TypObjectDataSource;
         
         /// <summary>
-        /// tbxBeschreibung-Steuerelement
+        /// lblAktiv-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxBeschreibung;
+        protected global::System.Web.UI.WebControls.Label lblAktiv;
         
         /// <summary>
         /// cbxAktiv-Steuerelement

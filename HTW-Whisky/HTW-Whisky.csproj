@@ -63,7 +63,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="TestPage.aspx" />
+    <Content Include="Whisky\AddWhisky.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Type\AddType.aspx.cs">
@@ -86,12 +86,12 @@
     <Compile Include="Layout.Master.designer.cs">
       <DependentUpon>Layout.Master</DependentUpon>
     </Compile>
-    <Compile Include="TestPage.aspx.cs">
-      <DependentUpon>TestPage.aspx</DependentUpon>
+    <Compile Include="Whisky\AddWhisky.aspx.cs">
+      <DependentUpon>AddWhisky.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TestPage.aspx.designer.cs">
-      <DependentUpon>TestPage.aspx</DependentUpon>
+    <Compile Include="Whisky\AddWhisky.aspx.designer.cs">
+      <DependentUpon>AddWhisky.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />
-    <Folder Include="Whisky\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Code\WhiskyAppDataset.xsc">

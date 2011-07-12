@@ -10,7 +10,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div id="wrapper">
+    <form id="formMain" runat="server">
         <div id="header">
             <img src="/img/banner.png" alt="banner" />
         </div>
@@ -22,22 +22,22 @@
                 <li>Testseite 3</li>
             </ul>
         </div>
+        <div id="wrapper">
+            <div id="body" class="clearfix">
+                    <div id="content_main" class="clearfix">
+                        <asp:ContentPlaceHolder ID="phMain" runat="server"></asp:ContentPlaceHolder>
+                    </div>
 
-        <div id="body" class="clearfix">
-            <form id="formMain" runat="server">
-                <div id="content_main" class="clearfix">
-                    <asp:ContentPlaceHolder ID="phMain" runat="server"></asp:ContentPlaceHolder>
-                </div>
+                    <div id="toolbar" class="clearfix">
+                        <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
+                    </div>
+            
+            </div>
 
-                <div id="toolbar" class="clearfix">
-                    <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
-                </div>
-            </form>
+            <div id="footer">
+                Inhalt Footer - More to come!
+            </div>
         </div>
-
-        <div id="footer">
-            Inhalt Footer - More to come!
-        </div>
-    </div>
+    </form>
 </body>
 </html>

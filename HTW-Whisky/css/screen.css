@@ -2,27 +2,39 @@
 {
     font-family: Calibri, Arial, MS Sans Serif;
     font-size: 1em;
+    padding: 0;
+    margin: 0;
+    background-color: #EFEFEF;
+    color: #343434;
 }
 
 div#wrapper 
 {
-    width: 900px;
+    width: 1000px;
     margin: 0 auto;
-    border: 1px solid black;
+    border: 1px solid white;
+    background-color: #D4D4D4;
+    border-top: 0;
 }
 
 div#header
 {
-    padding: 10px;
+    width: 980px;
     height: 72px;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: #D4D4D4;
 }
 
 div#navigation
 {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    width: 980px;
     height: 20px;
-    padding: 0 10px;
+    margin: 0 auto;
+    border: 1px solid white;
+    padding: 5px 10px;
+    background-color: Red;
+    color: White;
 }
 
 div#navigation ul 
@@ -41,23 +53,48 @@ div#navigation ul li
 div#body 
 {
     padding: 10px;
-    margin: 0 auto;
-    height: 600px;
+    min-height: 600px;
 }
 
 div#body div#content_main 
 {
     float:left;
-    border: 1px solid black;
-    width: 720px;
-    padding: 10px;
+    width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+div#body div#content_main p 
+{
+    padding: 5px;
+    margin: 5px;
+}
+
+div#body div#content_main p span.label 
+{
+    display: block;
+    text-align: left;
+    width: 48%;
+    float: left;
+    border-bottom: 1px dotted black;
+}
+
+div#body div#content_main input[type=text],textarea,select 
+{
+    width: 48%;
+    float: right;
+}
+
+div#body div#content_main textarea 
+{
+    height: 200px;
 }
 
 div#body div#toolbar
 {
     float: right;
     border: 1px solid black;
-    width: 110px;
+    width: 200px;
     padding: 10px;
 }
 
