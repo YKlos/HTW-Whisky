@@ -11,27 +11,30 @@
 </head>
 <body>
     <form id="formMain" runat="server">
-        <div id="header">
-            <img src="/img/banner.png" alt="banner" />
+        <div id="header_wrapper">
+            <div id="header">
+                <img src="/img/banner.png" alt="banner" />
+            </div>
         </div>
 
-        <div id="navigation">
-            <ul>
-                <li>Testseite 1</li>
-                <li>Testseite 2</li>
-                <li>Testseite 3</li>
-            </ul>
+        <div id="navigation_wrapper">
+            <div id="navigation"> 
+                <asp:Menu ID="Menu1" runat="server" DataSourceID="MainSiteMap" 
+                    Orientation="Horizontal" RenderingMode="List" StaticDisplayLevels="2">
+                </asp:Menu>
+                <asp:SiteMapDataSource ID="MainSiteMap" runat="server" />
+            </div>
         </div>
+
         <div id="wrapper">
             <div id="body" class="clearfix">
-                    <div id="content_main" class="clearfix">
-                        <asp:ContentPlaceHolder ID="phMain" runat="server"></asp:ContentPlaceHolder>
-                    </div>
-
-                    <div id="toolbar" class="clearfix">
-                        <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
-                    </div>
-            
+                <div id="content_main" class="clearfix">
+                    <asp:ContentPlaceHolder ID="phMain" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                
+                <div id="toolbar" class="clearfix">
+                    <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
+                </div>
             </div>
 
             <div id="footer">

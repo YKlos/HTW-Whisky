@@ -112,6 +112,7 @@
     <None Include="App_Code\WhiskyAppDataset.xss">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
     </None>
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
