@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Membership\AdditionalUserInfo.aspx" />
-    <Content Include="Membership\CreatingUserAccounts.aspx" />
+    <Content Include="Membership\CreateUserAccount.aspx" />
     <Content Include="Membership\EnhancedCreateUserWizard.aspx" />
     <Content Include="Membership\Guestbook.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
@@ -81,12 +81,12 @@
     <Compile Include="Membership\AdditionalUserInfo.aspx.designer.cs">
       <DependentUpon>AdditionalUserInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Membership\CreatingUserAccounts.aspx.cs">
-      <DependentUpon>CreatingUserAccounts.aspx</DependentUpon>
+    <Compile Include="Membership\CreateUserAccount.aspx.cs">
+      <DependentUpon>CreateUserAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Membership\CreatingUserAccounts.aspx.designer.cs">
-      <DependentUpon>CreatingUserAccounts.aspx</DependentUpon>
+    <Compile Include="Membership\CreateUserAccount.aspx.designer.cs">
+      <DependentUpon>CreateUserAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Membership\EnhancedCreateUserWizard.aspx.cs">
       <DependentUpon>EnhancedCreateUserWizard.aspx</DependentUpon>
