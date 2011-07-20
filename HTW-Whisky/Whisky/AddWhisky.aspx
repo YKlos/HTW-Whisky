@@ -74,5 +74,9 @@
     </p>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="phToolbar" runat="server">
-    Das ist die Toolbox
+    <asp:Menu ID="WhiskyNavigation" runat="server" 
+    DataSourceID="WhiskySiteMapDataSource" StaticDisplayLevels="2">
+    </asp:Menu>
+<asp:SiteMapDataSource ID="WhiskySiteMapDataSource" runat="server" 
+    SiteMapProvider="WhiskyNavigationSiteMap" />
 </asp:Content>
