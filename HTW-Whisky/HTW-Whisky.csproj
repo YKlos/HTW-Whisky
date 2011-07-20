@@ -50,6 +50,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Membership\AdditionalUserInfo.aspx" />
+    <Content Include="Membership\CreatingUserAccounts.aspx" />
+    <Content Include="Membership\EnhancedCreateUserWizard.aspx" />
+    <Content Include="Membership\Guestbook.aspx" />
+    <Content Include="Membership\UserBasedAuthorization.aspx" />
     <Content Include="Type\AddType.aspx" />
     <Content Include="App_Data\Database1.mdf" />
     <Content Include="App_Data\Database1_log.ldf">
@@ -69,6 +74,41 @@
     <Content Include="Whisky\AddWhisky.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Membership\AdditionalUserInfo.aspx.cs">
+      <DependentUpon>AdditionalUserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\AdditionalUserInfo.aspx.designer.cs">
+      <DependentUpon>AdditionalUserInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\CreatingUserAccounts.aspx.cs">
+      <DependentUpon>CreatingUserAccounts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\CreatingUserAccounts.aspx.designer.cs">
+      <DependentUpon>CreatingUserAccounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\EnhancedCreateUserWizard.aspx.cs">
+      <DependentUpon>EnhancedCreateUserWizard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\EnhancedCreateUserWizard.aspx.designer.cs">
+      <DependentUpon>EnhancedCreateUserWizard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Guestbook.aspx.cs">
+      <DependentUpon>Guestbook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\Guestbook.aspx.designer.cs">
+      <DependentUpon>Guestbook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\UserBasedAuthorization.aspx.cs">
+      <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\UserBasedAuthorization.aspx.designer.cs">
+      <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Type\AddType.aspx.cs">
       <DependentUpon>AddType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
