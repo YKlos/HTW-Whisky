@@ -327,4 +327,10 @@ FROM            tasting</CommandText>
       <xs:field xpath="mstns:ID" />
     </xs:unique>
   </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="typen_whisky" msdata:parent="typen" msdata:child="whisky" msdata:parentkey="ID" msdata:childkey="typID" msprop:Generator_UserChildTable="whisky" msprop:Generator_ChildPropName="GetwhiskyRows" msprop:Generator_ParentPropName="typenRow" msprop:Generator_UserRelationName="typen_whisky" msprop:Generator_RelationVarName="relationtypen_whisky" msprop:Generator_UserParentTable="typen" />
+      <msdata:Relationship name="whisky_tasting" msdata:parent="whisky" msdata:child="tasting" msdata:parentkey="ID" msdata:childkey="whiskyID" msprop:Generator_UserChildTable="tasting" msprop:Generator_ChildPropName="GettastingRows" msprop:Generator_ParentPropName="whiskyRow" msprop:Generator_UserRelationName="whisky_tasting" msprop:Generator_RelationVarName="relationwhisky_tasting" msprop:Generator_UserParentTable="whisky" />
+    </xs:appinfo>
+  </xs:annotation>
 </xs:schema>

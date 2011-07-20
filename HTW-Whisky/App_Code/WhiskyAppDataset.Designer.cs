@@ -30,6 +30,10 @@ namespace HTW_Whisky.App_Code {
         
         private tastingDataTable tabletasting;
         
+        private global::System.Data.DataRelation relationtypen_whisky;
+        
+        private global::System.Data.DataRelation relationwhisky_tasting;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,6 +246,8 @@ namespace HTW_Whisky.App_Code {
                     this.tabletasting.InitVars();
                 }
             }
+            this.relationtypen_whisky = this.Relations["typen_whisky"];
+            this.relationwhisky_tasting = this.Relations["whisky_tasting"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +264,14 @@ namespace HTW_Whisky.App_Code {
             base.Tables.Add(this.tabletypen);
             this.tabletasting = new tastingDataTable();
             base.Tables.Add(this.tabletasting);
+            this.relationtypen_whisky = new global::System.Data.DataRelation("typen_whisky", new global::System.Data.DataColumn[] {
+                        this.tabletypen.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablewhisky.typIDColumn}, false);
+            this.Relations.Add(this.relationtypen_whisky);
+            this.relationwhisky_tasting = new global::System.Data.DataRelation("whisky_tasting", new global::System.Data.DataColumn[] {
+                        this.tablewhisky.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletasting.whiskyIDColumn}, false);
+            this.Relations.Add(this.relationwhisky_tasting);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -539,7 +553,7 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public whiskyRow AddwhiskyRow(string name, string aroma, string geschmack, string abgang, string fasstyp, string beschreibung, int jahrgang, double alkoholgehalt, double liter, int typID, bool aktiv) {
+            public whiskyRow AddwhiskyRow(string name, string aroma, string geschmack, string abgang, string fasstyp, string beschreibung, int jahrgang, double alkoholgehalt, double liter, typenRow parenttypenRowBytypen_whisky, bool aktiv) {
                 whiskyRow rowwhiskyRow = ((whiskyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -552,8 +566,11 @@ namespace HTW_Whisky.App_Code {
                         jahrgang,
                         alkoholgehalt,
                         liter,
-                        typID,
+                        null,
                         aktiv};
+                if ((parenttypenRowBytypen_whisky != null)) {
+                    columnValuesArray[10] = parenttypenRowBytypen_whisky[0];
+                }
                 rowwhiskyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowwhiskyRow);
                 return rowwhiskyRow;
@@ -1248,12 +1265,12 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tastingRow AddtastingRow(int userID, int whiskyID, string notiz, int art, int geschmack, int suesse, int frucht, int abgang, int gesamt, int qualitaet, System.DateTime datum, bool aktiv) {
+            public tastingRow AddtastingRow(int userID, whiskyRow parentwhiskyRowBywhisky_tasting, string notiz, int art, int geschmack, int suesse, int frucht, int abgang, int gesamt, int qualitaet, System.DateTime datum, bool aktiv) {
                 tastingRow rowtastingRow = ((tastingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         userID,
-                        whiskyID,
+                        null,
                         notiz,
                         art,
                         geschmack,
@@ -1264,6 +1281,9 @@ namespace HTW_Whisky.App_Code {
                         qualitaet,
                         datum,
                         aktiv};
+                if ((parentwhiskyRowBywhisky_tasting != null)) {
+                    columnValuesArray[2] = parentwhiskyRowBywhisky_tasting[0];
+                }
                 rowtastingRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtastingRow);
                 return rowtastingRow;
@@ -1675,6 +1695,17 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public typenRow typenRow {
+                get {
+                    return ((typenRow)(this.GetParentRow(this.Table.ParentRelations["typen_whisky"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["typen_whisky"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsnameNull() {
                 return this.IsNull(this.tablewhisky.nameColumn);
             }
@@ -1804,6 +1835,17 @@ namespace HTW_Whisky.App_Code {
             public void SetaktivNull() {
                 this[this.tablewhisky.aktivColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tastingRow[] GettastingRows() {
+                if ((this.Table.ChildRelations["whisky_tasting"] == null)) {
+                    return new tastingRow[0];
+                }
+                else {
+                    return ((tastingRow[])(base.GetChildRows(this.Table.ChildRelations["whisky_tasting"])));
+                }
+            }
         }
         
         /// <summary>
@@ -1857,6 +1899,17 @@ namespace HTW_Whisky.App_Code {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetnameNull() {
                 this[this.tabletypen.nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public whiskyRow[] GetwhiskyRows() {
+                if ((this.Table.ChildRelations["typen_whisky"] == null)) {
+                    return new whiskyRow[0];
+                }
+                else {
+                    return ((whiskyRow[])(base.GetChildRows(this.Table.ChildRelations["typen_whisky"])));
+                }
             }
         }
         
@@ -2074,6 +2127,17 @@ namespace HTW_Whisky.App_Code {
                 }
                 set {
                     this[this.tabletasting.aktivColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public whiskyRow whiskyRow {
+                get {
+                    return ((whiskyRow)(this.GetParentRow(this.Table.ParentRelations["whisky_tasting"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["whisky_tasting"]);
                 }
             }
             
@@ -3692,15 +3756,6 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(WhiskyAppDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tastingTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tastingTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._typenTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.typen.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -3719,6 +3774,15 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._tastingTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tastingTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -3729,14 +3793,6 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(WhiskyAppDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tastingTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tastingTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._typenTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.typen.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -3753,6 +3809,14 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._tastingTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tastingTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -3763,6 +3827,14 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(WhiskyAppDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._tastingTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tastingTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._whiskyTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.whisky.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -3776,14 +3848,6 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._typenTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tastingTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tastingTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
