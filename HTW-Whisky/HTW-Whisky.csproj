@@ -54,6 +54,7 @@
     <Content Include="Membership\CreatingUserAccounts.aspx" />
     <Content Include="Membership\EnhancedCreateUserWizard.aspx" />
     <Content Include="Membership\Guestbook.aspx" />
+    <Content Include="Membership\Login.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
     <Content Include="Type\AddType.aspx" />
     <Content Include="App_Data\Database1.mdf" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="Membership\Guestbook.aspx.designer.cs">
       <DependentUpon>Guestbook.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Membership\UserBasedAuthorization.aspx.cs">
       <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
