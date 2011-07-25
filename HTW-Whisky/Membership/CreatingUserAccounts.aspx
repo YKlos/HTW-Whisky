@@ -11,5 +11,3 @@
         </WizardSteps>
     </asp:CreateUserWizard>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
-</asp:Content>

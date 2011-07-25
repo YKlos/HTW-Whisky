@@ -193,7 +193,9 @@
     <None Include="App_Code\WhiskyAppDataset.xss">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
     </None>
-    <Content Include="Web.sitemap" />
+    <Content Include="Web.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Whisky\ShowWhisky.aspx" />
     <Content Include="Whisky\Whisky.sitemap">
       <SubType>Designer</SubType>
