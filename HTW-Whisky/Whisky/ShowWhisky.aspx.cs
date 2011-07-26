@@ -17,7 +17,10 @@ namespace HTW_Whisky.Whisky
             DataTable ResultSet = WhiskyAdapter.GetDataByID(2);
             if (ResultSet.Rows.Count > 0)
             {
-                lblTest.Text = ResultSet.Rows[0]["ID"].ToString();
+                lblName.Text = ResultSet.Rows[0]["name"].ToString();
+                lblAroma.Text = ResultSet.Rows[0]["aroma"].ToString();
+                lblGeschmack.Text = ResultSet.Rows[0]["geschmack"].ToString();
+                lblFassTyp.Text = ResultSet.Rows[0]["fasstyp"].ToString();
             }
         }
     }
