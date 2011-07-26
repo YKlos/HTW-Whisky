@@ -88,6 +88,8 @@ namespace HTW_Whisky
                     Label1.Text = "Hochgeladen!!!!!!!!!!1111einself"; 
                 }
             }*/
+            WhiskyAdapter.Insert(tbxWhiskyName.Text, tbxAroma.Text, tbxGeschmack.Text, tbxAbgang.Text, tbxFasstyp.Text, tbxBeschreibung.Text, int.Parse(tbxJahrgang.Text), double.Parse(tbxAlkoholgehalt.Text), double.Parse(tbxLiter.Text), int.Parse(ddlTyp.SelectedValue), cbxAktiv.Checked);
+            lblWhiskyAdded.Text = "Whiskey hinzugefügt";
         }
     }
 }
