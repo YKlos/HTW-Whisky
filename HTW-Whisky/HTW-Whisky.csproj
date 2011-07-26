@@ -81,6 +81,9 @@
     <Content Include="Whisky\AddWhisky.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\WhiskyAppDataset.cs">
+      <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
+    </Content>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -199,12 +202,12 @@
     <Compile Include="Whisky\AddWhisky.aspx.designer.cs">
       <DependentUpon>AddWhisky.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Whisky\ShowWhisky.aspx.cs">
-      <DependentUpon>ShowWhisky.aspx</DependentUpon>
+    <Compile Include="Whisky\Whisky.aspx.cs">
+      <DependentUpon>Whisky.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Whisky\ShowWhisky.aspx.designer.cs">
-      <DependentUpon>ShowWhisky.aspx</DependentUpon>
+    <Compile Include="Whisky\Whisky.aspx.designer.cs">
+      <DependentUpon>Whisky.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -228,7 +231,7 @@
     <Content Include="Web.sitemap">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Whisky\ShowWhisky.aspx" />
+    <Content Include="Whisky\Whisky.aspx" />
     <Content Include="Whisky\Whisky.sitemap">
       <SubType>Designer</SubType>
     </Content>

@@ -22,6 +22,17 @@ body
     visibility: hidden;
 }
 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
 
 /*****************************************************************************/
 /*                         HEADER / NAVIGATION                               */
@@ -108,13 +119,13 @@ div#content_main
     text-align: center;
 }
 
-div#content_main p 
+div#content_main div.clearfix
 {
     padding: 5px;
     margin: 5px;
 }
 
-div#content_main p span.label 
+div#content_main div.clearfix span.label 
 {
     display: block;
     text-align: left;
@@ -123,10 +134,15 @@ div#content_main p span.label
     border-bottom: 1px dotted black;
 }
 
-div#content_main input[type=text],textarea,select 
+div#content_main input[type=text],textarea,select,span.show 
 {
     width: 48%;
     float: right;
+}
+
+div#content_main span.show 
+{
+    text-align: left;
 }
 
 div#content_main textarea 
