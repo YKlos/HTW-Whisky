@@ -58,12 +58,16 @@
     <Content Include="Membership\Guestbook.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
+    <Content Include="test\AllUsers.aspx" />
+    <Content Include="test\Everybody.aspx" />
+    <Content Include="test\OnlyYassir.aspx" />
     <Content Include="Type\AddType.aspx" />
     <Content Include="App_Data\Database1.mdf" />
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="css\screen.css" />
+    <Content Include="UnauthorizedAccess.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -133,6 +137,27 @@
     <Compile Include="Membership\UserBasedAuthorization.aspx.designer.cs">
       <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\AllUsers.aspx.cs">
+      <DependentUpon>AllUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\AllUsers.aspx.designer.cs">
+      <DependentUpon>AllUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\Everybody.aspx.cs">
+      <DependentUpon>Everybody.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\Everybody.aspx.designer.cs">
+      <DependentUpon>Everybody.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\OnlyYassir.aspx.cs">
+      <DependentUpon>OnlyYassir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\OnlyYassir.aspx.designer.cs">
+      <DependentUpon>OnlyYassir.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Type\AddType.aspx.cs">
       <DependentUpon>AddType.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -152,6 +177,13 @@
     </Compile>
     <Compile Include="Layout.Master.designer.cs">
       <DependentUpon>Layout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UnauthorizedAccess.aspx.cs">
+      <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UnauthorizedAccess.aspx.designer.cs">
+      <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\AddTasting.aspx.cs">
       <DependentUpon>AddTasting.aspx</DependentUpon>
@@ -200,6 +232,8 @@
     <Content Include="Whisky\Whisky.sitemap">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Membership\Web.config" />
+    <Content Include="test\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
