@@ -67,11 +67,14 @@
     <p>
         <asp:Button ID="btnAddWhisky" runat="server" Text="Whisky hinzufügen" 
             onclick="btnAddWhisky_Click" />
+        <asp:FileUpload ID="FileUpload1" runat="server" />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+        <asp:CheckBox ID="cbxFreigabe" runat="server" />
     </p>
 
     <p>
         <asp:Label ID="lblWhiskyAdded" runat="server" Text=""></asp:Label>
-    </p>
+        s</p>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="phToolbar" runat="server">
     <asp:Menu ID="WhiskyNavigation" runat="server" 
