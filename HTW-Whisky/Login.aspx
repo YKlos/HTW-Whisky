@@ -5,5 +5,3 @@
     <asp:Login ID="Login1" runat="server">
     </asp:Login>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
-</asp:Content>

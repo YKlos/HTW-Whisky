@@ -7,18 +7,9 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace HTW_Whisky.Membership {
+namespace HTW_Whisky {
     
     
-    public partial class Login {
-        
-        /// <summary>
-        /// Login1-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Login Login1;
+    public partial class Logout {
     }
 }

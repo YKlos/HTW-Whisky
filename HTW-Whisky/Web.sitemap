@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="" title=""  description="">
+        <siteMapNode url="~/Default.aspx" title="Home"  description="Startseite" />
         <siteMapNode url="~/Whisky/AddWhisky.aspx" title="Whiskys"  description="Whiskys durchsuchen" />
         <siteMapNode url="~/Type/AddType.aspx" title="Typen"  description="Whisky-Typen durchsuchens" />
     </siteMapNode>
