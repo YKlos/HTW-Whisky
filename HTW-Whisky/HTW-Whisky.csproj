@@ -61,6 +61,10 @@
     <Content Include="Membership\ChangePassword.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
     <Content Include="Membership\ShowUsers.aspx" />
+    <Content Include="Roles\CreateUserWizardWithRoles.aspx" />
+    <Content Include="Roles\ManageRoles.aspx" />
+    <Content Include="Roles\RoleBasedAuthorization.aspx" />
+    <Content Include="Roles\UserAndRoles.aspx" />
     <Content Include="test\AllUsers.aspx" />
     <Content Include="test\Everybody.aspx" />
     <Content Include="test\OnlyYassir.aspx" />
@@ -160,6 +164,34 @@
     </Compile>
     <Compile Include="Membership\ShowUsers.aspx.designer.cs">
       <DependentUpon>ShowUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\CreateUserWizardWithRoles.aspx.cs">
+      <DependentUpon>CreateUserWizardWithRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\CreateUserWizardWithRoles.aspx.designer.cs">
+      <DependentUpon>CreateUserWizardWithRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\ManageRoles.aspx.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\ManageRoles.aspx.designer.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\RoleBasedAuthorization.aspx.cs">
+      <DependentUpon>RoleBasedAuthorization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\RoleBasedAuthorization.aspx.designer.cs">
+      <DependentUpon>RoleBasedAuthorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\UserAndRoles.aspx.cs">
+      <DependentUpon>UserAndRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Roles\UserAndRoles.aspx.designer.cs">
+      <DependentUpon>UserAndRoles.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\AllUsers.aspx.cs">
       <DependentUpon>AllUsers.aspx</DependentUpon>
