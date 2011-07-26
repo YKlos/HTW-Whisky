@@ -58,15 +58,6 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder phMain;
         
         /// <summary>
-        /// phToolbar-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder phToolbar;
-        
-        /// <summary>
         /// LoginView1-Steuerelement
         /// </summary>
         /// <remarks>
@@ -83,5 +74,14 @@ namespace HTW_Whisky {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LoginStatus LoginStatus1;
+        
+        /// <summary>
+        /// phToolbar-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder phToolbar;
     }
 }
