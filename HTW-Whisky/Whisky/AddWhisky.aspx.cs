@@ -19,7 +19,7 @@ namespace HTW_Whisky
         protected void btnAddWhisky_Click(object sender, EventArgs e)
         {
             whiskyTableAdapter WhiskyAdapter = new whiskyTableAdapter();
-            WhiskyAdapter.Insert(tbxWhiskyName.Text, tbxAroma.Text, tbxGeschmack.Text, tbxAbgang.Text, tbxFasstyp.Text, tbxBeschreibung.Text, int.Parse(tbxJahrgang.Text), double.Parse(tbxAlkoholgehalt.Text), double.Parse(tbxLiter.Text), ddlTyp.SelectedIndex, cbxAktiv.Checked);
+            WhiskyAdapter.Insert(tbxWhiskyName.Text, tbxAroma.Text, tbxGeschmack.Text, tbxAbgang.Text, tbxFasstyp.Text, tbxBeschreibung.Text, int.Parse(tbxJahrgang.Text), double.Parse(tbxAlkoholgehalt.Text), double.Parse(tbxLiter.Text), int.Parse(ddlTyp.SelectedValue), cbxAktiv.Checked);
             lblWhiskyAdded.Text = "Whiskey hinzugefügt";
         }
     }
