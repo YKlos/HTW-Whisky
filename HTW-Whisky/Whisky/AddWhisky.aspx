@@ -64,12 +64,17 @@
         <asp:Label ID="lblAktiv" runat="server" Text="Aktiv" CssClass="label"></asp:Label><asp:CheckBox ID="cbxAktiv" runat="server" />
     </p>
 
+    <p class="clearfix">
+        <asp:Label ID="lblBildupload" runat="server" Text="Bild hochladen" CssClass="label"></asp:Label><asp:FileUpload ID="FileUpload1" runat="server" />
+    </p>
+
+    <p class="clearfix">
+        <asp:Label ID="lblFreigabe" runat="server" Text="Bild für alle Benutzer freigeben" CssClass="label"></asp:Label><asp:CheckBox ID="cbxFreigabe" runat="server" />
+    </p>
+
     <p>
         <asp:Button ID="btnAddWhisky" runat="server" Text="Whisky hinzufügen" 
             onclick="btnAddWhisky_Click" />
-        <asp:FileUpload ID="FileUpload1" runat="server" />
-        <asp:CheckBox ID="cbxFreigabe" runat="server" 
-            Text="Bild allen Usern zu verfügung stellen" />
     </p>
 
     </asp:Content>

@@ -13,6 +13,7 @@ namespace HTW_Whisky.Whisky
         protected void Page_Load(object sender, EventArgs e)
         {
             tastingTableAdapter TastingAdapter = new tastingTableAdapter();
+            //TastingAdapter.Insert();
         }
     }
 }
