@@ -10,24 +10,15 @@
 namespace HTW_Whisky.Membership {
     
     
-    public partial class UserBasedAuthorization {
+    public partial class Profile {
         
         /// <summary>
-        /// lblPathname-Steuerelement
+        /// ChangePassword1-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPathname;
-        
-        /// <summary>
-        /// FilesGrid-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView FilesGrid;
+        protected global::System.Web.UI.WebControls.ChangePassword ChangePassword1;
     }
 }

@@ -55,8 +55,10 @@
     <Content Include="Membership\AdditionalUserInfo.aspx" />
     <Content Include="Membership\CreatingUserAccounts.aspx" />
     <Content Include="Membership\EnhancedCreateUserWizard.aspx" />
+    <Content Include="Membership\ForgotPassword.aspx" />
     <Content Include="Membership\Guestbook.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Membership\ChangePassword.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
     <Content Include="Membership\ShowUsers.aspx" />
     <Content Include="test\AllUsers.aspx" />
@@ -117,6 +119,13 @@
     <Compile Include="Membership\EnhancedCreateUserWizard.aspx.designer.cs">
       <DependentUpon>EnhancedCreateUserWizard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Membership\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Membership\Guestbook.aspx.cs">
       <DependentUpon>Guestbook.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -130,6 +139,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Membership\UserBasedAuthorization.aspx.cs">
       <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
