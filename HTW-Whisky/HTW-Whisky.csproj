@@ -58,6 +58,7 @@
     <Content Include="Membership\Guestbook.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
+    <Content Include="Membership\ShowUsers.aspx" />
     <Content Include="test\AllUsers.aspx" />
     <Content Include="test\Everybody.aspx" />
     <Content Include="test\OnlyYassir.aspx" />
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="Membership\UserBasedAuthorization.aspx.designer.cs">
       <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\ShowUsers.aspx.cs">
+      <DependentUpon>ShowUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\ShowUsers.aspx.designer.cs">
+      <DependentUpon>ShowUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\AllUsers.aspx.cs">
       <DependentUpon>AllUsers.aspx</DependentUpon>
