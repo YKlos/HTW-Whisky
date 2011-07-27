@@ -51,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="img\action_accept.png" />
+    <Content Include="img\action_cancel.png" />
+    <Content Include="img\action_delete.png" />
+    <Content Include="img\action_edit.png" />
+    <Content Include="img\action_new.png" />
+    <Content Include="img\banner.png" />
     <Content Include="Logout.aspx" />
     <Content Include="Membership\AdditionalUserInfo.aspx" />
     <Content Include="Membership\CreatingUserAccounts.aspx" />
@@ -269,9 +275,7 @@
   <ItemGroup>
     <Content Include="Layout.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App_Code\WhiskyAppDataset.xsc">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
