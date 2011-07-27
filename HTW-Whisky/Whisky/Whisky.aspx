@@ -57,7 +57,9 @@
             <asp:Parameter Name="Original_ID" Type="Int32" />
         </UpdateParameters>
     </asp:ObjectDataSource>
-    <asp:FormView ID="FormView1" runat="server" DataKeyNames="ID" 
+    <asp:ValidationSummary ID="vsWhisky" runat="server" 
+        ValidationGroup="WhiskyValidationGroup" />
+    <asp:FormView ID="fvWhisky" runat="server" DataKeyNames="ID" 
         DataSourceID="WhiskyObjectDataSource" RenderOuterTable="False">
         <EditItemTemplate>
             <div class="clearfix">

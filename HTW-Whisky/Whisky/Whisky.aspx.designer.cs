@@ -31,12 +31,21 @@ namespace HTW_Whisky.Whisky {
         protected global::System.Web.UI.WebControls.ObjectDataSource TypeObjectDataSource;
         
         /// <summary>
-        /// FormView1-Steuerelement
+        /// vsWhisky-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView1;
+        protected global::System.Web.UI.WebControls.ValidationSummary vsWhisky;
+        
+        /// <summary>
+        /// fvWhisky-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView fvWhisky;
     }
 }
