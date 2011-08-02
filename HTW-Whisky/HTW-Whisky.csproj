@@ -61,10 +61,10 @@
     <Content Include="Membership\ChangePassword.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
     <Content Include="Membership\ShowUsers.aspx" />
-    <Content Include="Roles\CreateUserWizardWithRoles.aspx" />
-    <Content Include="Roles\ManageRoles.aspx" />
-    <Content Include="Roles\RoleBasedAuthorization.aspx" />
-    <Content Include="Roles\UserAndRoles.aspx" />
+    <Content Include="Rollen\CreateUserWizardWithRoles.aspx" />
+    <Content Include="Rollen\ManageRoles.aspx" />
+    <Content Include="Rollen\RoleBasedAuthorization.aspx" />
+    <Content Include="Rollen\UsersAndRoles.aspx" />
     <Content Include="test\AllUsers.aspx" />
     <Content Include="test\Everybody.aspx" />
     <Content Include="test\OnlyYassir.aspx" />
@@ -165,33 +165,33 @@
     <Compile Include="Membership\ShowUsers.aspx.designer.cs">
       <DependentUpon>ShowUsers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Roles\CreateUserWizardWithRoles.aspx.cs">
+    <Compile Include="Rollen\CreateUserWizardWithRoles.aspx.cs">
       <DependentUpon>CreateUserWizardWithRoles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Roles\CreateUserWizardWithRoles.aspx.designer.cs">
+    <Compile Include="Rollen\CreateUserWizardWithRoles.aspx.designer.cs">
       <DependentUpon>CreateUserWizardWithRoles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Roles\ManageRoles.aspx.cs">
+    <Compile Include="Rollen\ManageRoles.aspx.cs">
       <DependentUpon>ManageRoles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Roles\ManageRoles.aspx.designer.cs">
+    <Compile Include="Rollen\ManageRoles.aspx.designer.cs">
       <DependentUpon>ManageRoles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Roles\RoleBasedAuthorization.aspx.cs">
+    <Compile Include="Rollen\RoleBasedAuthorization.aspx.cs">
       <DependentUpon>RoleBasedAuthorization.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Roles\RoleBasedAuthorization.aspx.designer.cs">
+    <Compile Include="Rollen\RoleBasedAuthorization.aspx.designer.cs">
       <DependentUpon>RoleBasedAuthorization.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Roles\UserAndRoles.aspx.cs">
-      <DependentUpon>UserAndRoles.aspx</DependentUpon>
+    <Compile Include="Rollen\UsersAndRoles.aspx.cs">
+      <DependentUpon>UsersAndRoles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Roles\UserAndRoles.aspx.designer.cs">
-      <DependentUpon>UserAndRoles.aspx</DependentUpon>
+    <Compile Include="Rollen\UsersAndRoles.aspx.designer.cs">
+      <DependentUpon>UsersAndRoles.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\AllUsers.aspx.cs">
       <DependentUpon>AllUsers.aspx</DependentUpon>
