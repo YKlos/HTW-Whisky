@@ -51,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="img\action_accept.png" />
+    <Content Include="img\action_cancel.png" />
+    <Content Include="img\action_delete.png" />
+    <Content Include="img\action_edit.png" />
+    <Content Include="img\action_new.png" />
+    <Content Include="img\banner.png" />
     <Content Include="Logout.aspx" />
     <Content Include="Membership\AdditionalUserInfo.aspx" />
     <Content Include="Membership\CreatingUserAccounts.aspx" />
@@ -88,6 +94,9 @@
     <Content Include="Whisky\AddWhisky.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\WhiskyAppDataset.cs">
+      <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
+    </Content>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,20 +264,18 @@
     <Compile Include="Whisky\AddWhisky.aspx.designer.cs">
       <DependentUpon>AddWhisky.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Whisky\ShowWhisky.aspx.cs">
-      <DependentUpon>ShowWhisky.aspx</DependentUpon>
+    <Compile Include="Whisky\Whisky.aspx.cs">
+      <DependentUpon>Whisky.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Whisky\ShowWhisky.aspx.designer.cs">
-      <DependentUpon>ShowWhisky.aspx</DependentUpon>
+    <Compile Include="Whisky\Whisky.aspx.designer.cs">
+      <DependentUpon>Whisky.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App_Code\WhiskyAppDataset.xsc">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
@@ -284,7 +291,7 @@
     <Content Include="Web.sitemap">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Whisky\ShowWhisky.aspx" />
+    <Content Include="Whisky\Whisky.aspx" />
     <Content Include="Whisky\Whisky.sitemap">
       <SubType>Designer</SubType>
     </Content>

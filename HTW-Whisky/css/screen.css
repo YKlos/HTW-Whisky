@@ -15,13 +15,16 @@ body
 /* CSS Clearfix */
 .clearfix:after
 {
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both;
     visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
 }
 
+* html .clearfix { zoom: 1; } /* IE 6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE 7 */
 
 /*****************************************************************************/
 /*                         HEADER / NAVIGATION                               */
@@ -108,13 +111,13 @@ div#content_main
     text-align: center;
 }
 
-div#content_main p 
+div#content_main div.clearfix
 {
     padding: 5px;
     margin: 5px;
 }
 
-div#content_main p span.label 
+div#content_main div.clearfix span.label 
 {
     display: block;
     text-align: left;
@@ -123,10 +126,15 @@ div#content_main p span.label
     border-bottom: 1px dotted black;
 }
 
-div#content_main input[type=text],textarea,select 
+div#content_main input[type=text],textarea,select,span.show 
 {
     width: 48%;
     float: right;
+}
+
+div#content_main span.show 
+{
+    text-align: left;
 }
 
 div#content_main textarea 
