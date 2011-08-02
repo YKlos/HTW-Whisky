@@ -67,6 +67,7 @@
     <Content Include="Membership\ChangePassword.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
     <Content Include="Membership\ShowUsers.aspx" />
+    <Content Include="Register.aspx" />
     <Content Include="Rollen\CreateUserWizardWithRoles.aspx" />
     <Content Include="Rollen\ManageRoles.aspx" />
     <Content Include="Rollen\RoleBasedAuthorization.aspx" />
@@ -173,6 +174,13 @@
     </Compile>
     <Compile Include="Membership\ShowUsers.aspx.designer.cs">
       <DependentUpon>ShowUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Rollen\CreateUserWizardWithRoles.aspx.cs">
       <DependentUpon>CreateUserWizardWithRoles.aspx</DependentUpon>

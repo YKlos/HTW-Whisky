@@ -6,12 +6,12 @@
         <siteMapNode title="Membership" description="Membershipverwaltung">
           <siteMapNode url="~/Membership/CreatingUserAccounts.aspx" title="Register" description="Create User" />
         </siteMapNode>
-        <siteMapNode title="test" description="test">
+        <siteMapNode title="test" description="test" roles="*">
           <siteMapNode url="~/test/OnlyYassir.aspx" title="OnlyYassir" description="OnlyYassir" />
           <siteMapNode url="~/test/AllUsers.aspx" title="AllUsers" description="AllUsers" />
           <siteMapNode url="~/test/Everybody.aspx" title="Everybody" description="Everybody" />
         </siteMapNode>
-        <siteMapNode title="Roles">
+        <siteMapNode title="Roles" roles="Administratoren">
           <siteMapNode url="~/Roles/ManageRoles.aspx" title="Manage Roles" />
           <siteMapNode url="~/Roles/UsersAndRoles.aspx" title="Users and Roles" />
           <siteMapNode url="~/Roles/CreateUserWizardWithRoles.aspx" title="Create Account (with Roles)" />
