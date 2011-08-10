@@ -22,12 +22,12 @@ namespace HTW_Whisky
                                  int.Parse(tbxJahrgang.Text), double.Parse(tbxAlkoholgehalt.Text),
                                  double.Parse(tbxLiter.Text), ddlTyp.SelectedIndex, cbxAktiv.Checked);
 
-            int whiskyID = (int)WhiskyAdapter.GetIdByParams(tbxWhiskyName.Text, tbxAroma.Text,
-                                                          tbxGeschmack.Text, tbxAbgang.Text,
-                                                          tbxFasstyp.Text, tbxBeschreibung.Text,
-                                                          int.Parse(tbxJahrgang.Text), double.Parse(tbxAlkoholgehalt.Text),
-                                                          double.Parse(tbxLiter.Text), ddlTyp.SelectedIndex, cbxAktiv.Checked);
-
+            int whiskyID = (int)WhiskyAdapter.GetIDByParams(tbxAroma.Text, tbxGeschmack.Text,
+                                                            tbxAbgang.Text, tbxFasstyp.Text,
+                                                            tbxBeschreibung.Text, int.Parse(tbxJahrgang.Text),
+                                                            double.Parse(tbxAlkoholgehalt.Text), double.Parse(tbxLiter.Text),
+                                                            ddlTyp.SelectedIndex, cbxAktiv.Checked, tbxWhiskyName.Text);
+            
             //Bilderupload
 
             if (FileUpload1.PostedFile != null && FileUpload1.PostedFile.FileName != "")
