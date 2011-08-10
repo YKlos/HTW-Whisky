@@ -2,6 +2,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
+    <asp:ObjectDataSource ID="TypeObjectDataSource" runat="server" 
+        DeleteMethod="Delete" InsertMethod="Insert" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
+        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.typenTableAdapter" 
+        UpdateMethod="Update">
+        <DeleteParameters>
+            <asp:Parameter Name="Original_ID" Type="Int32" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="name" Type="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="name" Type="String" />
+            <asp:Parameter Name="Original_ID" Type="Int32" />
+        </UpdateParameters>
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="WhiskyObjectDataSource" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetDataByID" 
         

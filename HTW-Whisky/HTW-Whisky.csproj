@@ -93,11 +93,18 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Whisky\AddTasting.aspx" />
     <Content Include="Whisky\AddWhisky.aspx" />
+    <Content Include="Whisky\Tasting.aspx" />
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Whisky\Tasting.aspx.cs">
+      <DependentUpon>Tasting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Whisky\Tasting.aspx.designer.cs">
+      <DependentUpon>Tasting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Whisky\WhiskyList.aspx.cs">
       <DependentUpon>WhiskyList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -274,13 +281,6 @@
     </Compile>
     <Compile Include="UnauthorizedAccess.aspx.designer.cs">
       <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Whisky\AddTasting.aspx.cs">
-      <DependentUpon>AddTasting.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Whisky\AddTasting.aspx.designer.cs">
-      <DependentUpon>AddTasting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\AddWhisky.aspx.cs">
       <DependentUpon>AddWhisky.aspx</DependentUpon>

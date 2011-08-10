@@ -40,6 +40,8 @@ namespace HTW_Whisky.App_Code {
         
         private global::System.Data.DataRelation relationwhisky_picture;
         
+        private global::System.Data.DataRelation relationwhisky_tasting;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -320,6 +322,7 @@ namespace HTW_Whisky.App_Code {
             }
             this.relationtypen_whisky = this.Relations["typen_whisky"];
             this.relationwhisky_picture = this.Relations["whisky_picture"];
+            this.relationwhisky_tasting = this.Relations["whisky_tasting"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -350,6 +353,10 @@ namespace HTW_Whisky.App_Code {
                         this.tablewhisky.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tablepicture.whiskyIDColumn}, false);
             this.Relations.Add(this.relationwhisky_picture);
+            this.relationwhisky_tasting = new global::System.Data.DataRelation("whisky_tasting", new global::System.Data.DataColumn[] {
+                        this.tablewhisky.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tabletasting.whiskyIDColumn}, false);
+            this.Relations.Add(this.relationwhisky_tasting);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2347,12 +2354,12 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public tastingRow AddtastingRow(System.Guid userID, int whiskyID, string notiz, int art, int geschmack, int suesse, int frucht, int abgang, int gesamt, int qualitaet, System.DateTime datum, bool aktiv) {
+            public tastingRow AddtastingRow(System.Guid userID, whiskyRow parentwhiskyRowBywhisky_tasting, string notiz, int art, int geschmack, int suesse, int frucht, int abgang, int gesamt, int qualitaet, System.DateTime datum, bool aktiv) {
                 tastingRow rowtastingRow = ((tastingRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         userID,
-                        whiskyID,
+                        null,
                         notiz,
                         art,
                         geschmack,
@@ -2363,6 +2370,9 @@ namespace HTW_Whisky.App_Code {
                         qualitaet,
                         datum,
                         aktiv};
+                if ((parentwhiskyRowBywhisky_tasting != null)) {
+                    columnValuesArray[2] = parentwhiskyRowBywhisky_tasting[0];
+                }
                 rowtastingRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtastingRow);
                 return rowtastingRow;
@@ -2953,6 +2963,17 @@ namespace HTW_Whisky.App_Code {
                     return ((pictureRow[])(base.GetChildRows(this.Table.ChildRelations["whisky_picture"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public tastingRow[] GettastingRows() {
+                if ((this.Table.ChildRelations["whisky_tasting"] == null)) {
+                    return new tastingRow[0];
+                }
+                else {
+                    return ((tastingRow[])(base.GetChildRows(this.Table.ChildRelations["whisky_tasting"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3523,6 +3544,17 @@ namespace HTW_Whisky.App_Code {
                 }
                 set {
                     this[this.tabletasting.aktivColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public whiskyRow whiskyRow {
+                get {
+                    return ((whiskyRow)(this.GetParentRow(this.Table.ParentRelations["whisky_tasting"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["whisky_tasting"]);
                 }
             }
             
@@ -5790,11 +5822,18 @@ WHERE        (whisky.ID = @WhiskyID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        tasting.*\r\nFROM            tasting";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        ID, userID, whiskyID, notiz, art, geschmack, suesse, frucht, abgang" +
+                ", gesamt, qualitaet, datum, aktiv\r\nFROM            tasting\r\nWHERE        (ID = @" +
+                "TastingID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TastingID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5816,6 +5855,32 @@ WHERE        (whisky.ID = @WhiskyID)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual WhiskyAppDataset.tastingDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            WhiskyAppDataset.tastingDataTable dataTable = new WhiskyAppDataset.tastingDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByID(WhiskyAppDataset.tastingDataTable dataTable, int TastingID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TastingID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual WhiskyAppDataset.tastingDataTable GetDataByID(int TastingID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TastingID));
             WhiskyAppDataset.tastingDataTable dataTable = new WhiskyAppDataset.tastingDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6254,15 +6319,6 @@ WHERE        (whisky.ID = @WhiskyID)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._pictureTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pictureTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._tastingTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -6272,12 +6328,12 @@ WHERE        (whisky.ID = @WhiskyID)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._freundeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pictureTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._freundeTableAdapter.Update(updatedRows));
+                    result = (result + this._pictureTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6287,6 +6343,15 @@ WHERE        (whisky.ID = @WhiskyID)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._aspnet_UsersTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._freundeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._freundeTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6308,14 +6373,6 @@ WHERE        (whisky.ID = @WhiskyID)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._pictureTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pictureTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._tastingTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -6324,11 +6381,11 @@ WHERE        (whisky.ID = @WhiskyID)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._freundeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pictureTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._freundeTableAdapter.Update(addedRows));
+                    result = (result + this._pictureTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6337,6 +6394,14 @@ WHERE        (whisky.ID = @WhiskyID)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._aspnet_UsersTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._freundeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._freundeTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6350,14 +6415,6 @@ WHERE        (whisky.ID = @WhiskyID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(WhiskyAppDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._aspnet_UsersTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.aspnet_Users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._aspnet_UsersTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._freundeTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -6366,11 +6423,11 @@ WHERE        (whisky.ID = @WhiskyID)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._tastingTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._aspnet_UsersTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.aspnet_Users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._tastingTableAdapter.Update(deletedRows));
+                    result = (result + this._aspnet_UsersTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6379,6 +6436,14 @@ WHERE        (whisky.ID = @WhiskyID)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._pictureTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tastingTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tastingTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
