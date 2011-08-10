@@ -35,11 +35,12 @@
                 <div id="toolbar" class="clearfix">
                     <asp:LoginView ID="LoginView1" runat="server">
                         <LoggedInTemplate>
-                                Welcome back, <asp:LoginName ID="LoginName1" runat="server" />. 
+                                Hallo, <asp:LoginName ID="LoginName1" runat="server" />. 
                         </LoggedInTemplate>
                         <AnonymousTemplate>
-                                Hello, stranger.
-                            <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="~/Login.aspx">Log In</asp:HyperLink>
+                                Hallo Gast.
+                                <br />
+                                <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="~/Register.aspx">registrieren</asp:HyperLink>
                         </AnonymousTemplate>
                     </asp:LoginView>
                     <br />

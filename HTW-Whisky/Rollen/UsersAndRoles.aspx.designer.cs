@@ -7,27 +7,36 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace HTW_Whisky.Membership {
+namespace HTW_Whisky.Roles {
     
     
-    public partial class UserBasedAuthorization {
+    public partial class UserAndRoles {
         
         /// <summary>
-        /// lblPathname-Steuerelement
+        /// ActionStatus-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPathname;
+        protected global::System.Web.UI.WebControls.Label ActionStatus;
         
         /// <summary>
-        /// FilesGrid-Steuerelement
+        /// UserList-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView FilesGrid;
+        protected global::System.Web.UI.WebControls.DropDownList UserList;
+        
+        /// <summary>
+        /// UsersRoleList-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater UsersRoleList;
     }
 }

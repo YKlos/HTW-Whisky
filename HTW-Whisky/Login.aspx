@@ -5,3 +5,6 @@
     <asp:Login ID="Login1" runat="server">
     </asp:Login>
 </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
+    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Membership/ForgotPAssword.aspx">Passwort vergessen?</asp:HyperLink>
+</asp:Content>

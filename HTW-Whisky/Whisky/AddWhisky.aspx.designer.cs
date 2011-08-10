@@ -220,13 +220,13 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.CheckBox cbxAktiv;
         
         /// <summary>
-        /// btnAddWhisky-Steuerelement
+        /// lblBildupload-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddWhisky;
+        protected global::System.Web.UI.WebControls.Label lblBildupload;
         
         /// <summary>
         /// FileUpload1-Steuerelement
@@ -238,6 +238,15 @@ namespace HTW_Whisky {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
+        /// lblFreigabe-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFreigabe;
+        
+        /// <summary>
         /// cbxFreigabe-Steuerelement
         /// </summary>
         /// <remarks>
@@ -245,6 +254,15 @@ namespace HTW_Whisky {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbxFreigabe;
+        
+        /// <summary>
+        /// btnAddWhisky-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddWhisky;
         
         /// <summary>
         /// WhiskyNavigation-Steuerelement

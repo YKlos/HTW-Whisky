@@ -51,15 +51,32 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="img\action_accept.png" />
+    <Content Include="img\action_cancel.png" />
+    <Content Include="img\action_delete.png" />
+    <Content Include="img\action_edit.png" />
+    <Content Include="img\action_new.png" />
+    <Content Include="img\banner.png" />
     <Content Include="Logout.aspx" />
     <Content Include="Membership\AdditionalUserInfo.aspx" />
     <Content Include="Membership\CreatingUserAccounts.aspx" />
     <Content Include="Membership\EnhancedCreateUserWizard.aspx" />
+    <Content Include="Membership\ForgotPassword.aspx" />
     <Content Include="Membership\Guestbook.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Membership\ChangePassword.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
+<<<<<<< HEAD
     <Content Include="Membership\AddFriends.aspx" />
     <Content Include="Membership\FriendsOverview.aspx" />
+=======
+    <Content Include="Membership\ShowUsers.aspx" />
+    <Content Include="Register.aspx" />
+    <Content Include="Rollen\CreateUserWizardWithRoles.aspx" />
+    <Content Include="Rollen\ManageRoles.aspx" />
+    <Content Include="Rollen\RoleBasedAuthorization.aspx" />
+    <Content Include="Rollen\UsersAndRoles.aspx" />
+>>>>>>> 0295f6a8222e278d49328ce908e4a2bacc4170d6
     <Content Include="test\AllUsers.aspx" />
     <Content Include="test\Everybody.aspx" />
     <Content Include="test\OnlyYassir.aspx" />
@@ -121,6 +138,13 @@
     <Compile Include="Membership\EnhancedCreateUserWizard.aspx.designer.cs">
       <DependentUpon>EnhancedCreateUserWizard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Membership\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Membership\Guestbook.aspx.cs">
       <DependentUpon>Guestbook.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -134,6 +158,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Membership\UserBasedAuthorization.aspx.cs">
       <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
@@ -155,6 +186,41 @@
     </Compile>
     <Compile Include="Membership\FriendsOverview.aspx.designer.cs">
       <DependentUpon>FriendsOverview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rollen\CreateUserWizardWithRoles.aspx.cs">
+      <DependentUpon>CreateUserWizardWithRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rollen\CreateUserWizardWithRoles.aspx.designer.cs">
+      <DependentUpon>CreateUserWizardWithRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rollen\ManageRoles.aspx.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rollen\ManageRoles.aspx.designer.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rollen\RoleBasedAuthorization.aspx.cs">
+      <DependentUpon>RoleBasedAuthorization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rollen\RoleBasedAuthorization.aspx.designer.cs">
+      <DependentUpon>RoleBasedAuthorization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Rollen\UsersAndRoles.aspx.cs">
+      <DependentUpon>UsersAndRoles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Rollen\UsersAndRoles.aspx.designer.cs">
+      <DependentUpon>UsersAndRoles.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\AllUsers.aspx.cs">
       <DependentUpon>AllUsers.aspx</DependentUpon>
@@ -218,20 +284,18 @@
     <Compile Include="Whisky\AddWhisky.aspx.designer.cs">
       <DependentUpon>AddWhisky.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Whisky\ShowWhisky.aspx.cs">
-      <DependentUpon>ShowWhisky.aspx</DependentUpon>
+    <Compile Include="Whisky\Whisky.aspx.cs">
+      <DependentUpon>Whisky.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Whisky\ShowWhisky.aspx.designer.cs">
-      <DependentUpon>ShowWhisky.aspx</DependentUpon>
+    <Compile Include="Whisky\Whisky.aspx.designer.cs">
+      <DependentUpon>Whisky.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layout.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="img\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App_Code\WhiskyAppDataset.xsc">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
@@ -247,7 +311,7 @@
     <Content Include="Web.sitemap">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Whisky\ShowWhisky.aspx" />
+    <Content Include="Whisky\Whisky.aspx" />
     <Content Include="Whisky\Whisky.sitemap">
       <SubType>Designer</SubType>
     </Content>
