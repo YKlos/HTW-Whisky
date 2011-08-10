@@ -40,6 +40,8 @@ namespace HTW_Whisky.App_Code {
         
         private global::System.Data.DataRelation relationwhisky_tasting;
         
+        private global::System.Data.DataRelation relationwhisky_picture;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -320,6 +322,7 @@ namespace HTW_Whisky.App_Code {
             }
             this.relationtypen_whisky = this.Relations["typen_whisky"];
             this.relationwhisky_tasting = this.Relations["whisky_tasting"];
+            this.relationwhisky_picture = this.Relations["whisky_picture"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -350,6 +353,10 @@ namespace HTW_Whisky.App_Code {
                         this.tablewhisky.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tabletasting.whiskyIDColumn}, false);
             this.Relations.Add(this.relationwhisky_tasting);
+            this.relationwhisky_picture = new global::System.Data.DataRelation("whisky_picture", new global::System.Data.DataColumn[] {
+                        this.tablewhisky.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tablepicture.whiskyIDColumn}, false);
+            this.Relations.Add(this.relationwhisky_picture);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -492,6 +499,8 @@ namespace HTW_Whisky.App_Code {
             
             private global::System.Data.DataColumn columnaktiv;
             
+            private global::System.Data.DataColumn columntypName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public whiskyDataTable() {
@@ -623,6 +632,14 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn typNameColumn {
+                get {
+                    return this.columntypName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -658,7 +675,7 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public whiskyRow AddwhiskyRow(string name, string aroma, string geschmack, string abgang, string fasstyp, string beschreibung, int jahrgang, double alkoholgehalt, double liter, typenRow parenttypenRowBytypen_whisky, bool aktiv) {
+            public whiskyRow AddwhiskyRow(string name, string aroma, string geschmack, string abgang, string fasstyp, string beschreibung, int jahrgang, double alkoholgehalt, double liter, typenRow parenttypenRowBytypen_whisky, bool aktiv, string typName) {
                 whiskyRow rowwhiskyRow = ((whiskyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -672,7 +689,8 @@ namespace HTW_Whisky.App_Code {
                         alkoholgehalt,
                         liter,
                         null,
-                        aktiv};
+                        aktiv,
+                        typName};
                 if ((parenttypenRowBytypen_whisky != null)) {
                     columnValuesArray[10] = parenttypenRowBytypen_whisky[0];
                 }
@@ -717,6 +735,7 @@ namespace HTW_Whisky.App_Code {
                 this.columnliter = base.Columns["liter"];
                 this.columntypID = base.Columns["typID"];
                 this.columnaktiv = base.Columns["aktiv"];
+                this.columntypName = base.Columns["typName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -746,6 +765,8 @@ namespace HTW_Whisky.App_Code {
                 base.Columns.Add(this.columntypID);
                 this.columnaktiv = new global::System.Data.DataColumn("aktiv", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnaktiv);
+                this.columntypName = new global::System.Data.DataColumn("typName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntypName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -760,6 +781,7 @@ namespace HTW_Whisky.App_Code {
                 this.columnabgang.MaxLength = 50;
                 this.columnfasstyp.MaxLength = 50;
                 this.columnbeschreibung.MaxLength = 2147483647;
+                this.columntypName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1714,13 +1736,16 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public pictureRow AddpictureRow(int whiskyID, bool freigabe, byte[] image) {
+            public pictureRow AddpictureRow(whiskyRow parentwhiskyRowBywhisky_picture, bool freigabe, byte[] image) {
                 pictureRow rowpictureRow = ((pictureRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        whiskyID,
+                        null,
                         freigabe,
                         image};
+                if ((parentwhiskyRowBywhisky_picture != null)) {
+                    columnValuesArray[1] = parentwhiskyRowBywhisky_picture[0];
+                }
                 rowpictureRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpictureRow);
                 return rowpictureRow;
@@ -2775,6 +2800,22 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string typName {
+                get {
+                    try {
+                        return ((string)(this[this.tablewhisky.typNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte typName in Tabelle whisky ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablewhisky.typNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public typenRow typenRow {
                 get {
                     return ((typenRow)(this.GetParentRow(this.Table.ParentRelations["typen_whisky"])));
@@ -2918,12 +2959,35 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstypNameNull() {
+                return this.IsNull(this.tablewhisky.typNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettypNameNull() {
+                this[this.tablewhisky.typNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public tastingRow[] GettastingRows() {
                 if ((this.Table.ChildRelations["whisky_tasting"] == null)) {
                     return new tastingRow[0];
                 }
                 else {
                     return ((tastingRow[])(base.GetChildRows(this.Table.ChildRelations["whisky_tasting"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public pictureRow[] GetpictureRows() {
+                if ((this.Table.ChildRelations["whisky_picture"] == null)) {
+                    return new pictureRow[0];
+                }
+                else {
+                    return ((pictureRow[])(base.GetChildRows(this.Table.ChildRelations["whisky_picture"])));
                 }
             }
         }
@@ -3436,6 +3500,17 @@ namespace HTW_Whisky.App_Code {
                 }
                 set {
                     this[this.tablepicture.imageColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public whiskyRow whiskyRow {
+                get {
+                    return ((whiskyRow)(this.GetParentRow(this.Table.ParentRelations["whisky_picture"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["whisky_picture"]);
                 }
             }
             
@@ -4047,43 +4122,8 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
             tableMapping.ColumnMappings.Add("liter", "liter");
             tableMapping.ColumnMappings.Add("typID", "typID");
             tableMapping.ColumnMappings.Add("aktiv", "aktiv");
+            tableMapping.ColumnMappings.Add("typName", "typName");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [whisky] WHERE (([ID] = @Original_ID))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [whisky] ([name], [aroma], [geschmack], [abgang], [fasstyp], [beschreibung], [jahrgang], [alkoholgehalt], [liter], [typID], [aktiv]) VALUES (@name, @aroma, @geschmack, @abgang, @fasstyp, @beschreibung, @jahrgang, @alkoholgehalt, @liter, @typID, @aktiv)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aroma", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aroma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@geschmack", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "geschmack", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@abgang", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abgang", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fasstyp", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fasstyp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@beschreibung", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beschreibung", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@jahrgang", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "jahrgang", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alkoholgehalt", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alkoholgehalt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@liter", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "liter", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@typID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "typID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [whisky] SET [name] = @name, [aroma] = @aroma, [geschmack] = @geschmack, [abgang] = @abgang, [fasstyp] = @fasstyp, [beschreibung] = @beschreibung, [jahrgang] = @jahrgang, [alkoholgehalt] = @alkoholgehalt, [liter] = @liter, [typID] = @typID, [aktiv] = @aktiv WHERE (([ID] = @Original_ID))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aroma", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aroma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@geschmack", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "geschmack", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@abgang", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abgang", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fasstyp", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fasstyp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@beschreibung", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beschreibung", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@jahrgang", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "jahrgang", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@alkoholgehalt", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "alkoholgehalt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@liter", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "liter", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@typID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "typID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4099,14 +4139,20 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        whisky.*\r\nFROM            whisky";
+            this._commandCollection[0].CommandText = @"SELECT        whisky.ID, whisky.name, whisky.aroma, whisky.geschmack, whisky.abgang, whisky.fasstyp, whisky.beschreibung, whisky.jahrgang, whisky.alkoholgehalt, 
+                         whisky.liter, whisky.typID, whisky.aktiv, typen.name AS typName
+FROM            whisky INNER JOIN
+                         typen ON whisky.typID = typen.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "dbo.GetWhiskyByID";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WhiskyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].CommandText = @"SELECT        whisky.ID, whisky.name, whisky.aroma, whisky.geschmack, whisky.abgang, whisky.fasstyp, whisky.beschreibung, whisky.jahrgang, whisky.alkoholgehalt, 
+                         whisky.liter, whisky.typID, whisky.aktiv, typen.name AS typName
+FROM            whisky INNER JOIN
+                         typen ON whisky.typID = typen.ID
+WHERE        (whisky.ID = @WhiskyID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WhiskyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "dbo.GetIdByParams";
@@ -4153,14 +4199,9 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByID(WhiskyAppDataset.whiskyDataTable dataTable, global::System.Nullable<int> WhiskyID) {
+        public virtual int FillByID(WhiskyAppDataset.whiskyDataTable dataTable, int WhiskyID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((WhiskyID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WhiskyID.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(WhiskyID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4172,243 +4213,12 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual WhiskyAppDataset.whiskyDataTable GetDataByID(global::System.Nullable<int> WhiskyID) {
+        public virtual WhiskyAppDataset.whiskyDataTable GetDataByID(int WhiskyID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((WhiskyID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WhiskyID.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(WhiskyID));
             WhiskyAppDataset.whiskyDataTable dataTable = new WhiskyAppDataset.whiskyDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(WhiskyAppDataset.whiskyDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(WhiskyAppDataset dataSet) {
-            return this.Adapter.Update(dataSet, "whisky");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string name, string aroma, string geschmack, string abgang, string fasstyp, string beschreibung, global::System.Nullable<int> jahrgang, global::System.Nullable<double> alkoholgehalt, global::System.Nullable<double> liter, global::System.Nullable<int> typID, global::System.Nullable<bool> aktiv) {
-            if ((name == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(name));
-            }
-            if ((aroma == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(aroma));
-            }
-            if ((geschmack == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(geschmack));
-            }
-            if ((abgang == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(abgang));
-            }
-            if ((fasstyp == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(fasstyp));
-            }
-            if ((beschreibung == null)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(beschreibung));
-            }
-            if ((jahrgang.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(jahrgang.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((alkoholgehalt.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((double)(alkoholgehalt.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((liter.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((double)(liter.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((typID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(typID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((aktiv.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((bool)(aktiv.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string name, string aroma, string geschmack, string abgang, string fasstyp, string beschreibung, global::System.Nullable<int> jahrgang, global::System.Nullable<double> alkoholgehalt, global::System.Nullable<double> liter, global::System.Nullable<int> typID, global::System.Nullable<bool> aktiv, int Original_ID) {
-            if ((name == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(name));
-            }
-            if ((aroma == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(aroma));
-            }
-            if ((geschmack == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(geschmack));
-            }
-            if ((abgang == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(abgang));
-            }
-            if ((fasstyp == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(fasstyp));
-            }
-            if ((beschreibung == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(beschreibung));
-            }
-            if ((jahrgang.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(jahrgang.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((alkoholgehalt.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(alkoholgehalt.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((liter.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(liter.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((typID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(typID.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((aktiv.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(aktiv.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_ID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4665,10 +4475,9 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "dbo.GetTypeByID";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TypID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].CommandText = "SELECT        ID, name\r\nFROM            typen\r\nWHERE        (ID = @TypID)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TypID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4699,14 +4508,9 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(WhiskyAppDataset.typenDataTable dataTable, global::System.Nullable<int> TypID) {
+        public virtual int FillByID(WhiskyAppDataset.typenDataTable dataTable, int TypID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((TypID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(TypID.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TypID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -4718,14 +4522,9 @@ namespace HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual WhiskyAppDataset.typenDataTable GetDataBy(global::System.Nullable<int> TypID) {
+        public virtual WhiskyAppDataset.typenDataTable GetDataByID(int TypID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((TypID.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(TypID.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TypID));
             WhiskyAppDataset.typenDataTable dataTable = new WhiskyAppDataset.typenDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -6402,8 +6201,6 @@ WHERE        (aspnet_Users.UserId IN
         
         private UpdateOrderOption _updateOrder;
         
-        private whiskyTableAdapter _whiskyTableAdapter;
-        
         private typenTableAdapter _typenTableAdapter;
         
         private tastingTableAdapter _tastingTableAdapter;
@@ -6426,20 +6223,6 @@ WHERE        (aspnet_Users.UserId IN
             }
             set {
                 this._updateOrder = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public whiskyTableAdapter whiskyTableAdapter {
-            get {
-                return this._whiskyTableAdapter;
-            }
-            set {
-                this._whiskyTableAdapter = value;
             }
         }
         
@@ -6532,10 +6315,6 @@ WHERE        (aspnet_Users.UserId IN
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._whiskyTableAdapter != null) 
-                            && (this._whiskyTableAdapter.Connection != null))) {
-                    return this._whiskyTableAdapter.Connection;
-                }
                 if (((this._typenTableAdapter != null) 
                             && (this._typenTableAdapter.Connection != null))) {
                     return this._typenTableAdapter.Connection;
@@ -6569,9 +6348,6 @@ WHERE        (aspnet_Users.UserId IN
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._whiskyTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._typenTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -6607,12 +6383,12 @@ WHERE        (aspnet_Users.UserId IN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._whiskyTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.whisky.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._pictureTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._whiskyTableAdapter.Update(updatedRows));
+                    result = (result + this._pictureTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6643,15 +6419,6 @@ WHERE        (aspnet_Users.UserId IN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._pictureTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pictureTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             return result;
         }
         
@@ -6670,11 +6437,11 @@ WHERE        (aspnet_Users.UserId IN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._whiskyTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.whisky.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._pictureTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._whiskyTableAdapter.Update(addedRows));
+                    result = (result + this._pictureTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6702,14 +6469,6 @@ WHERE        (aspnet_Users.UserId IN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._pictureTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pictureTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             return result;
         }
         
@@ -6720,14 +6479,6 @@ WHERE        (aspnet_Users.UserId IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(WhiskyAppDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._pictureTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._pictureTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._freundeTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -6752,11 +6503,11 @@ WHERE        (aspnet_Users.UserId IN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._whiskyTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.whisky.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._pictureTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._whiskyTableAdapter.Update(deletedRows));
+                    result = (result + this._pictureTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6806,11 +6557,6 @@ WHERE        (aspnet_Users.UserId IN
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
-            }
-            if (((this._whiskyTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._whiskyTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Für alle von einem TableAdapterManager verwalteten Instanzen von TableAdapter mus" +
-                        "s die gleiche Verbindungszeichenfolge verwendet werden.");
             }
             if (((this._typenTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._typenTableAdapter.Connection) == false))) {
@@ -6871,15 +6617,6 @@ WHERE        (aspnet_Users.UserId IN
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._whiskyTableAdapter != null)) {
-                    revertConnections.Add(this._whiskyTableAdapter, this._whiskyTableAdapter.Connection);
-                    this._whiskyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._whiskyTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._whiskyTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._whiskyTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._whiskyTableAdapter.Adapter);
-                    }
-                }
                 if ((this._typenTableAdapter != null)) {
                     revertConnections.Add(this._typenTableAdapter, this._typenTableAdapter.Connection);
                     this._typenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -6982,10 +6719,6 @@ WHERE        (aspnet_Users.UserId IN
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
-                }
-                if ((this._whiskyTableAdapter != null)) {
-                    this._whiskyTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._whiskyTableAdapter]));
-                    this._whiskyTableAdapter.Transaction = null;
                 }
                 if ((this._typenTableAdapter != null)) {
                     this._typenTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._typenTableAdapter]));
