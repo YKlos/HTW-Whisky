@@ -66,17 +66,14 @@
     <Content Include="Login.aspx" />
     <Content Include="Membership\ChangePassword.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
-<<<<<<< HEAD
     <Content Include="Membership\AddFriends.aspx" />
     <Content Include="Membership\FriendsOverview.aspx" />
-=======
     <Content Include="Membership\ShowUsers.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Rollen\CreateUserWizardWithRoles.aspx" />
     <Content Include="Rollen\ManageRoles.aspx" />
     <Content Include="Rollen\RoleBasedAuthorization.aspx" />
     <Content Include="Rollen\UsersAndRoles.aspx" />
->>>>>>> 0295f6a8222e278d49328ce908e4a2bacc4170d6
     <Content Include="test\AllUsers.aspx" />
     <Content Include="test\Everybody.aspx" />
     <Content Include="test\OnlyYassir.aspx" />
