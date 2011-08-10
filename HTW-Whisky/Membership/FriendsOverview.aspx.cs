@@ -12,7 +12,7 @@ namespace HTW_Whisky.Membership
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = 1;
+            //int id = 1;
 
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
             //FreundeAdapter.Insert(tbxWhiskyName.Text, tbxAroma.Text);
