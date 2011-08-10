@@ -6,23 +6,23 @@
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID" 
         DataSourceID="WhiskyObjectDataSource">
         <Columns>
-            <asp:BoundField DataField="ID" HeaderText="Nr." InsertVisible="False" 
+            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" 
                 ReadOnly="True" SortExpression="ID" />
             <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
-            <asp:BoundField DataField="typID" HeaderText="Typ" SortExpression="typID" />
-            <asp:BoundField DataField="jahrgang" HeaderText="Jahrgang" 
-                SortExpression="jahrgang" />
             <asp:BoundField DataField="fasstyp" HeaderText="Fasstyp" 
                 SortExpression="fasstyp" />
-            <asp:BoundField DataField="liter" HeaderText="Inhalt" SortExpression="liter" />
-            <asp:TemplateField HeaderText="Typ" SortExpression="typID">
-                <EditItemTemplate>
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("typID") %>'></asp:TextBox>
-                </EditItemTemplate>
+            <asp:BoundField DataField="jahrgang" HeaderText="Jahrgang" 
+                SortExpression="jahrgang" />
+            <asp:BoundField DataField="liter" HeaderText="Inhalt" 
+                SortExpression="liter" />
+            <asp:TemplateField HeaderText="Typ" SortExpression="typName">
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("typID") %>'></asp:Label>
+                    <asp:Label ID="lblTypName" runat="server" Text='<%# Bind("typName") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:HyperLinkField DataNavigateUrlFields="ID" 
+                DataNavigateUrlFormatString="Whisky.aspx?id={0}" HeaderText="Details" 
+                Text="Whisky anschauen" />
         </Columns>
     </asp:GridView>
     <asp:ObjectDataSource ID="WhiskyObjectDataSource" runat="server" 

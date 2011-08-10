@@ -3,59 +3,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
     <asp:ObjectDataSource ID="WhiskyObjectDataSource" runat="server" 
-        DeleteMethod="Delete" InsertMethod="Insert" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetDataByID" 
-        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.whiskyTableAdapter" 
-        UpdateMethod="Update">
-        <DeleteParameters>
-            <asp:Parameter Name="Original_ID" Type="Int32" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="name" Type="String" />
-            <asp:Parameter Name="aroma" Type="String" />
-            <asp:Parameter Name="geschmack" Type="String" />
-            <asp:Parameter Name="abgang" Type="String" />
-            <asp:Parameter Name="fasstyp" Type="String" />
-            <asp:Parameter Name="beschreibung" Type="String" />
-            <asp:Parameter Name="jahrgang" Type="Int32" />
-            <asp:Parameter Name="alkoholgehalt" Type="Double" />
-            <asp:Parameter Name="liter" Type="Double" />
-            <asp:Parameter Name="typID" Type="Int32" />
-            <asp:Parameter Name="aktiv" Type="Boolean" />
-        </InsertParameters>
+        
+        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.whiskyTableAdapter">
         <SelectParameters>
-            <asp:Parameter DefaultValue="3" Name="WhiskyID" Type="Int32" />
+            <asp:QueryStringParameter DefaultValue="" Name="WhiskyID" QueryStringField="id" 
+                Type="Int32" />
         </SelectParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="name" Type="String" />
-            <asp:Parameter Name="aroma" Type="String" />
-            <asp:Parameter Name="geschmack" Type="String" />
-            <asp:Parameter Name="abgang" Type="String" />
-            <asp:Parameter Name="fasstyp" Type="String" />
-            <asp:Parameter Name="beschreibung" Type="String" />
-            <asp:Parameter Name="jahrgang" Type="Int32" />
-            <asp:Parameter Name="alkoholgehalt" Type="Double" />
-            <asp:Parameter Name="liter" Type="Double" />
-            <asp:Parameter Name="typID" Type="Int32" />
-            <asp:Parameter Name="aktiv" Type="Boolean" />
-            <asp:Parameter Name="Original_ID" Type="Int32" />
-        </UpdateParameters>
-    </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="TypeObjectDataSource" runat="server" 
-        DeleteMethod="Delete" InsertMethod="Insert" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
-        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.typenTableAdapter" 
-        UpdateMethod="Update">
-        <DeleteParameters>
-            <asp:Parameter Name="Original_ID" Type="Int32" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="name" Type="String" />
-        </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="name" Type="String" />
-            <asp:Parameter Name="Original_ID" Type="Int32" />
-        </UpdateParameters>
     </asp:ObjectDataSource>
     <asp:ValidationSummary ID="vsWhisky" runat="server" 
         ValidationGroup="WhiskyValidationGroup" />
@@ -242,10 +196,8 @@
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelTyp" runat="server" CssClass="label" Text="Typ"></asp:Label>
-                <asp:DropDownList ID="ddlTypID" runat="server" 
-                    DataSourceID="TypeObjectDataSource" DataTextField="name" DataValueField="ID" 
-                    Enabled="False" SelectedValue='<%# Bind("typID") %>'>
-                </asp:DropDownList>
+                <asp:Label ID="lblTyp" runat="server" CssClass="show" 
+                    Text='<%# Bind("typName") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAktiv" runat="server" CssClass="label" Text=" Aktiv"></asp:Label>
