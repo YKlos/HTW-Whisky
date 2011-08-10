@@ -17,10 +17,38 @@ namespace HTW_Whisky.Membership
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-            DataTable dt = FreundeAdapter.GetFriendsByUserName(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text);
-            //dt.Rows;
+            addFriend("yassir");
+            //if (checkFriendStatus(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text))
+            //{
+                //lbtnGoBack.Text = "Wir sind freunde";
+            //}
+            
 
+        }
+
+        protected bool checkFriendStatus(string userName)
+        {
+            freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
+            DataTable dt = FreundeAdapter.GetFriendsByUserName(userName);
+
+            
+            lbtnGoBack.Text = dt.Rows[0]["userID"].ToString();
+            return true;
+        }
+        protected void addFriend(string freundName)
+        {
+            //1. Checke ob bereits Befreundet
+            //....@todo
+
+
+            //2. UserID und FreundID holen
+            aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
+            string userID = UserAdapter.GetUserIDByUserName(User.Identity.Name).ToString();
+            string freundID = UserAdapter.GetUserIDByUserName(freundName).ToString();
+            
+            //3. Freund in DB eintragen
+            freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
+            //FreundeAdapter.InsertNewFriend(userID, freundID);
         }
     }
 }
