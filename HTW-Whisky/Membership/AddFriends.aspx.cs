@@ -38,13 +38,14 @@ namespace HTW_Whisky.Membership
         protected void addFriend(string freundName)
         {
             //1. Checke ob bereits Befreundet
+
             //....@todo
 
 
             //2. UserID und FreundID holen
             aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
-            int userID = UserAdapter.GetUserIDByUserName(User.Identity.Name).ToString();
-            int freundID = UserAdapter.GetUserIDByUserName(freundName).ToString();
+            string userID = UserAdapter.GetUserIDByUserName(User.Identity.Name).ToString();
+            string freundID = UserAdapter.GetUserIDByUserName(freundName).ToString();
             
             //3. Freund in DB eintragen
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
