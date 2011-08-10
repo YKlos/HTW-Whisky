@@ -25,6 +25,8 @@
         ConnectionString="<%$ ConnectionStrings:Database1ConnectionString %>" 
         SelectCommand="SELECT [UserName] FROM [vw_aspnet_Users]">
     </asp:SqlDataSource>
+    <asp:Button ID="Button1" runat="server" Text="als Frund hinzufügen" 
+        Visible="False" />
     <br />
     <asp:LinkButton ID="lbtnGoBack" runat="server" 
         PostBackUrl="~/Membership/FriendsOverview.aspx">Zurück zur Übersicht</asp:LinkButton>

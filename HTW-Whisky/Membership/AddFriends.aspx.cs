@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters;
+using System.Data;
 
 namespace HTW_Whisky.Membership
 {
@@ -15,7 +17,9 @@ namespace HTW_Whisky.Membership
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbtnGoBack.Text = GridView1.SelectedIndex.ToString(); //index startet bei 0
+            freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
+            DataTable dt = FreundeAdapter.GetFriendsByUserName(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text);
+            //dt.Rows;
 
         }
     }
