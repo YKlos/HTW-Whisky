@@ -17,39 +17,56 @@ namespace HTW_Whisky.Membership
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            addFriend("yassir");
-            //if (checkFriendStatus(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text))
-            //{
-                //lbtnGoBack.Text = "Wir sind freunde";
-            //}
-            
-
+            if (checkFriendStatus(User.Identity.Name, GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()))
+            {
+                btnAddFriend.Visible = true;
+                btnAddFriend.Enabled = false;
+                btnAddFriend.Text = "Sie sind bereits befreundet";
+            }
+            else
+            {
+                btnAddFriend.Visible = true;
+                btnAddFriend.Enabled = true;
+                btnAddFriend.Text = "Als Freund hinzufügen";
+            }
         }
-
-        protected bool checkFriendStatus(string userName)
+        
+        protected bool checkFriendStatus(string userName, string freundName)
         {
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
             DataTable dt = FreundeAdapter.GetFriendsByUserName(userName);
 
-            
-            lbtnGoBack.Text = dt.Rows[0]["userID"].ToString();
-            return true;
-        }
-        protected void addFriend(string freundName)
-        {
-            //1. Checke ob bereits Befreundet
-
-            //....@todo
-
-
-            //2. UserID und FreundID holen
             aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
-            string userID = UserAdapter.GetUserIDByUserName(User.Identity.Name).ToString();
-            string freundID = UserAdapter.GetUserIDByUserName(freundName).ToString();
-            
-            //3. Freund in DB eintragen
-            freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-            FreundeAdapter.InsertNewFriend(int.Parse(userID), int.Parse(freundID), 0, 0);
+            Guid freundID = (Guid)UserAdapter.GetUserIDByUserName(freundName);
+
+            for (int i = 0; i < dt.Rows.Count;) {
+                if (dt.Rows[i]["userID"].ToString().Equals(freundID))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected void btnAddFriend_Click(object sender, EventArgs e)
+        {
+            //1. Erneut checken ob bereits befreundet
+            string freundName =  GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString();
+            if (checkFriendStatus(User.Identity.Name, freundName))
+            {
+                btnAddFriend.Text = "Sie sind bereits befreundet!";
+            }
+            else
+            {
+                //2. UserID und FreundID holen
+                aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
+                Guid userID = (Guid)UserAdapter.GetUserIDByUserName(User.Identity.Name);
+                Guid freundID = (Guid)UserAdapter.GetUserIDByUserName(freundName);
+
+                //3. Freund in DB eintragen
+                freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
+                FreundeAdapter.InsertNewFriend(userID, freundID, false, false);
+            }
         }
     }
 }

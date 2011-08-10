@@ -42,6 +42,8 @@ namespace HTW_Whisky.App_Code {
         
         private global::System.Data.DataRelation relationwhisky_tasting;
         
+        private global::System.Data.DataRelation relationaspnet_Users_freunde;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -323,6 +325,7 @@ namespace HTW_Whisky.App_Code {
             this.relationtypen_whisky = this.Relations["typen_whisky"];
             this.relationwhisky_picture = this.Relations["whisky_picture"];
             this.relationwhisky_tasting = this.Relations["whisky_tasting"];
+            this.relationaspnet_Users_freunde = this.Relations["aspnet_Users_freunde"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -357,6 +360,10 @@ namespace HTW_Whisky.App_Code {
                         this.tablewhisky.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tabletasting.whiskyIDColumn}, false);
             this.Relations.Add(this.relationwhisky_tasting);
+            this.relationaspnet_Users_freunde = new global::System.Data.DataRelation("aspnet_Users_freunde", new global::System.Data.DataColumn[] {
+                        this.tableaspnet_Users.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tablefreunde.userIDColumn}, false);
+            this.Relations.Add(this.relationaspnet_Users_freunde);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1854,10 +1861,6 @@ namespace HTW_Whisky.App_Code {
             
             private global::System.Data.DataColumn columnfreundID;
             
-            private global::System.Data.DataColumn columnblockiert;
-            
-            private global::System.Data.DataColumn columnaktiv;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public freundeDataTable() {
@@ -1909,22 +1912,6 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn blockiertColumn {
-                get {
-                    return this.columnblockiert;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn aktivColumn {
-                get {
-                    return this.columnaktiv;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1960,13 +1947,14 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public freundeRow AddfreundeRow(System.Guid userID, System.Guid freundID, bool blockiert, bool aktiv) {
+            public freundeRow AddfreundeRow(aspnet_UsersRow parentaspnet_UsersRowByaspnet_Users_freunde, System.Guid freundID) {
                 freundeRow rowfreundeRow = ((freundeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        userID,
-                        freundID,
-                        blockiert,
-                        aktiv};
+                        null,
+                        freundID};
+                if ((parentaspnet_UsersRowByaspnet_Users_freunde != null)) {
+                    columnValuesArray[0] = parentaspnet_UsersRowByaspnet_Users_freunde[1];
+                }
                 rowfreundeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowfreundeRow);
                 return rowfreundeRow;
@@ -1999,8 +1987,6 @@ namespace HTW_Whisky.App_Code {
             internal void InitVars() {
                 this.columnuserID = base.Columns["userID"];
                 this.columnfreundID = base.Columns["freundID"];
-                this.columnblockiert = base.Columns["blockiert"];
-                this.columnaktiv = base.Columns["aktiv"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2010,17 +1996,11 @@ namespace HTW_Whisky.App_Code {
                 base.Columns.Add(this.columnuserID);
                 this.columnfreundID = new global::System.Data.DataColumn("freundID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfreundID);
-                this.columnblockiert = new global::System.Data.DataColumn("blockiert", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnblockiert);
-                this.columnaktiv = new global::System.Data.DataColumn("aktiv", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaktiv);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnuserID,
                                 this.columnfreundID}, true));
                 this.columnuserID.AllowDBNull = false;
                 this.columnfreundID.AllowDBNull = false;
-                this.columnblockiert.AllowDBNull = false;
-                this.columnaktiv.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3269,6 +3249,17 @@ namespace HTW_Whisky.App_Code {
             public void SetMobileAliasNull() {
                 this[this.tableaspnet_Users.MobileAliasColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public freundeRow[] GetfreundeRows() {
+                if ((this.Table.ChildRelations["aspnet_Users_freunde"] == null)) {
+                    return new freundeRow[0];
+                }
+                else {
+                    return ((freundeRow[])(base.GetChildRows(this.Table.ChildRelations["aspnet_Users_freunde"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3309,23 +3300,12 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool blockiert {
+            public aspnet_UsersRow aspnet_UsersRow {
                 get {
-                    return ((bool)(this[this.tablefreunde.blockiertColumn]));
+                    return ((aspnet_UsersRow)(this.GetParentRow(this.Table.ParentRelations["aspnet_Users_freunde"])));
                 }
                 set {
-                    this[this.tablefreunde.blockiertColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool aktiv {
-                get {
-                    return ((bool)(this[this.tablefreunde.aktivColumn]));
-                }
-                set {
-                    this[this.tablefreunde.aktivColumn] = value;
+                    this.SetParentRow(value, this.Table.ParentRelations["aspnet_Users_freunde"]);
                 }
             }
         }
@@ -5450,37 +5430,23 @@ WHERE        (whisky.ID = @WhiskyID)";
             tableMapping.DataSetTable = "freunde";
             tableMapping.ColumnMappings.Add("userID", "userID");
             tableMapping.ColumnMappings.Add("freundID", "freundID");
-            tableMapping.ColumnMappings.Add("blockiert", "blockiert");
-            tableMapping.ColumnMappings.Add("aktiv", "aktiv");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [freunde] WHERE (([userID] = @Original_userID) AND ([freundID] = @Ori" +
-                "ginal_freundID))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [freunde] WHERE (([freundID] = @Original_freundID) AND ([userID] = @O" +
+                "riginal_userID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [freunde] ([userID], [freundID], [blockiert], [aktiv]) VALUES (@userI" +
-                "D, @freundID, @blockiert, @aktiv)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@blockiert", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "blockiert", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [freunde] SET [userID] = @userID, [freundID] = @freundID, [blockiert] = @b" +
-                "lockiert, [aktiv] = @aktiv WHERE (([userID] = @Original_userID) AND ([freundID] " +
-                "= @Original_freundID))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [freunde] SET [freundID] = @freundID, [userID] = @userID WHERE (([freundID" +
+                "] = @Original_freundID) AND ([userID] = @Original_userID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@blockiert", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "blockiert", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5496,7 +5462,7 @@ WHERE        (whisky.ID = @WhiskyID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        freunde.*\r\nFROM            freunde";
+            this._commandCollection[0].CommandText = "SELECT        freundID, userID\r\nFROM            freunde";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -5593,9 +5559,9 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_userID, System.Guid Original_freundID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_userID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.Guid)(Original_freundID));
+        public virtual int Delete(System.Guid Original_freundID, System.Guid Original_userID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_freundID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.Guid)(Original_userID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5615,39 +5581,12 @@ WHERE        (userID IN
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.Guid userID, System.Guid freundID, bool blockiert, bool aktiv) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(userID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((System.Guid)(freundID));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(blockiert));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(aktiv));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.Guid userID, System.Guid freundID, bool blockiert, bool aktiv, System.Guid Original_userID, System.Guid Original_freundID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(userID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.Guid)(freundID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(blockiert));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(aktiv));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.Guid)(Original_userID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.Guid)(Original_freundID));
+        public virtual int Update(System.Guid freundID, System.Guid userID, System.Guid Original_freundID, System.Guid Original_userID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(freundID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.Guid)(userID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.Guid)(Original_freundID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.Guid)(Original_userID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5668,8 +5607,8 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(bool blockiert, bool aktiv, System.Guid Original_userID, System.Guid Original_freundID) {
-            return this.Update(Original_userID, Original_freundID, blockiert, aktiv, Original_userID, Original_freundID);
+        public virtual int Update(System.Guid Original_freundID, System.Guid Original_userID) {
+            return this.Update(Original_freundID, Original_userID, Original_freundID, Original_userID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6382,24 +6321,6 @@ WHERE        (userID IN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._tastingTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._tastingTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._pictureTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._pictureTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._aspnet_UsersTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.aspnet_Users.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -6409,12 +6330,30 @@ WHERE        (userID IN
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._tastingTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._tastingTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._freundeTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._freundeTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._pictureTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._pictureTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6436,22 +6375,6 @@ WHERE        (userID IN
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._tastingTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._tastingTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._pictureTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._pictureTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._aspnet_UsersTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.aspnet_Users.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -6460,11 +6383,27 @@ WHERE        (userID IN
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._tastingTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._tastingTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._freundeTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._freundeTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._pictureTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._pictureTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6478,22 +6417,6 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(WhiskyAppDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._freundeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._freundeTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._aspnet_UsersTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.aspnet_Users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._aspnet_UsersTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._pictureTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.picture.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -6502,11 +6425,27 @@ WHERE        (userID IN
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._freundeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.freunde.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._freundeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._tastingTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.tasting.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._tastingTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._aspnet_UsersTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.aspnet_Users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._aspnet_UsersTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
