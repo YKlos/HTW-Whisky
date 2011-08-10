@@ -43,12 +43,12 @@ namespace HTW_Whisky.Membership
 
             //2. UserID und FreundID holen
             aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
-            string userID = UserAdapter.GetUserIDByUserName(User.Identity.Name).ToString();
-            string freundID = UserAdapter.GetUserIDByUserName(freundName).ToString();
+            int userID = UserAdapter.GetUserIDByUserName(User.Identity.Name).ToString();
+            int freundID = UserAdapter.GetUserIDByUserName(freundName).ToString();
             
             //3. Freund in DB eintragen
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-            //FreundeAdapter.InsertNewFriend(userID, freundID);
+            FreundeAdapter.InsertNewFriend(int.Parse(userID), int.Parse(freundID), 0, 0);
         }
     }
 }
