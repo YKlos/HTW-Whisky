@@ -95,8 +95,16 @@
     </Content>
     <Content Include="Whisky\AddTasting.aspx" />
     <Content Include="Whisky\AddWhisky.aspx" />
+    <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Whisky\WhiskyList.aspx.cs">
+      <DependentUpon>WhiskyList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Whisky\WhiskyList.aspx.designer.cs">
+      <DependentUpon>WhiskyList.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\WhiskyAppDataset.cs">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
     </Content>
