@@ -66,6 +66,8 @@
     <Content Include="Login.aspx" />
     <Content Include="Membership\ChangePassword.aspx" />
     <Content Include="Membership\UserBasedAuthorization.aspx" />
+    <Content Include="Membership\AddFriends.aspx" />
+    <Content Include="Membership\FriendsOverview.aspx" />
     <Content Include="Membership\ShowUsers.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Rollen\CreateUserWizardWithRoles.aspx" />
@@ -176,12 +178,19 @@
     <Compile Include="Membership\UserBasedAuthorization.aspx.designer.cs">
       <DependentUpon>UserBasedAuthorization.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Membership\ShowUsers.aspx.cs">
-      <DependentUpon>ShowUsers.aspx</DependentUpon>
+    <Compile Include="Membership\AddFriends.aspx.cs">
+      <DependentUpon>AddFriends.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Membership\ShowUsers.aspx.designer.cs">
-      <DependentUpon>ShowUsers.aspx</DependentUpon>
+    <Compile Include="Membership\AddFriends.aspx.designer.cs">
+      <DependentUpon>AddFriends.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\FriendsOverview.aspx.cs">
+      <DependentUpon>FriendsOverview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\FriendsOverview.aspx.designer.cs">
+      <DependentUpon>FriendsOverview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
