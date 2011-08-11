@@ -11,11 +11,15 @@
           <siteMapNode url="~/test/AllUsers.aspx" title="AllUsers" description="AllUsers" />
           <siteMapNode url="~/test/Everybody.aspx" title="Everybody" description="Everybody" />
         </siteMapNode>
-        <siteMapNode title="Roles" roles="Administratoren">
-          <siteMapNode url="~/Roles/ManageRoles.aspx" title="Manage Roles" />
-          <siteMapNode url="~/Roles/UsersAndRoles.aspx" title="Users and Roles" />
-          <siteMapNode url="~/Roles/CreateUserWizardWithRoles.aspx" title="Create Account (with Roles)" />
-          <siteMapNode url="~/Roles/RoleBasedAuthorization.aspx" title="Role- Based Authorization" />
+        <siteMapNode title="Rollen" roles="*">
+          <siteMapNode url="~/Rollen/ManageRoles.aspx" title="Manage Roles" />
+          <siteMapNode url="~/Rollen/UsersAndRoles.aspx" title="Users and Roles" />
+          <siteMapNode url="~/Rollen/CreateUserWizardWithRoles.aspx" title="Create Account (with Roles)" />
+          <siteMapNode url="~/Rollen/RoleBasedAuthorization.aspx" title="Role- Based Authorization" />
+        </siteMapNode>
+        <siteMapNode title="Freunde" roles="*">
+          <siteMapNode url="~/Membership/FriendsOverview.aspx" title="Übersicht" />
+          <siteMapNode url="~/Membership/AddFriends.aspx" title="Freund hinzufügen" />
         </siteMapNode>
     </siteMapNode>
 </siteMap>
