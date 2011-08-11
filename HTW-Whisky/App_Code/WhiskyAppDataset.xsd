@@ -51,18 +51,6 @@ WHERE        (whisky.ID = @WhiskyID)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="Database1ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillDataTable" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetInactivWhiskys" GeneratorSourceName="FillDataTable" GetMethodModifier="Public" GetMethodName="GetInactivWhiskys" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetInactivWhiskys" UserSourceName="FillDataTable">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        whisky.ID, whisky.name, whisky.aroma, whisky.geschmack, whisky.abgang, whisky.fasstyp, whisky.beschreibung, whisky.jahrgang, whisky.alkoholgehalt, 
-                         whisky.liter, whisky.typID, whisky.aktiv, typen.name AS typName
-FROM            whisky INNER JOIN
-                         typen ON whisky.typID = typen.ID
-WHERE whisky.aktiv = 0</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
               <DbSource ConnectionRef="Database1ConnectionString (Web.config)" DbObjectName="[C:\USERS\KALDORAN\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\HTW-WHISKY\HTW-WHISKY\APP_DATA\DATABASE1.MDF].dbo.GetIdByParams" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="GetIdByParams" Modifier="Public" Name="GetIdByParams" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="GetIdByParams">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
