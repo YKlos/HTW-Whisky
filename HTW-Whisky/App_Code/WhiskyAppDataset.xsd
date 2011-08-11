@@ -51,6 +51,18 @@ WHERE        (whisky.ID = @WhiskyID)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="Database1ConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillDataTable" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetInactivWhiskys" GeneratorSourceName="FillDataTable" GetMethodModifier="Public" GetMethodName="GetInactivWhiskys" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetInactivWhiskys" UserSourceName="FillDataTable">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        whisky.ID, whisky.name, whisky.aroma, whisky.geschmack, whisky.abgang, whisky.fasstyp, whisky.beschreibung, whisky.jahrgang, whisky.alkoholgehalt, 
+                         whisky.liter, whisky.typID, whisky.aktiv, typen.name AS typName
+FROM            whisky INNER JOIN
+                         typen ON whisky.typID = typen.ID
+WHERE whisky.aktiv = 0</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="Database1ConnectionString (Web.config)" DbObjectName="[C:\USERS\KALDORAN\DOCUMENTS\VISUAL STUDIO 2010\PROJECTS\HTW-WHISKY\HTW-WHISKY\APP_DATA\DATABASE1.MDF].dbo.GetIdByParams" DbObjectType="StoredProcedure" GenerateShortCommands="true" GeneratorSourceName="GetIdByParams" Modifier="Public" Name="GetIdByParams" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="GetIdByParams">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="true">
@@ -622,10 +634,10 @@ WHERE        (ID = @TastingID)</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="typen_whisky" msdata:parent="typen" msdata:child="whisky" msdata:parentkey="ID" msdata:childkey="typID" msprop:Generator_UserChildTable="whisky" msprop:Generator_ChildPropName="GetwhiskyRows" msprop:Generator_UserParentTable="typen" msprop:Generator_UserRelationName="typen_whisky" msprop:Generator_RelationVarName="relationtypen_whisky" msprop:Generator_ParentPropName="typenRow" />
-      <msdata:Relationship name="whisky_picture" msdata:parent="whisky" msdata:child="picture" msdata:parentkey="ID" msdata:childkey="whiskyID" msprop:Generator_UserChildTable="picture" msprop:Generator_ChildPropName="GetpictureRows" msprop:Generator_ParentPropName="whiskyRow" msprop:Generator_UserRelationName="whisky_picture" msprop:Generator_RelationVarName="relationwhisky_picture" msprop:Generator_UserParentTable="whisky" />
-      <msdata:Relationship name="whisky_tasting" msdata:parent="whisky" msdata:child="tasting" msdata:parentkey="ID" msdata:childkey="whiskyID" msprop:Generator_UserChildTable="tasting" msprop:Generator_ChildPropName="GettastingRows" msprop:Generator_ParentPropName="whiskyRow" msprop:Generator_UserRelationName="whisky_tasting" msprop:Generator_RelationVarName="relationwhisky_tasting" msprop:Generator_UserParentTable="whisky" />
-      <msdata:Relationship name="aspnet_Users_freunde" msdata:parent="aspnet_Users" msdata:child="freunde" msdata:parentkey="UserId" msdata:childkey="userID" msprop:Generator_UserChildTable="freunde" msprop:Generator_ChildPropName="GetfreundeRows" msprop:Generator_ParentPropName="aspnet_UsersRow" msprop:Generator_UserRelationName="aspnet_Users_freunde" msprop:Generator_RelationVarName="relationaspnet_Users_freunde" msprop:Generator_UserParentTable="aspnet_Users" />
+      <msdata:Relationship name="typen_whisky" msdata:parent="typen" msdata:child="whisky" msdata:parentkey="ID" msdata:childkey="typID" msprop:Generator_UserChildTable="whisky" msprop:Generator_ChildPropName="GetwhiskyRows" msprop:Generator_ParentPropName="typenRow" msprop:Generator_UserRelationName="typen_whisky" msprop:Generator_RelationVarName="relationtypen_whisky" msprop:Generator_UserParentTable="typen" />
+      <msdata:Relationship name="whisky_picture" msdata:parent="whisky" msdata:child="picture" msdata:parentkey="ID" msdata:childkey="whiskyID" msprop:Generator_UserChildTable="picture" msprop:Generator_ChildPropName="GetpictureRows" msprop:Generator_UserParentTable="whisky" msprop:Generator_UserRelationName="whisky_picture" msprop:Generator_RelationVarName="relationwhisky_picture" msprop:Generator_ParentPropName="whiskyRow" />
+      <msdata:Relationship name="whisky_tasting" msdata:parent="whisky" msdata:child="tasting" msdata:parentkey="ID" msdata:childkey="whiskyID" msprop:Generator_UserChildTable="tasting" msprop:Generator_ChildPropName="GettastingRows" msprop:Generator_UserParentTable="whisky" msprop:Generator_UserRelationName="whisky_tasting" msprop:Generator_RelationVarName="relationwhisky_tasting" msprop:Generator_ParentPropName="whiskyRow" />
+      <msdata:Relationship name="aspnet_Users_freunde" msdata:parent="aspnet_Users" msdata:child="freunde" msdata:parentkey="UserId" msdata:childkey="userID" msprop:Generator_UserChildTable="freunde" msprop:Generator_ChildPropName="GetfreundeRows" msprop:Generator_UserParentTable="aspnet_Users" msprop:Generator_UserRelationName="aspnet_Users_freunde" msprop:Generator_RelationVarName="relationaspnet_Users_freunde" msprop:Generator_ParentPropName="aspnet_UsersRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
