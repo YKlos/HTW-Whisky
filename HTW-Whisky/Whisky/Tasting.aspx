@@ -148,6 +148,8 @@
                 CommandName="New" Text="Neu" />
         </ItemTemplate>
     </asp:FormView>
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server">
+    </asp:ObjectDataSource>
     <asp:ObjectDataSource ID="TastingObjectDataSource" runat="server" 
         DeleteMethod="Delete" InsertMethod="Insert" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 

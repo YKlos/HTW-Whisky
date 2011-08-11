@@ -234,10 +234,19 @@
             &nbsp;
         </ItemTemplate>
     </asp:FormView>
-    <asp:Accordion runat="server">
-    </asp:Accordion>
-
     
-    </asp:Content>
+    <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
+    <cc1:Accordion ID="accImgUpload" runat="server">
+        <Panes>
+            <cc1:AccordionPane ID="accPaneImgUpload" runat="server">
+            <Header>Bilder hochladen</Header>
+            <Content>
+                <asp:Label ID="lblLabelImageUpload" runat="server" Text="Bild hinzufügen" CssClass="label"></asp:Label><asp:FileUpload ID="fileImageUpload" runat="server" />
+                <asp:Button ID="btnImgUpload" runat="server" Text="Bild Hochladen" />
+            </Content>
+            </cc1:AccordionPane>
+        </Panes>
+    </cc1:Accordion>
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
 </asp:Content>

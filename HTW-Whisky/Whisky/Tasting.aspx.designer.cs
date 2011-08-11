@@ -22,6 +22,15 @@ namespace HTW_Whisky.Whisky {
         protected global::System.Web.UI.WebControls.FormView fvTasting;
         
         /// <summary>
+        /// ObjectDataSource1-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        
+        /// <summary>
         /// TastingObjectDataSource-Steuerelement
         /// </summary>
         /// <remarks>
