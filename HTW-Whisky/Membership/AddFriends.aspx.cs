@@ -34,7 +34,9 @@ namespace HTW_Whisky.Membership
         protected bool checkFriendStatus(string userName, string freundName)
         {
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-            DataTable dt = FreundeAdapter.GetFriendsByUserName(userName);
+            aspnet_UsersTableAdapter UsersAdapter = new aspnet_UsersTableAdapter();
+            Guid userID = (Guid)UsersAdapter.GetUserIDByUserName(userName);
+            DataTable dt = FreundeAdapter.GetFriendsByUserID(userID);
 
             aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
             Guid freundID = (Guid)UserAdapter.GetUserIDByUserName(freundName);
