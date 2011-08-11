@@ -98,10 +98,18 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Whisky\AddWhisky.aspx" />
+    <Content Include="Whisky\MyFavorites.aspx" />
     <Content Include="Whisky\Tasting.aspx" />
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Whisky\MyFavorites.aspx.cs">
+      <DependentUpon>MyFavorites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Whisky\MyFavorites.aspx.designer.cs">
+      <DependentUpon>MyFavorites.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Whisky\Tasting.aspx.cs">
       <DependentUpon>Tasting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
