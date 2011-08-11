@@ -1861,6 +1861,10 @@ namespace HTW_Whisky.App_Code {
             
             private global::System.Data.DataColumn columnfreundID;
             
+            private global::System.Data.DataColumn columnblockiert;
+            
+            private global::System.Data.DataColumn columnaktiv;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public freundeDataTable() {
@@ -1912,6 +1916,22 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn blockiertColumn {
+                get {
+                    return this.columnblockiert;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn aktivColumn {
+                get {
+                    return this.columnaktiv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1947,11 +1967,13 @@ namespace HTW_Whisky.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public freundeRow AddfreundeRow(aspnet_UsersRow parentaspnet_UsersRowByaspnet_Users_freunde, System.Guid freundID) {
+            public freundeRow AddfreundeRow(aspnet_UsersRow parentaspnet_UsersRowByaspnet_Users_freunde, System.Guid freundID, bool blockiert, bool aktiv) {
                 freundeRow rowfreundeRow = ((freundeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        freundID};
+                        freundID,
+                        blockiert,
+                        aktiv};
                 if ((parentaspnet_UsersRowByaspnet_Users_freunde != null)) {
                     columnValuesArray[0] = parentaspnet_UsersRowByaspnet_Users_freunde[1];
                 }
@@ -1987,6 +2009,8 @@ namespace HTW_Whisky.App_Code {
             internal void InitVars() {
                 this.columnuserID = base.Columns["userID"];
                 this.columnfreundID = base.Columns["freundID"];
+                this.columnblockiert = base.Columns["blockiert"];
+                this.columnaktiv = base.Columns["aktiv"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1996,11 +2020,17 @@ namespace HTW_Whisky.App_Code {
                 base.Columns.Add(this.columnuserID);
                 this.columnfreundID = new global::System.Data.DataColumn("freundID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfreundID);
+                this.columnblockiert = new global::System.Data.DataColumn("blockiert", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnblockiert);
+                this.columnaktiv = new global::System.Data.DataColumn("aktiv", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaktiv);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnuserID,
                                 this.columnfreundID}, true));
                 this.columnuserID.AllowDBNull = false;
                 this.columnfreundID.AllowDBNull = false;
+                this.columnblockiert.AllowDBNull = false;
+                this.columnaktiv.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3295,6 +3325,28 @@ namespace HTW_Whisky.App_Code {
                 }
                 set {
                     this[this.tablefreunde.freundIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool blockiert {
+                get {
+                    return ((bool)(this[this.tablefreunde.blockiertColumn]));
+                }
+                set {
+                    this[this.tablefreunde.blockiertColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool aktiv {
+                get {
+                    return ((bool)(this[this.tablefreunde.aktivColumn]));
+                }
+                set {
+                    this[this.tablefreunde.aktivColumn] = value;
                 }
             }
             
@@ -5430,23 +5482,37 @@ WHERE        (whisky.ID = @WhiskyID)";
             tableMapping.DataSetTable = "freunde";
             tableMapping.ColumnMappings.Add("userID", "userID");
             tableMapping.ColumnMappings.Add("freundID", "freundID");
+            tableMapping.ColumnMappings.Add("blockiert", "blockiert");
+            tableMapping.ColumnMappings.Add("aktiv", "aktiv");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [freunde] WHERE (([freundID] = @Original_freundID) AND ([userID] = @O" +
-                "riginal_userID))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [freunde] WHERE (([userID] = @Original_userID) AND ([freundID] = @Ori" +
+                "ginal_freundID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [freunde] ([userID], [freundID], [blockiert], [aktiv]) VALUES (@userI" +
+                "D, @freundID, @blockiert, @aktiv)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@blockiert", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "blockiert", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [freunde] SET [freundID] = @freundID, [userID] = @userID WHERE (([freundID" +
-                "] = @Original_freundID) AND ([userID] = @Original_userID))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [freunde] SET [userID] = @userID, [freundID] = @freundID, [blockiert] = @b" +
+                "lockiert, [aktiv] = @aktiv WHERE (([userID] = @Original_userID) AND ([freundID] " +
+                "= @Original_freundID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@blockiert", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "blockiert", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_freundID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5462,18 +5528,14 @@ WHERE        (whisky.ID = @WhiskyID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        freundID, userID\r\nFROM            freunde";
+            this._commandCollection[0].CommandText = "SELECT        userID, freundID, blockiert, aktiv\r\nFROM            freunde";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        freundID
-FROM            freunde
-WHERE        (userID IN
-                             (SELECT        UserId
-                               FROM            aspnet_Users AS aspnet_Users_1
-                               WHERE        (UserName = @userName)))";
+            this._commandCollection[1].CommandText = "SELECT        userID, freundID\r\nFROM            freunde\r\nWHERE        (userID = @" +
+                "userID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userName", global::System.Data.SqlDbType.NVarChar, 256, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "INSERT INTO freunde\r\n                         (userID, freundID, blockiert, aktiv" +
@@ -5513,14 +5575,9 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual WhiskyAppDataset.freundeDataTable GetFriendsByUserName(string userName) {
+        public virtual WhiskyAppDataset.freundeDataTable GetFriendsByUserID(System.Guid userID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
-            if ((userName == null)) {
-                throw new global::System.ArgumentNullException("userName");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(userName));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(userID));
             WhiskyAppDataset.freundeDataTable dataTable = new WhiskyAppDataset.freundeDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -5559,9 +5616,9 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(System.Guid Original_freundID, System.Guid Original_userID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_freundID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.Guid)(Original_userID));
+        public virtual int Delete(System.Guid Original_userID, System.Guid Original_freundID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_userID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.Guid)(Original_freundID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5581,12 +5638,39 @@ WHERE        (userID IN
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(System.Guid userID, System.Guid freundID, bool blockiert, bool aktiv) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(userID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((System.Guid)(freundID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(blockiert));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(aktiv));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.Guid freundID, System.Guid userID, System.Guid Original_freundID, System.Guid Original_userID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(freundID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.Guid)(userID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.Guid)(Original_freundID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.Guid)(Original_userID));
+        public virtual int Update(System.Guid userID, System.Guid freundID, bool blockiert, bool aktiv, System.Guid Original_userID, System.Guid Original_freundID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(userID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.Guid)(freundID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(blockiert));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(aktiv));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.Guid)(Original_userID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.Guid)(Original_freundID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5607,8 +5691,8 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.Guid Original_freundID, System.Guid Original_userID) {
-            return this.Update(Original_freundID, Original_userID, Original_freundID, Original_userID);
+        public virtual int Update(bool blockiert, bool aktiv, System.Guid Original_userID, System.Guid Original_freundID) {
+            return this.Update(Original_userID, Original_freundID, blockiert, aktiv, Original_userID, Original_freundID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
