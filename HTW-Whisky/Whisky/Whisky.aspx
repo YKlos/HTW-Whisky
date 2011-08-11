@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Whisky.aspx.cs" Inherits="HTW_Whisky.Whisky.ShowWhisky" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
@@ -232,6 +234,10 @@
             &nbsp;
         </ItemTemplate>
     </asp:FormView>
+    <asp:Accordion runat="server">
+    </asp:Accordion>
+
+    
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
 </asp:Content>
