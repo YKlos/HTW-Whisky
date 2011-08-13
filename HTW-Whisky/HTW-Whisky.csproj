@@ -97,14 +97,14 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Whisky\AddWhisky.aspx" />
     <Content Include="Whisky\Images.aspx" />
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Whisky\Images.aspx.cs">
       <DependentUpon>Images.aspx</DependentUpon>
-	</Compile>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Content Include="Whisky\MyFavorites.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -294,13 +294,6 @@
     </Compile>
     <Compile Include="UnauthorizedAccess.aspx.designer.cs">
       <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Whisky\AddWhisky.aspx.cs">
-      <DependentUpon>AddWhisky.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Whisky\AddWhisky.aspx.designer.cs">
-      <DependentUpon>AddWhisky.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\Whisky.aspx.cs">
       <DependentUpon>Whisky.aspx</DependentUpon>
