@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace HTW_Whisky.Whisky
 {
-    public partial class Tasting : System.Web.UI.Page
+    public partial class Images : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

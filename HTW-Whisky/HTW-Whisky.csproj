@@ -98,16 +98,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Whisky\AddWhisky.aspx" />
-    <Content Include="Whisky\Tasting.aspx" />
+    <Content Include="Whisky\Images.aspx" />
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Whisky\Tasting.aspx.cs">
-      <DependentUpon>Tasting.aspx</DependentUpon>
+    <Compile Include="Whisky\Images.aspx.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Whisky\Tasting.aspx.designer.cs">
-      <DependentUpon>Tasting.aspx</DependentUpon>
+    <Compile Include="Whisky\Images.aspx.designer.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\WhiskyList.aspx.cs">
       <DependentUpon>WhiskyList.aspx</DependentUpon>
