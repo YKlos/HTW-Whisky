@@ -104,7 +104,16 @@
   <ItemGroup>
     <Compile Include="Whisky\Images.aspx.cs">
       <DependentUpon>Images.aspx</DependentUpon>
+	</Compile>
+    <Content Include="Whisky\MyFavorites.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Whisky\MyFavorites.aspx.cs">
+      <DependentUpon>MyFavorites.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Whisky\MyFavorites.aspx.designer.cs">
+      <DependentUpon>MyFavorites.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\Images.aspx.designer.cs">
       <DependentUpon>Images.aspx</DependentUpon>
