@@ -11,7 +11,10 @@
             <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
             <asp:BoundField DataField="typName" HeaderText="typName" 
                 SortExpression="typName" />
-            <asp:ButtonField Text="DEL" CommandName="RemoveFromList" />
+            <asp:ButtonField Text="Favoriten (-)" CommandName="RemoveFromList" />
+            <asp:HyperLinkField DataNavigateUrlFields="ID" 
+                DataNavigateUrlFormatString="Whisky.aspx?id={0}" HeaderText="Details" 
+                Text="Details" />
         </Columns>
     </asp:GridView>
     <h2>Restliche Whiskys</h2>
@@ -22,7 +25,10 @@
             <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="ID" />
             <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
             <asp:BoundField DataField="typName" HeaderText="typName" SortExpression="typName" />
-            <asp:ButtonField Text="ADD" CommandName="AddToList" />
+            <asp:ButtonField Text="Favoriten (+)" CommandName="AddToList" />
+            <asp:HyperLinkField DataNavigateUrlFields="ID" 
+                DataNavigateUrlFormatString="Whisky.aspx?id={0}" HeaderText="Details" 
+                Text="Details" />
         </Columns>
     </asp:GridView>
     <!-- <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
