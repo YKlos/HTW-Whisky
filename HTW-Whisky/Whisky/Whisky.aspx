@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Whisky.aspx.cs" Inherits="HTW_Whisky.Whisky.ShowWhisky" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="contentHead" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
+<asp:Content ID="contentMain" ContentPlaceHolderID="phMain" runat="server">
     <asp:ObjectDataSource ID="TypeObjectDataSource" runat="server" 
         DeleteMethod="Delete" InsertMethod="Insert" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
@@ -234,19 +234,6 @@
             &nbsp;
         </ItemTemplate>
     </asp:FormView>
-    
-    <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
-    <cc1:Accordion ID="accImgUpload" runat="server">
-        <Panes>
-            <cc1:AccordionPane ID="accPaneImgUpload" runat="server">
-            <Header>Bilder hochladen</Header>
-            <Content>
-                <asp:Label ID="lblLabelImageUpload" runat="server" Text="Bild hinzufügen" CssClass="label"></asp:Label><asp:FileUpload ID="fileImageUpload" runat="server" />
-                <asp:Button ID="btnImgUpload" runat="server" Text="Bild Hochladen" />
-            </Content>
-            </cc1:AccordionPane>
-        </Panes>
-    </cc1:Accordion>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
+<asp:Content ID="contentFoot" ContentPlaceHolderID="phToolbar" runat="server">
 </asp:Content>

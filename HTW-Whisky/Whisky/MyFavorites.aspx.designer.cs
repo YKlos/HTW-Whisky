@@ -10,16 +10,16 @@
 namespace HTW_Whisky.Whisky {
     
     
-    public partial class Tasting {
+    public partial class MyFavorites {
         
         /// <summary>
-        /// fvTasting-Steuerelement
+        /// GridView1-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView fvTasting;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
         /// ObjectDataSource1-Steuerelement
@@ -29,14 +29,5 @@ namespace HTW_Whisky.Whisky {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
-        
-        /// <summary>
-        /// TastingObjectDataSource-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource TastingObjectDataSource;
     }
 }

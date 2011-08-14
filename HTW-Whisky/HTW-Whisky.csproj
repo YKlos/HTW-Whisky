@@ -97,17 +97,26 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Whisky\AddWhisky.aspx" />
-    <Content Include="Whisky\Tasting.aspx" />
+    <Content Include="Whisky\Images.aspx" />
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Whisky\Tasting.aspx.cs">
-      <DependentUpon>Tasting.aspx</DependentUpon>
+    <Compile Include="Whisky\Images.aspx.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Whisky\Tasting.aspx.designer.cs">
-      <DependentUpon>Tasting.aspx</DependentUpon>
+    <Content Include="Whisky\MyFavorites.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Whisky\MyFavorites.aspx.cs">
+      <DependentUpon>MyFavorites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Whisky\MyFavorites.aspx.designer.cs">
+      <DependentUpon>MyFavorites.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Whisky\Images.aspx.designer.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\WhiskyList.aspx.cs">
       <DependentUpon>WhiskyList.aspx</DependentUpon>
@@ -285,13 +294,6 @@
     </Compile>
     <Compile Include="UnauthorizedAccess.aspx.designer.cs">
       <DependentUpon>UnauthorizedAccess.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Whisky\AddWhisky.aspx.cs">
-      <DependentUpon>AddWhisky.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Whisky\AddWhisky.aspx.designer.cs">
-      <DependentUpon>AddWhisky.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\Whisky.aspx.cs">
       <DependentUpon>Whisky.aspx</DependentUpon>
