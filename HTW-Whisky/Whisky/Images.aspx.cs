@@ -14,19 +14,15 @@ namespace HTW_Whisky.Whisky
     {
         private pictureTableAdapter pictureTable = new pictureTableAdapter();
 
+        public DataTable FetchAllImages()
+        {
+            return pictureTable.GetImagesByWhisky(int.Parse(Request.QueryString["id"]));
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataTable dtPictures = new DataTable();
-            dtPictures = pictureTable.GetImagesByWhisky(int.Parse(this.Request.QueryString["id"]));
-
-            if (dtPictures.Rows.Count > 0)
-            {
-                foreach (DataRow dRow in dtPictures.Rows)
-                {
-                    Image imgControl = new Image();
-                  //  imgControl.DataBind(dRow["image"]);
-                }
-            }
+            gvFreeImages.DataSource = FetchAllImages();
+            gvFreeImages.DataBind();
         }
 
         protected void btnUploadImage_Click(object sender, EventArgs e)

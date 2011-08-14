@@ -21,6 +21,17 @@
         <asp:Button ID="btnUploadImage" runat="server" Text="Hochladen" 
             onclick="btnUploadImage_Click" />
     </div>
+
+    <asp:GridView ID="gvFreeImages" runat="server">
+        <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Image ID="Image1" runat="server" ImageUrl='<%#"~/App_Code/ImageHandler.ashx?id=" + Eval("ID")%>' />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
 </asp:Content>
