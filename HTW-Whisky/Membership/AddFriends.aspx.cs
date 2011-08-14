@@ -17,15 +17,14 @@ namespace HTW_Whisky.Membership
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnAddFriend.Visible = true;
             if (checkFriendStatus(User.Identity.Name, GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()))
             {
-                btnAddFriend.Visible = true;
                 btnAddFriend.Enabled = false;
                 btnAddFriend.Text = "Sie sind bereits befreundet";
             }
             else
-            {
-                btnAddFriend.Visible = true;
+            { 
                 btnAddFriend.Enabled = true;
                 btnAddFriend.Text = "Als Freund hinzufügen";
             }
@@ -34,20 +33,15 @@ namespace HTW_Whisky.Membership
         protected bool checkFriendStatus(string userName, string freundName)
         {
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-            aspnet_UsersTableAdapter UsersAdapter = new aspnet_UsersTableAdapter();
-            Guid userID = (Guid)UsersAdapter.GetUserIDByUserName(userName);
-            DataTable dt = FreundeAdapter.GetFriendsByUserID(userID);
-
-            aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
-            Guid freundID = (Guid)UserAdapter.GetUserIDByUserName(freundName);
-
-            for (int i = 0; i < dt.Rows.Count;) {
-                if (dt.Rows[i]["userID"].ToString().Equals(freundID))
-                {
-                    return true;
-                }
+            DataTable dt = FreundeAdapter.CheckFriendStatusByUserID((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(freundName).ProviderUserKey);
+            if (dt.Rows.Count > 0)
+            {
+                return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
         protected void btnAddFriend_Click(object sender, EventArgs e)
@@ -62,12 +56,12 @@ namespace HTW_Whisky.Membership
             {
                 //2. UserID und FreundID holen
                 aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
-                Guid userID = (Guid)UserAdapter.GetUserIDByUserName(User.Identity.Name);
-                Guid freundID = (Guid)UserAdapter.GetUserIDByUserName(freundName);
+                //Guid userID = (Guid)UserAdapter.GetUserIDByUserName(User.Identity.Name);
+                //Guid freundID = (Guid)UserAdapter.GetUserIDByUserName(freundName);
 
                 //3. Freund in DB eintragen
                 freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-                FreundeAdapter.InsertNewFriend(userID, freundID, false, false);
+                FreundeAdapter.InsertNewFriend((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(freundName).ProviderUserKey, false, false);
             }
         }
     }
