@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
+    <asp:Panel ID="panAlbum" runat="server" CssClass="clearfix">
+    </asp:Panel>
+
     <div class="clearfix">
         <asp:Label ID="lblLabelImageUpload" runat="server" Text="Bild hochladen" CssClass="label"></asp:Label>
         <asp:FileUpload ID="fuImageUpload" runat="server" />
