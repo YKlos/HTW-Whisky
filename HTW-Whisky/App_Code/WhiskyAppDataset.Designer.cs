@@ -5744,7 +5744,7 @@ WHERE        (whisky.ID = @WhiskyID)";
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT        userID, freundID, blockiert, aktiv\r\nFROM            freunde\r\nWHERE " +
-                "       (userID = @userID) AND (freundID = @freundID) AND (aktiv = 1)";
+                "       (userID = @userID) AND (freundID = @freundID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freundID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
