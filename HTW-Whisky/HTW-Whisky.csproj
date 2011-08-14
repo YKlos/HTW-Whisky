@@ -101,6 +101,9 @@
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Whisky\Images.aspx.cs">
       <DependentUpon>Images.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +311,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="App_Code\ImageHandler.ashx" />
     <None Include="App_Code\WhiskyAppDataset.xsc">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
     </None>

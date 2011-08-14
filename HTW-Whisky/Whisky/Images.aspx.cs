@@ -12,10 +12,11 @@ namespace HTW_Whisky.Whisky
 {
     public partial class Images : System.Web.UI.Page
     {
-        private pictureTableAdapter pictureTable = new pictureTableAdapter();
+        
 
         public DataTable FetchAllImages()
         {
+            pictureTableAdapter pictureTable = new pictureTableAdapter();
             return pictureTable.GetImagesByWhisky(int.Parse(Request.QueryString["id"]));
         }
 
@@ -27,6 +28,7 @@ namespace HTW_Whisky.Whisky
 
         protected void btnUploadImage_Click(object sender, EventArgs e)
         {
+            pictureTableAdapter pictureTable = new pictureTableAdapter();
             MembershipUser currentUser = System.Web.Security.Membership.GetUser();
             if (fuImageUpload.PostedFile != null &&
                 fuImageUpload.FileName != "")
@@ -34,23 +36,16 @@ namespace HTW_Whisky.Whisky
                 HttpPostedFile imageFile = fuImageUpload.PostedFile;
                 byte[] imageData = new byte[imageFile.ContentLength];
                 imageFile.InputStream.Read(imageData, 0, imageFile.ContentLength);
-
-                if (pictureTable == null)
-                {
-                    lblLabelAllowAll.Text = "NULL!";
-                }
-                else
-                {
-                    pictureTable.Insert(
-                        Guid.Parse(currentUser.ProviderUserKey.ToString()),
-                        int.Parse(this.Request.QueryString["id"]),
-                        radioFriendsOnly.Checked,
-                        radioAllowAll.Checked,
-                        imageData,
-                        imageFile.ContentType,
-                        imageFile.FileName);
-                }
+                pictureTable.Insert(
+                    Guid.Parse(currentUser.ProviderUserKey.ToString()),
+                    int.Parse(this.Request.QueryString["id"]),
+                    radioFriendsOnly.Checked,
+                    radioAllowAll.Checked,
+                    imageData,
+                    imageFile.ContentType,
+                    fuImageUpload.PostedFile.FileName);
             }
         }
+
     }
 }
