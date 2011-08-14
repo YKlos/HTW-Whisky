@@ -22,6 +22,15 @@ namespace HTW_Whisky.Membership {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
+        /// rbtnlFilter-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtnlFilter;
+        
+        /// <summary>
         /// SqlDataSource4-Steuerelement
         /// </summary>
         /// <remarks>
@@ -56,15 +65,6 @@ namespace HTW_Whisky.Membership {
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-        
-        /// <summary>
-        /// rbtnlFilter-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtnlFilter;
         
         /// <summary>
         /// btnAddFriend-Steuerelement
