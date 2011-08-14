@@ -50,6 +50,7 @@ namespace HTW_Whisky.Membership
             string freundName =  GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString();
             if (checkFriendStatus(User.Identity.Name, freundName))
             {
+                btnAddFriend.Enabled = false;
                 btnAddFriend.Text = "Sie sind bereits befreundet!";
             }
             else

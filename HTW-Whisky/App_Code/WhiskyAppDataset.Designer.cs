@@ -5770,10 +5770,11 @@ WHERE        (whisky.ID = @WhiskyID)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        userID, freundID\r\nFROM            freunde\r\nWHERE        (userID = @" +
-                "userID)";
+            this._commandCollection[1].CommandText = "SELECT        userID, freundID, blockiert, aktiv\r\nFROM            freunde\r\nWHERE " +
+                "       (userID = @userID) AND (freundID = @freundID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@freundID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "freundID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "INSERT INTO freunde\r\n                         (userID, freundID, blockiert, aktiv" +
@@ -5813,9 +5814,10 @@ WHERE        (whisky.ID = @WhiskyID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual WhiskyAppDataset.freundeDataTable GetFriendsByUserID(System.Guid userID) {
+        public virtual WhiskyAppDataset.freundeDataTable CheckFriendStatusByUserID(System.Guid userID, System.Guid freundID) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(userID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.Guid)(freundID));
             WhiskyAppDataset.freundeDataTable dataTable = new WhiskyAppDataset.freundeDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
