@@ -24,7 +24,7 @@ namespace HTW_Whisky.Whisky
                 foreach (DataRow dRow in dtPictures.Rows)
                 {
                     Image imgControl = new Image();
-                    imgControl.DataBind(dRow["image"]);
+                  //  imgControl.DataBind(dRow["image"]);
                 }
             }
         }
