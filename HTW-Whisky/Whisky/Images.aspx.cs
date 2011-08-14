@@ -42,8 +42,7 @@ namespace HTW_Whisky.Whisky
                     radioFriendsOnly.Checked,
                     radioAllowAll.Checked,
                     imageData,
-                    imageFile.ContentType,
-                    fuImageUpload.PostedFile.FileName);
+                    imageFile.ContentType);
             }
         }
 
