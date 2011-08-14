@@ -13,6 +13,7 @@ namespace HTW_Whisky.Membership
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["userID"] = System.Web.Security.Membership.GetUser().ProviderUserKey;
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -52,6 +53,27 @@ namespace HTW_Whisky.Membership
             FreundeAdapter.InsertNewFriend((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey, false, false);
             btnAddFriend.Enabled = false;
             btnAddFriend.Text = "Freundschaftsanfrage wurde versendet";
+        }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (rbtnlFilter.SelectedIndex)
+            {
+
+                case 0:
+                    GridView1.DataSourceID = "SqlDataSource1";
+                    break;
+                case 1:
+                    GridView1.DataSourceID = "SqlDataSource2";
+                    break;
+                case 2:
+                    GridView1.DataSourceID = "SqlDataSource3";
+                    break;
+                case 3:
+                    GridView1.DataSourceID = "SqlDataSource4";
+                    break;
+            }
+            
         }
     }
 }
