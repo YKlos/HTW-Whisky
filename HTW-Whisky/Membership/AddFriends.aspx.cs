@@ -18,52 +18,40 @@ namespace HTW_Whisky.Membership
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnAddFriend.Visible = true;
-            if (checkFriendStatus(User.Identity.Name, GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()))
-            {
-                btnAddFriend.Enabled = false;
-                btnAddFriend.Text = "Sie sind bereits befreundet";
-            }
-            else
-            { 
-                btnAddFriend.Enabled = true;
-                btnAddFriend.Text = "Als Freund hinzufügen";
-            }
+            checkFriendStatus(User.Identity.Name, GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString());
         }
         
-        protected bool checkFriendStatus(string userName, string freundName)
+        protected void checkFriendStatus(string userName, string freundName)
         {
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
             DataTable dt = FreundeAdapter.CheckFriendStatusByUserID((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(freundName).ProviderUserKey);
             if (dt.Rows.Count > 0)
             {
-                return true;
+                if (dt.Rows[0]["aktiv"].Equals(false))
+                {
+                    btnAddFriend.Enabled = false;
+                    btnAddFriend.Text = "Es wurde bereits eine Freundschaftsanfrage verschickt";
+
+                }
+                else
+                {
+                    btnAddFriend.Enabled = false;
+                    btnAddFriend.Text = "Sie sind bereits befreundet";
+                }
             }
             else
             {
-                return false;
+                btnAddFriend.Enabled = true;
+                btnAddFriend.Text = "Als Freund hinzufügen";
             }
         }
 
         protected void btnAddFriend_Click(object sender, EventArgs e)
         {
-            //1. Erneut checken ob bereits befreundet
-            string freundName =  GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString();
-            if (checkFriendStatus(User.Identity.Name, freundName))
-            {
-                btnAddFriend.Enabled = false;
-                btnAddFriend.Text = "Sie sind bereits befreundet!";
-            }
-            else
-            {
-                //2. UserID und FreundID holen
-                aspnet_UsersTableAdapter UserAdapter = new aspnet_UsersTableAdapter();
-                //Guid userID = (Guid)UserAdapter.GetUserIDByUserName(User.Identity.Name);
-                //Guid freundID = (Guid)UserAdapter.GetUserIDByUserName(freundName);
-
-                //3. Freund in DB eintragen
-                freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-                FreundeAdapter.InsertNewFriend((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(freundName).ProviderUserKey, false, false);
-            }
+            freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
+            FreundeAdapter.InsertNewFriend((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey, false, false);
+            btnAddFriend.Enabled = false;
+            btnAddFriend.Text = "Freundschaftsanfrage wurde versendet";
         }
     }
 }

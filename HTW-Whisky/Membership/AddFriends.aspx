@@ -25,7 +25,7 @@
         ConnectionString="<%$ ConnectionStrings:Database1ConnectionString %>" 
         SelectCommand="SELECT [UserName] FROM [vw_aspnet_Users]">
     </asp:SqlDataSource>
-    <asp:Button ID="btnAddFriend" runat="server" Text="als Frund hinzufügen" 
+    <asp:Button ID="btnAddFriend" runat="server" Text="als Freund hinzufügen" 
         Visible="False" Enabled="False" onclick="btnAddFriend_Click" />
     <br />
     <asp:LinkButton ID="lbtnGoBack" runat="server" 
