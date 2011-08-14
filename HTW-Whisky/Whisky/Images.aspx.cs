@@ -12,18 +12,35 @@ namespace HTW_Whisky.Whisky
 {
     public partial class Images : System.Web.UI.Page
     {
-        
-
-        public DataTable FetchAllImages()
-        {
-            pictureTableAdapter pictureTable = new pictureTableAdapter();
-            return pictureTable.GetImagesByWhisky(int.Parse(Request.QueryString["id"]));
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            gvFreeImages.DataSource = FetchAllImages();
-            gvFreeImages.DataBind();
+            pictureTableAdapter pictureTable = new pictureTableAdapter();
+            MembershipUser currentUser = System.Web.Security.Membership.GetUser();
+            int whiskyID = int.Parse(Request.QueryString["id"]);
+            //DataTable pictures = pictureTable.GetImagesByFreeForUser(Guid.Parse(currentUser.ProviderUserKey.ToString()), whiskyID);
+            DataTable pictures = pictureTable.GetImagesByWhisky(int.Parse(Request.QueryString["id"]));
+
+            foreach (DataRow picture in pictures.Rows)
+            {
+                Panel imgPanel = new Panel();
+                imgPanel.CssClass = "imgpanel";
+                ImageButton imgBtnControl = new ImageButton();
+                imgBtnControl.CssClass = "select";
+                imgBtnControl.ImageUrl = "ImageHandler.ashx?imgid=" + picture["id"];
+                imgBtnControl.ImageAlign = ImageAlign.Middle;
+                imgBtnControl.ID = picture["id"].ToString();
+                imgBtnControl.Click += new ImageClickEventHandler(selectImage_Click);
+                imgPanel.Controls.Add(imgBtnControl);
+                
+                panImages.Controls.Add(imgPanel);
+            }
+        }
+
+        protected void selectImage_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton imgBtnControl = sender as ImageButton;
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "img", "<script type = 'text/javascript'>alert('ImageButton Clicked:" + imgBtnControl.ID.ToString() + "; " + Request.QueryString["id"] + "');</script>");
         }
 
         protected void btnUploadImage_Click(object sender, EventArgs e)

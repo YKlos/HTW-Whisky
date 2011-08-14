@@ -17,7 +17,7 @@ namespace HTW_Whisky.App_Code
         {
             pictureTableAdapter pictureAdapter = new pictureTableAdapter();
             DataTable dtPictures = new DataTable();
-            dtPictures = pictureAdapter.GetImageByID(int.Parse(context.Request.QueryString["id"]));
+            dtPictures = pictureAdapter.GetImageByID(int.Parse(context.Request.QueryString["imgid"]));
 
             context.Response.ContentType = dtPictures.Rows[0]["contentType"].ToString();
             context.Response.BinaryWrite((byte[])(dtPictures.Rows[0]["image"]));

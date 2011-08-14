@@ -222,16 +222,20 @@
                 <asp:CheckBox ID="cbxAktiv" runat="server" Checked='<%# Bind("aktiv") %>' 
                     Enabled="false" />
             </div>
-            <asp:ImageButton ID="imgBtnEdit" runat="server" CommandName="Edit" 
-                Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_edit.png" 
-                Width="48px" />
-            <asp:ImageButton ID="imgBtnDelete" runat="server" CausesValidation="False" 
-                CommandName="Delete" Height="48px" ImageAlign="Middle" 
-                ImageUrl="~/img/action_delete.png" Width="48px" />
-            &nbsp;<asp:ImageButton ID="imgBtnNew" runat="server" CausesValidation="False" 
-                CommandName="New" Height="48px" ImageAlign="Middle" 
-                ImageUrl="~/img/action_new.png" Width="48px" />
-            &nbsp;
+            <div class="clearfix">
+                <asp:ImageButton ID="imgBtnEdit" runat="server" CommandName="Edit" 
+                    Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_edit.png" 
+                    Width="48px" />
+                <asp:ImageButton ID="imgBtnDelete" runat="server" CausesValidation="False" 
+                    CommandName="Delete" Height="48px" ImageAlign="Middle" 
+                    ImageUrl="~/img/action_delete.png" Width="48px" />
+                <asp:ImageButton ID="imgBtnNew" runat="server" CausesValidation="False" 
+                    CommandName="New" Height="48px" ImageAlign="Middle" 
+                    ImageUrl="~/img/action_new.png" Width="48px" />
+                <asp:ImageButton ID="imgBtnImages" runat="server" Height="48px" 
+                    ImageAlign="Middle" ImageUrl="~/img/action_photos.png" 
+                    onclick="imgBtnImages_Click" Width="48px" />
+            </div>
         </ItemTemplate>
     </asp:FormView>
 </asp:Content>
