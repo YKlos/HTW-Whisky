@@ -13,6 +13,17 @@ namespace HTW_Whisky.Whisky
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!System.Web.Security.Roles.IsUserInRole("Administratoren"))
+            {
+                Label1.Text = "Kein Admin";
+                foreach (ImageButton myButton in this.Controls)
+                {
+                    if (myButton.ID.Equals("imgBtnEdit") || myButton.ID.Equals("imgBtnDelete") || myButton.ID.Equals("imgBtnNew") || myButton.ID.Equals("imgBtnImages"))
+                    {
+                        fvWhisky.Controls.Remove(myButton);
+                    }
+                }
+            }
         }
 
         protected void imgBtnImages_Click(object sender, ImageClickEventArgs e)
