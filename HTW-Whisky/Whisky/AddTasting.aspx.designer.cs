@@ -13,22 +13,22 @@ namespace HTW_Whisky.Whisky {
     public partial class AddTasting {
         
         /// <summary>
-        /// FormView1-Steuerelement
+        /// fvTasting-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView1;
+        protected global::System.Web.UI.WebControls.FormView fvTasting;
         
         /// <summary>
-        /// ObjectDataSource1-Steuerelement
+        /// TastingObjectDataSource-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        protected global::System.Web.UI.WebControls.ObjectDataSource TastingObjectDataSource;
         
         /// <summary>
         /// lblInfo-Steuerelement

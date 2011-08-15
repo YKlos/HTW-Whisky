@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
-    <asp:FormView ID="FormView1" runat="server" DataKeyNames="ID" 
-        DataSourceID="ObjectDataSource1" Width="396px">
+    <asp:FormView ID="fvTasting" runat="server" DataKeyNames="ID" 
+        DataSourceID="TastingObjectDataSource" Width="100%">
         <EditItemTemplate>
             ID:
             <asp:Label ID="IDLabel1" runat="server" Text='<%# Eval("ID") %>' />
@@ -54,19 +54,17 @@
                 CausesValidation="False" CommandName="Cancel" Text="Abbrechen" />
         </EditItemTemplate>
         <InsertItemTemplate>
-            <div class="clearfix">
-                <asp:TextBox ID="userIDTextBox" runat="server" Text='<%# Bind("userID") %>' Visible="false" />
-            </div>
-
-            <div class="clearfix">
-                <asp:TextBox ID="whiskyIDTextBox" runat="server" Text='<%# Bind("whiskyID") %>' Visible="false" />
-            </div>
+            <asp:HiddenField ID="hiddenWhiskyID" runat="server" 
+                Value='<%# Bind("whiskyID") %>' />
+            <asp:HiddenField ID="hiddenUserID" runat="server" 
+                Value='<%# Bind("userID") %>' />
 
             <div class="clearfix">
                 <asp:Label ID="lblLabelNotiz" runat="server" CssClass="label" Text="Notiz"></asp:Label>
-                <asp:TextBox ID="notizTextBox" runat="server" Text='<%# Bind("notiz") %>' />
+                <asp:TextBox ID="notizTextBox" runat="server" Text='<%# Bind("notiz") %>' 
+                    TextMode="MultiLine" />
             </div>
-            
+
             <div class="clearfix">
                 <asp:Label ID="lblLabelArt" runat="server" CssClass="label" Text="Sherry-/Port-/Weinfass"></asp:Label>
                 <asp:DropDownList ID="ddlArt" runat="server" SelectedValue='<%# Bind("art") %>'>
@@ -158,12 +156,12 @@
         <ItemTemplate>
             <div class="clearfix">
                 <asp:Label ID="lblLabelUser" runat="server" CssClass="label" Text="Erstellt von"></asp:Label>
-                <asp:Label ID="userIDLabel" runat="server" Text='<%# Bind("userID") %>' />
+                <asp:Label ID="userIDLabel" runat="server" Text='<%# Bind("UserName") %>' />
             </div>
 
             <div class="clearfix">
                 <asp:Label ID="lblLabelWhisky" runat="server" CssClass="label" Text="Whisky"></asp:Label>
-                <asp:Label ID="whiskyIDLabel" runat="server" Text='<%# Bind("whiskyID") %>' />
+                <asp:Label ID="whiskyIDLabel" runat="server" Text='<%# Bind("WhiskyName") %>' />
             </div>
             
             <div class="clearfix">
@@ -208,19 +206,13 @@
             
             
             <div class="clearfix">
-                <asp:ImageButton ID="imgBtnEdit" runat="server" CommandName="Edit" 
-                    Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_edit.png" 
-                    Width="48px" />
-                <asp:ImageButton ID="imgBtnDelete" runat="server" CausesValidation="False" 
-                    CommandName="Delete" Height="48px" ImageAlign="Middle" 
-                    ImageUrl="~/img/action_delete.png" Width="48px" />
                 <asp:ImageButton ID="imgBtnNew" runat="server" CausesValidation="False" 
                     CommandName="New" Height="48px" ImageAlign="Middle" 
                     ImageUrl="~/img/action_new.png" Width="48px" />
             </div>
         </ItemTemplate>
     </asp:FormView>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
+    <asp:ObjectDataSource ID="TastingObjectDataSource" runat="server" 
         DeleteMethod="Delete" InsertMethod="Insert" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
         TypeName="WhiskyAppDatasetTableAdapters.tastingTableAdapter" 
