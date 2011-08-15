@@ -10,87 +10,87 @@
 namespace HTW_Whisky.Membership {
     
     
-    public partial class WebForm2 {
+    public partial class WebForm1 {
         
         /// <summary>
-        /// Label1-Steuerelement
+        /// GridView1-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// lblNumberFriends-Steuerelement
+        /// rbtnlFilter-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumberFriends;
+        protected global::System.Web.UI.WebControls.RadioButtonList rbtnlFilter;
         
         /// <summary>
-        /// Label2-Steuerelement
+        /// SqlDataSource5-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
         
         /// <summary>
-        /// lbtnAddFriends-Steuerelement
+        /// SqlDataSource4-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAddFriends;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
         
         /// <summary>
-        /// lbtnEditFriends-Steuerelement
+        /// SqlDataSource3-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnEditFriends;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
         
         /// <summary>
-        /// Label3-Steuerelement
+        /// SqlDataSource2-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
         
         /// <summary>
-        /// lblNumberBlocks-Steuerelement
+        /// SqlDataSource1-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumberBlocks;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// Label4-Steuerelement
+        /// btnDoAction-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Button btnDoAction;
         
         /// <summary>
-        /// lbtnEditBlockList-Steuerelement
+        /// btnBlock-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnEditBlockList;
+        protected global::System.Web.UI.WebControls.Button btnBlock;
     }
 }
