@@ -33,6 +33,12 @@ namespace HTW_Whisky.Whisky
                     fvWhisky.FindControl("imgBtnDelete").Visible = false;
                     fvWhisky.FindControl("rowAktiv").Visible = false;
                 }
+
+                Guid currentUserID = Guid.Parse(System.Web.Security.Membership.GetUser().ProviderUserKey.ToString());
+                pictureTableAdapter pictureTable = new pictureTableAdapter();
+                DataTable pictures = pictureTable.GetImageForWhisky(currentUserID, int.Parse(Request.QueryString["id"]));
+
+                imgWhisky.ImageUrl = "ImageHandler.ashx?imgid=" + pictures.Rows[0]["id"];
             }
         }
 
