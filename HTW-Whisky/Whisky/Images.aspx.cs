@@ -85,6 +85,7 @@ namespace HTW_Whisky.Whisky
                     radioAllowAll.Checked,
                     imageData,
                     imageFile.ContentType);
+                Label1.Text = picID.ToString();
                 userwhiskyTable.UpdatePicture(picID,currentUserID,int.Parse(this.Request.QueryString["id"]));
             }
         }

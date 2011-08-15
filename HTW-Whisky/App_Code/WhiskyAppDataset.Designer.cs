@@ -6981,13 +6981,10 @@ SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM pic
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WhiskyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"SELECT        picture.ID, picture.userID, picture.whiskyID, picture.allowAll, picture.allowFriends, picture.image, picture.contentType
-FROM            picture INNER JOIN
-                         userwhisky ON picture.ID = userwhisky.picID
-WHERE        (picture.userID = @UserID) AND (picture.whiskyID = @WhiskyID)";
+            this._commandCollection[4].CommandText = @"SELECT picture.ID, picture.allowAll, picture.allowFriends, picture.contentType, picture.image, picture.userID, picture.whiskyID FROM picture INNER JOIN userwhisky ON picture.ID = userwhisky.picID AND picture.whiskyID = userwhisky.whiskyID WHERE (picture.userID = @USERID) AND (picture.whiskyID = @WHISKYID)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WhiskyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WHISKYID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7096,10 +7093,10 @@ WHERE        (picture.userID = @UserID) AND (picture.whiskyID = @WhiskyID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByWhiskyUser(WhiskyAppDataset.pictureDataTable dataTable, System.Guid UserID, int WhiskyID) {
+        public virtual int FillByWhiskyUser(WhiskyAppDataset.pictureDataTable dataTable, System.Guid USERID, int WHISKYID) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(UserID));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WhiskyID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(USERID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WHISKYID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -7111,10 +7108,10 @@ WHERE        (picture.userID = @UserID) AND (picture.whiskyID = @WhiskyID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual WhiskyAppDataset.pictureDataTable GetImageForWhisky(System.Guid UserID, int WhiskyID) {
+        public virtual WhiskyAppDataset.pictureDataTable GetImageForWhisky(System.Guid USERID, int WHISKYID) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(UserID));
-            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WhiskyID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(USERID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WHISKYID));
             WhiskyAppDataset.pictureDataTable dataTable = new WhiskyAppDataset.pictureDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
