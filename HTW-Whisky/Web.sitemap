@@ -19,5 +19,6 @@
         <siteMapNode url="~/Membership/Friends.aspx" title="Freunde" />
         <siteMapNode url="~/Whisky/MyFavorites.aspx" title="Favoriten" />
         <siteMapNode url="~/Whisky/Tastings.aspx" title="Tastingübersicht" />
+        <siteMapNode url="~/Type/AddType.aspx" title="Typenverwaltung" />
     </siteMapNode>
 </siteMap>
