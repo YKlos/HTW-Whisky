@@ -2,6 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
+    <div class="clearfix" runat="server" ID="actionNew">
+        <asp:ImageButton ID="imgBtnNew" runat="server" ImageUrl="~/img/action_new.png" 
+            Height="48px" ImageAlign="Middle" Width="48px" onclick="imgBtnNew_Click" />
+    </div>
+
     <asp:GridView ID="WhiskyListGridView" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID" 
         DataSourceID="WhiskyObjectDataSource">

@@ -60,6 +60,7 @@
     <Content Include="img\action_delete.png" />
     <Content Include="img\action_edit.png" />
     <Content Include="img\action_new.png" />
+    <Content Include="img\action_tasting.png" />
     <Content Include="img\banner.png" />
     <Content Include="img\action_photos.png" />
     <Content Include="Logout.aspx" />

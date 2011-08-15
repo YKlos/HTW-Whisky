@@ -136,6 +136,18 @@ div#content_main span.show
     text-align: left;
 }
 
+div#content_main span.heading
+{
+    font-size: 2em;
+    font-weight: bold;
+    text-align: left;
+    float: left;
+    border-bottom: 1px solid #343434;
+    color: #343434;
+    display: block;
+    width: 100%;
+}
+
 div#content_main textarea 
 {
     height: 200px;

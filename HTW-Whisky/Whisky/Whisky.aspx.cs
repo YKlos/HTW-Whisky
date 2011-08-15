@@ -13,15 +13,25 @@ namespace HTW_Whisky.Whisky
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!System.Web.Security.Roles.IsUserInRole("Administratoren"))
+            if (!String.IsNullOrEmpty(Request.QueryString["action"]) && Request.QueryString["action"].Equals("new"))
+                fvWhisky.ChangeMode(FormViewMode.Insert);
+
+            if (fvWhisky.CurrentMode == FormViewMode.ReadOnly)
             {
-                Label1.Text = "Kein Admin";
-                foreach (ImageButton myButton in this.Controls)
+                if (!Request.IsAuthenticated)
                 {
-                    if (myButton.ID.Equals("imgBtnEdit") || myButton.ID.Equals("imgBtnDelete") || myButton.ID.Equals("imgBtnNew") || myButton.ID.Equals("imgBtnImages"))
-                    {
-                        fvWhisky.Controls.Remove(myButton);
-                    }
+                    fvWhisky.FindControl("imgBtnEdit").Visible = false;
+                    fvWhisky.FindControl("imgBtnDelete").Visible = false;
+                    fvWhisky.FindControl("imgBtnNew").Visible = false;
+                    fvWhisky.FindControl("imgBtnImages").Visible = false;
+                    fvWhisky.FindControl("imgBtnAddTasting").Visible = false;
+                }
+
+                if (!System.Web.Security.Roles.IsUserInRole("Administratoren"))
+                {
+                    fvWhisky.FindControl("imgBtnEdit").Visible = false;
+                    fvWhisky.FindControl("imgBtnDelete").Visible = false;
+                    fvWhisky.FindControl("rowAktiv").Visible = false;
                 }
             }
         }
@@ -29,6 +39,22 @@ namespace HTW_Whisky.Whisky
         protected void imgBtnImages_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("Images.aspx?id=" + Request.QueryString["id"]);
+        }
+
+        protected void imgBtnInsertCancel_Click(object sender, ImageClickEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(Request.QueryString["ref"]))
+                Response.Redirect(Request.QueryString["ref"]);
+            else
+            {
+                ImageButton myButton = sender as ImageButton;
+                myButton.CommandName = "Cancel";
+            }
+        }
+
+        protected void imgButtonAddTasting_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("AddTasting.aspx?wid=" + Request.QueryString["id"]);
         }
     }
 }

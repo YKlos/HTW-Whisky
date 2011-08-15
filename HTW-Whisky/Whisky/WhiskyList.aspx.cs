@@ -11,7 +11,13 @@ namespace HTW_Whisky.Whisky
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Request.IsAuthenticated)
+                actionNew.Visible = false;
+        }
 
+        protected void imgBtnNew_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Whisky.aspx?action=new&ref=" + Request.UrlReferrer.AbsolutePath);
         }
     }
 }

@@ -33,7 +33,7 @@
     <asp:ValidationSummary ID="vsWhisky" runat="server" 
         ValidationGroup="WhiskyValidationGroup" />
     <asp:FormView ID="fvWhisky" runat="server" DataKeyNames="ID" 
-        DataSourceID="WhiskyObjectDataSource" RenderOuterTable="False" 
+        DataSourceID="WhiskyObjectDataSource" RenderOuterTable="False"
         style="margin-right: 408px">
         <EditItemTemplate>
             <div class="clearfix">
@@ -92,13 +92,14 @@
                 <asp:CheckBox ID="aktivCheckBox" runat="server" 
                     Checked='<%# Bind("aktiv") %>' />
             </div>
-            <asp:ImageButton ID="imgBtnUpdate" runat="server" CommandName="Update" 
-                Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_accept.png" 
-                Width="48px" />
-            <asp:ImageButton ID="imgBtnCancelUpdate" runat="server" CommandName="Cancel" 
-                Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_cancel.png" 
-                Width="48px" />
-            &nbsp;
+            <div class="clearfix">
+                <asp:ImageButton ID="imgBtnUpdate" runat="server" CommandName="Update" 
+                    Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_accept.png" 
+                    Width="48px" />
+                <asp:ImageButton ID="imgBtnCancelUpdate" runat="server" CommandName="Cancel" 
+                    Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_cancel.png" 
+                    Width="48px" />
+            </div>
         </EditItemTemplate>
         <InsertItemTemplate>
             <div class="clearfix">
@@ -157,17 +158,20 @@
                 <asp:CheckBox ID="aktivCheckBox" runat="server" 
                     Checked='<%# Bind("aktiv") %>' />
             </div>
-            <asp:ImageButton ID="imgBtnInser" runat="server" CommandName="Insert" 
-                Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_accept.png" 
-                Width="48px" />
-            &nbsp;<asp:ImageButton ID="imgBtnInsertCancel" runat="server" 
-                CausesValidation="False" CommandName="Cancel" Height="48px" ImageAlign="Middle" 
-                ImageUrl="~/img/action_cancel.png" Width="48px" />
+
+            <div class="clearfix">
+                <asp:ImageButton ID="imgBtnInser" runat="server" CommandName="Insert" 
+                    Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_accept.png" 
+                    Width="48px" />
+                <asp:ImageButton ID="imgBtnInsertCancel" runat="server" 
+                    CausesValidation="False" Height="48px" ImageAlign="Middle" 
+                    ImageUrl="~/img/action_cancel.png" Width="48px" 
+                    onclick="imgBtnInsertCancel_Click" />
+            </div>
         </InsertItemTemplate>
         <ItemTemplate>
             <div class="clearfix">
-                <asp:Label ID="blLabelName" runat="server" CssClass="label" Text="Name"></asp:Label>
-                <asp:Label ID="lblName" runat="server" CssClass="show" 
+                <asp:Label ID="lblName" runat="server" CssClass="heading" 
                     Text='<%# Bind("name") %>' />
             </div>
             <div class="clearfix">
@@ -219,7 +223,7 @@
                 <asp:Label ID="lblTyp" runat="server" CssClass="show" 
                     Text='<%# Bind("typName") %>' />
             </div>
-            <div class="clearfix">
+            <div class="clearfix" runat="server" id="rowAktiv">
                 <asp:Label ID="lblLabelAktiv" runat="server" CssClass="label" Text=" Aktiv"></asp:Label>
                 <asp:CheckBox ID="cbxAktiv" runat="server" Checked='<%# Bind("aktiv") %>' 
                     Enabled="false" />
@@ -237,6 +241,9 @@
                 <asp:ImageButton ID="imgBtnImages" runat="server" Height="48px" 
                     ImageAlign="Middle" ImageUrl="~/img/action_photos.png" 
                     onclick="imgBtnImages_Click" Width="48px" />
+                <asp:ImageButton ID="imgButtonAddTasting" runat="server" Height="48px" 
+                    ImageAlign="Middle" ImageUrl="~/img/action_tasting.png" 
+                    onclick="imgButtonAddTasting_Click" Width="48px" />
             </div>
         </ItemTemplate>
     </asp:FormView>
