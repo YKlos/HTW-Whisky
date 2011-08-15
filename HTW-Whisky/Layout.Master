@@ -47,6 +47,8 @@
                     <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Logout.aspx" />
                     <br />
                     <br />
+                    <hr />
+                    <br />
                     <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
                 </div>
             </div>

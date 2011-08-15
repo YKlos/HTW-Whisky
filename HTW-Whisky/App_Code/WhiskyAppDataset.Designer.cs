@@ -5883,7 +5883,9 @@ SELECT userID, freundID, blockiert, aktiv FROM freunde WHERE (freundID = @freund
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [tasting] ([userID], [whiskyID], [notiz], [art], [geschmack], [suesse], [frucht], [abgang], [gesamt], [qualitaet], [datum], [aktiv]) VALUES (@userID, @whiskyID, @notiz, @art, @geschmack, @suesse, @frucht, @abgang, @gesamt, @qualitaet, @datum, @aktiv)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [tasting] ([userID], [whiskyID], [notiz], [art], [geschmack], [suesse" +
+                "], [frucht], [abgang], [gesamt], [qualitaet]) VALUES (@userID, @whiskyID, @notiz" +
+                ", @art, @geschmack, @suesse, @frucht, @abgang, @gesamt, @qualitaet)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@whiskyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5895,11 +5897,9 @@ SELECT userID, freundID, blockiert, aktiv FROM freunde WHERE (freundID = @freund
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@abgang", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abgang", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@gesamt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "gesamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qualitaet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qualitaet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@datum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [tasting] SET [userID] = @userID, [whiskyID] = @whiskyID, [notiz] = @notiz, [art] = @art, [geschmack] = @geschmack, [suesse] = @suesse, [frucht] = @frucht, [abgang] = @abgang, [gesamt] = @gesamt, [qualitaet] = @qualitaet, [datum] = @datum, [aktiv] = @aktiv WHERE (([ID] = @Original_ID))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [tasting] SET [userID] = @userID, [whiskyID] = @whiskyID, [notiz] = @notiz, [art] = @art, [geschmack] = @geschmack, [suesse] = @suesse, [frucht] = @frucht, [abgang] = @abgang, [gesamt] = @gesamt, [qualitaet] = @qualitaet WHERE (([ID] = @Original_ID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@whiskyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5911,8 +5911,6 @@ SELECT userID, freundID, blockiert, aktiv FROM freunde WHERE (freundID = @freund
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@abgang", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "abgang", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@gesamt", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "gesamt", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@qualitaet", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "qualitaet", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@datum", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "datum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aktiv", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aktiv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -5929,28 +5927,30 @@ SELECT userID, freundID, blockiert, aktiv FROM freunde WHERE (freundID = @freund
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        tasting.*\r\nFROM            tasting";
+            this._commandCollection[0].CommandText = "SELECT        ID, userID, whiskyID, notiz, art, geschmack, suesse, frucht, abgang" +
+                ", gesamt, qualitaet\r\nFROM            tasting";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        tasting.*\r\nFROM            tasting WHERE userID = @OWNUSERID";
+            this._commandCollection[1].CommandText = @"SELECT        tasting.notiz, tasting.art, tasting.geschmack, tasting.suesse, tasting.frucht, tasting.abgang, tasting.gesamt, tasting.qualitaet,
+                         whisky.name, aspnet_Users.UserName
+FROM            tasting INNER JOIN
+                         whisky ON tasting.whiskyID = whisky.ID INNER JOIN
+                         aspnet_Users ON tasting.userID = aspnet_Users.UserId
+WHERE        (tasting.userID = @OWNUSERID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OWNUSERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT        ID, userID, whiskyID, notiz, art, geschmack, suesse, frucht, abgang, gesamt, qualitaet, datum, aktiv
-FROM            tasting
-WHERE        (userID IN
-                             (SELECT        freundID
-                               FROM            freunde
-                               WHERE        (userID = @OWNUSERID) AND (aktiv = 1)))";
+            this._commandCollection[2].CommandText = "SELECT ID, abgang, art, frucht, gesamt, geschmack, notiz, qualitaet, suesse, user" +
+                "ID, whiskyID FROM tasting WHERE (userID IN (SELECT freundID FROM freunde WHERE (" +
+                "userID = @OWNUSERID) AND (aktiv = 1)))";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OWNUSERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        ID, userID, whiskyID, notiz, art, geschmack, suesse, frucht, abgang" +
-                ", gesamt, qualitaet, datum, aktiv\r\nFROM            tasting\r\nWHERE        (ID = @" +
-                "TastingID)";
+            this._commandCollection[3].CommandText = "SELECT ID, abgang, art, frucht, gesamt, geschmack, notiz, qualitaet, suesse, user" +
+                "ID, whiskyID FROM tasting WHERE (ID = @TastingID)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TastingID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -6122,7 +6122,7 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<global::System.Guid> userID, global::System.Nullable<int> whiskyID, string notiz, global::System.Nullable<int> art, global::System.Nullable<int> geschmack, global::System.Nullable<int> suesse, global::System.Nullable<int> frucht, global::System.Nullable<int> abgang, global::System.Nullable<int> gesamt, global::System.Nullable<int> qualitaet, global::System.Nullable<global::System.DateTime> datum, global::System.Nullable<bool> aktiv) {
+        public virtual int Insert(global::System.Nullable<global::System.Guid> userID, global::System.Nullable<int> whiskyID, string notiz, global::System.Nullable<int> art, global::System.Nullable<int> geschmack, global::System.Nullable<int> suesse, global::System.Nullable<int> frucht, global::System.Nullable<int> abgang, global::System.Nullable<int> gesamt, global::System.Nullable<int> qualitaet) {
             if ((userID.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(userID.Value));
             }
@@ -6183,18 +6183,6 @@ WHERE        (userID IN
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((datum.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((System.DateTime)(datum.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((aktiv.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(aktiv.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6215,7 +6203,7 @@ WHERE        (userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.Guid> userID, global::System.Nullable<int> whiskyID, string notiz, global::System.Nullable<int> art, global::System.Nullable<int> geschmack, global::System.Nullable<int> suesse, global::System.Nullable<int> frucht, global::System.Nullable<int> abgang, global::System.Nullable<int> gesamt, global::System.Nullable<int> qualitaet, global::System.Nullable<global::System.DateTime> datum, global::System.Nullable<bool> aktiv, int Original_ID) {
+        public virtual int Update(global::System.Nullable<global::System.Guid> userID, global::System.Nullable<int> whiskyID, string notiz, global::System.Nullable<int> art, global::System.Nullable<int> geschmack, global::System.Nullable<int> suesse, global::System.Nullable<int> frucht, global::System.Nullable<int> abgang, global::System.Nullable<int> gesamt, global::System.Nullable<int> qualitaet, int Original_ID) {
             if ((userID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(userID.Value));
             }
@@ -6276,19 +6264,7 @@ WHERE        (userID IN
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((datum.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(datum.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((aktiv.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(aktiv.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

@@ -100,35 +100,32 @@ namespace HTW_Whisky.Membership
 
         protected void btnDoAction_Click(object sender, EventArgs e)
         {
+            btnBlock.Visible = false;
+            btnDoAction.Enabled = false;
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
             switch (Session["action"].ToString())
             {
                 case "1": //Freundschaftsanfrage zurück ziehen
                     FreundeAdapter.FreundschaftsanfrageZurueckziehen((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
                     btnDoAction.Text = "Freundschaftsanfrage wurde zurück gezogen";
-                    btnDoAction.Enabled = false;
                     break;
                 case "2": //Freundschaftsanfrage bestätigen
                     FreundeAdapter.FreundschaftsanfrageSenden((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
                     FreundeAdapter.FreundschaftsanfrageBestaetigen((Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser().ProviderUserKey);
                     btnDoAction.Text = "Sie sind nun befreundet!";
-                    btnDoAction.Enabled = false;
                     break;
                 case "3": //Freundschaft beenden
                     FreundeAdapter.FreundschaftBeenden((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
                     btnDoAction.Text = "Freundschaft wurde beendet";
-                    btnDoAction.Enabled = false;
                     break;
                 case "4": //Blockierung aufheben
                     FreundeAdapter.BlockierungAufheben((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
                     btnDoAction.Text = "Die blockierung wurde aufgehoben";
-                    btnDoAction.Enabled = false;
                     break;
                 case "5": //Freundschaftsanfrage senden
                     FreundeAdapter.FreundschaftsanfrageSenden((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
                     btnDoAction.Text = "Freundschaftsanfrage wurde versendet";
-                    btnDoAction.Enabled = false;
-                    break;
+                    break; 
             }
         }
 
