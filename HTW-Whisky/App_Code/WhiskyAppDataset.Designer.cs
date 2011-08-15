@@ -6922,9 +6922,8 @@ WHERE        (tasting.ID = @TastingID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [picture] ([userID], [whiskyID], [allowAll], [allowFriends], [image]," +
-                " [contentType]) VALUES (@userID, @whiskyID, @allowAll, @allowFriends, @image, @c" +
-                "ontentType)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [picture] ([userID], [whiskyID], [allowAll], [allowFriends], [image], [contentType]) VALUES (@userID, @whiskyID, @allowAll, @allowFriends, @image, @contentType);
+SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM picture WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@whiskyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6934,9 +6933,8 @@ WHERE        (tasting.ID = @TastingID)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [picture] SET [userID] = @userID, [whiskyID] = @whiskyID, [allowAll] = @al" +
-                "lowAll, [allowFriends] = @allowFriends, [image] = @image, [contentType] = @conte" +
-                "ntType WHERE (([ID] = @Original_ID))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [picture] SET [userID] = @userID, [whiskyID] = @whiskyID, [allowAll] = @allowAll, [allowFriends] = @allowFriends, [image] = @image, [contentType] = @contentType WHERE (([ID] = @Original_ID));
+SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM picture WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@whiskyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6945,6 +6943,7 @@ WHERE        (tasting.ID = @TastingID)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@image", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "image", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@contentType", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "contentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6964,20 +6963,20 @@ WHERE        (tasting.ID = @TastingID)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        ID, userID, whiskyID, allowAll, allowFriends, image, contentType\r\nF" +
-                "ROM            picture\r\nWHERE        (ID = @PictureID)";
+            this._commandCollection[1].CommandText = "SELECT ID, allowAll, allowFriends, contentType, image, userID, whiskyID FROM pict" +
+                "ure WHERE (ID = @PictureID)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PictureID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        ID, userID, whiskyID, allowAll, allowFriends, image, contentType\r\nF" +
-                "ROM            picture\r\nWHERE        (userID = @UserID)";
+            this._commandCollection[2].CommandText = "SELECT ID, allowAll, allowFriends, contentType, image, userID, whiskyID FROM pict" +
+                "ure WHERE (userID = @UserID)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        ID, userID, whiskyID, allowAll, allowFriends, image, contentType\r\nF" +
-                "ROM            picture\r\nWHERE        (whiskyID = @WhiskyID)";
+            this._commandCollection[3].CommandText = "SELECT ID, allowAll, allowFriends, contentType, image, userID, whiskyID FROM pict" +
+                "ure WHERE (whiskyID = @WhiskyID)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WhiskyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
@@ -7213,7 +7212,7 @@ WHERE        (picture.userID = @UserID) AND (picture.whiskyID = @WhiskyID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.Guid userID, int whiskyID, bool allowAll, bool allowFriends, byte[] image, string contentType, int Original_ID) {
+        public virtual int Update(System.Guid userID, int whiskyID, bool allowAll, bool allowFriends, byte[] image, string contentType, int Original_ID, int ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(userID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(whiskyID));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(allowAll));
@@ -7231,6 +7230,7 @@ WHERE        (picture.userID = @UserID) AND (picture.whiskyID = @WhiskyID)";
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(contentType));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7245,6 +7245,14 @@ WHERE        (picture.userID = @UserID) AND (picture.whiskyID = @WhiskyID)";
                     this.Adapter.UpdateCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(System.Guid userID, int whiskyID, bool allowAll, bool allowFriends, byte[] image, string contentType, int Original_ID) {
+            return this.Update(userID, whiskyID, allowAll, allowFriends, image, contentType, Original_ID, Original_ID);
         }
     }
     

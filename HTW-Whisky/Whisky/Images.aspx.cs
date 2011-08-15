@@ -33,11 +33,8 @@ namespace HTW_Whisky.Whisky
             {
                 foreach (DataRow friend in freunde.Rows)
                 {
-                    if ( (picture["userID"].Equals(friend["freundID"]) && (int.Parse(picture["allowFriends"].ToString()) == 1))
-                        || (int.Parse(picture["allowAll"].ToString()) == 1) )
-                    {
+                    if ( picture["userID"] == friend["freundID"] &&  ( (int.Parse(picture["allowFriends"].ToString()) == 1 ) || (int.Parse(picture["allowAll"].ToString()) == 1) ) )
                         freePictures.Rows.Add(picture);
-                    }
                 }
             }
 
@@ -73,20 +70,22 @@ namespace HTW_Whisky.Whisky
         protected void btnUploadImage_Click(object sender, EventArgs e)
         {
             pictureTableAdapter pictureTable = new pictureTableAdapter();
-            MembershipUser currentUser = System.Web.Security.Membership.GetUser();
+            userwhiskyTableAdapter userwhiskyTable = new userwhiskyTableAdapter();
+            Guid currentUserID = Guid.Parse(System.Web.Security.Membership.GetUser().ProviderUserKey.ToString());
             if (fuImageUpload.PostedFile != null &&
                 fuImageUpload.FileName != "")
             {
                 HttpPostedFile imageFile = fuImageUpload.PostedFile;
                 byte[] imageData = new byte[imageFile.ContentLength];
                 imageFile.InputStream.Read(imageData, 0, imageFile.ContentLength);
-                pictureTable.Insert(
-                    Guid.Parse(currentUser.ProviderUserKey.ToString()),
+                int picID = pictureTable.Insert(
+                    currentUserID,
                     int.Parse(this.Request.QueryString["id"]),
                     radioFriendsOnly.Checked,
                     radioAllowAll.Checked,
                     imageData,
                     imageFile.ContentType);
+                userwhiskyTable.UpdatePicture(picID,currentUserID,int.Parse(this.Request.QueryString["id"]));
             }
         }
 
