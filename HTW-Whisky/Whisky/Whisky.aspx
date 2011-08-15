@@ -57,46 +57,82 @@
         <EditItemTemplate>
             <div class="clearfix">
                 <asp:Label ID="lblLabelName" runat="server" CssClass="label" Text="Name"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="nameTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen Namen ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAroma" runat="server" CssClass="label" Text="Aroma"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                    ControlToValidate="aromaTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie ein Aroma ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="aromaTextBox" runat="server" Text='<%# Bind("aroma") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelGeschmack" runat="server" CssClass="label" 
                     Text="Geschmack"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                    ControlToValidate="geschmackTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie eine Geschmacksrichtung an</asp:RequiredFieldValidator>
                 <asp:TextBox ID="geschmackTextBox" runat="server" 
                     Text='<%# Bind("geschmack") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAbgang" runat="server" CssClass="label" Text="Abgang"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                    ControlToValidate="abgangTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen Abgang ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="abgangTextBox" runat="server" Text='<%# Bind("abgang") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelFasstyp" runat="server" CssClass="label" Text="Fasstyp"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                    ControlToValidate="fasstypTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen Fasstyp ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="fasstypTextBox" runat="server" Text='<%# Bind("fasstyp") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelBeschreibung" runat="server" CssClass="label" 
                     Text="Beschreibung"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                    ControlToValidate="beschreibungTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie eine Beschreibung ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="beschreibungTextBox" runat="server" 
                     Text='<%# Bind("beschreibung") %>' TextMode="MultiLine" />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelJahrgang" runat="server" CssClass="label" 
                     Text="Jahrgang"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                    ControlToValidate="jahrgangTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen gültigen Jahrgang ein</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                    ControlToValidate="jahrgangTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red" ValidationExpression="(D-)?\d{4}">Geben Sie einen gültigen Jahrgang ein</asp:RegularExpressionValidator>
                 <asp:TextBox ID="jahrgangTextBox" runat="server" 
                     Text='<%# Bind("jahrgang") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAlkoholgehalt" runat="server" CssClass="label" 
                     Text="Alkoholgehalt"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                    ControlToValidate="alkoholgehaltTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie den Alkoholgehalt an</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                    ControlToValidate="alkoholgehaltTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red" ValidationExpression="[-+]?[0-9]*\.?[0-9]*">Geben Sie gültige Zahl/Gleitkommazahl ein</asp:RegularExpressionValidator>
                 <asp:TextBox ID="alkoholgehaltTextBox" runat="server" 
                     Text='<%# Bind("alkoholgehalt") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelInhalt" runat="server" CssClass="label" Text="Inhalt"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+                    ControlToValidate="literTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie den Inhalt an</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                    ControlToValidate="literTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red" ValidationExpression="[-+]?[0-9]*\.?[0-9]*">Geben Sie gültige Zahl/Gleitkommazahl ein</asp:RegularExpressionValidator>
                 <asp:TextBox ID="literTextBox" runat="server" Text='<%# Bind("liter") %>' />
             </div>
             <div class="clearfix">
@@ -123,50 +159,83 @@
         <InsertItemTemplate>
             <div class="clearfix">
                 <asp:Label ID="lblLabelName" runat="server" CssClass="label" Text="Name"></asp:Label>
-                <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' 
-                    CausesValidation="True" ValidationGroup="leer" />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
                     ControlToValidate="nameTextBox" Display="Dynamic" ErrorMessage="*" 
                     ForeColor="Red">Geben Sie einen Namen ein</asp:RequiredFieldValidator>
+                <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' 
+                    CausesValidation="True" ValidationGroup="leer" />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAroma" runat="server" CssClass="label" Text="Aroma"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                    ControlToValidate="aromaTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie ein Aroma ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="aromaTextBox" runat="server" Text='<%# Bind("aroma") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelGeschmack" runat="server" CssClass="label" 
                     Text="Geschmack"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                    ControlToValidate="geschmackTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie eine Geschmacksrichtung an</asp:RequiredFieldValidator>
                 <asp:TextBox ID="geschmackTextBox" runat="server" 
                     Text='<%# Bind("geschmack") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAbgang" runat="server" CssClass="label" Text="Abgang"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                    ControlToValidate="abgangTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen Abgang ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="abgangTextBox" runat="server" Text='<%# Bind("abgang") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelFasstyp" runat="server" CssClass="label" Text="Fasstyp"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                    ControlToValidate="fasstypTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen Fasstyp ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="fasstypTextBox" runat="server" Text='<%# Bind("fasstyp") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelBeschreibung" runat="server" CssClass="label" 
                     Text="Beschreibung"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                    ControlToValidate="beschreibungTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie eine Beschreibung ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="beschreibungTextBox" runat="server" 
                     Text='<%# Bind("beschreibung") %>' TextMode="MultiLine" />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelJahrgang" runat="server" CssClass="label" 
                     Text="Jahrgang"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                    ControlToValidate="jahrgangTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen gültigen Jahrgang ein</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                    ControlToValidate="jahrgangTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red" ValidationExpression="(D-)?\d{4}">Geben Sie einen gültigen Jahrgang ein</asp:RegularExpressionValidator>
                 <asp:TextBox ID="jahrgangTextBox" runat="server" 
                     Text='<%# Bind("jahrgang") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAlkoholgehalt" runat="server" CssClass="label" 
                     Text="Alkoholgehalt"></asp:Label>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                    ControlToValidate="alkoholgehaltTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie den Alkoholgehalt an</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+                    ControlToValidate="alkoholgehaltTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red" ValidationExpression="[-+]?[0-9]*\.?[0-9]*">Geben Sie gültige Zahl/Gleitkommazahl ein</asp:RegularExpressionValidator>
                 <asp:TextBox ID="alkoholgehaltTextBox" runat="server" 
                     Text='<%# Bind("alkoholgehalt") %>' />
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelInhalt" runat="server" CssClass="label" Text="Inhalt"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+                    ControlToValidate="literTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie den Inhalt an</asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" 
+                    ControlToValidate="literTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red" ValidationExpression="[-+]?[0-9]*\.?[0-9]*">Geben Sie gültige Zahl/Gleitkommazahl ein</asp:RegularExpressionValidator>
                 <asp:TextBox ID="literTextBox" runat="server" Text='<%# Bind("liter") %>' />
             </div>
             <div class="clearfix">
