@@ -6,7 +6,7 @@
     <asp:GridView ID="GridView1" 
         OnSelectedIndexChanged="GridView1_SelectedIndexChanged" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" 
-        GridLines="None" Width="439px">
+        GridLines="None" Width="439px" BorderColor="Black" BorderWidth="2px">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
