@@ -23,7 +23,12 @@
     <asp:ObjectDataSource ID="WhiskyObjectDataSource" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetDataByID" 
         
-        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.whiskyTableAdapter">
+        
+        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.whiskyTableAdapter" 
+        DeleteMethod="DeleteDataByID">
+        <DeleteParameters>
+            <asp:Parameter Name="Original_ID" Type="Int32" />
+        </DeleteParameters>
         <SelectParameters>
             <asp:QueryStringParameter DefaultValue="" Name="WhiskyID" QueryStringField="id" 
                 Type="Int32" />
