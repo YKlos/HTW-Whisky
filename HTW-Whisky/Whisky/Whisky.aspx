@@ -34,7 +34,6 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     <asp:ValidationSummary ID="vsWhisky" runat="server" 
         ValidationGroup="WhiskyValidationGroup" />
     <asp:FormView ID="fvWhisky" runat="server" DataKeyNames="ID" 
@@ -109,7 +108,11 @@
         <InsertItemTemplate>
             <div class="clearfix">
                 <asp:Label ID="lblLabelName" runat="server" CssClass="label" Text="Name"></asp:Label>
-                <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
+                <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' 
+                    CausesValidation="True" ValidationGroup="leer" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="nameTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen Namen ein</asp:RequiredFieldValidator>
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAroma" runat="server" CssClass="label" Text="Aroma"></asp:Label>
@@ -246,7 +249,7 @@
                 <asp:ImageButton ID="imgBtnImages" runat="server" Height="48px" 
                     ImageAlign="Middle" ImageUrl="~/img/action_photos.png" 
                     onclick="imgBtnImages_Click" Width="48px" />
-                <asp:ImageButton ID="imgButtonAddTasting" runat="server" Height="48px" 
+                <asp:ImageButton ID="imgBtnAddTasting" runat="server" Height="48px" 
                     ImageAlign="Middle" ImageUrl="~/img/action_tasting.png" 
                     onclick="imgButtonAddTasting_Click" Width="48px" />
             </div>
