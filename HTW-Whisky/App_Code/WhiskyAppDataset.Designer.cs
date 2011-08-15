@@ -5932,8 +5932,7 @@ SELECT userID, freundID, blockiert, aktiv FROM freunde WHERE (freundID = @freund
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT        tasting.notiz, tasting.art, tasting.geschmack, tasting.suesse, tasting.frucht, tasting.abgang, tasting.gesamt, tasting.qualitaet,
-                         whisky.name, aspnet_Users.UserName
+            this._commandCollection[1].CommandText = @"SELECT        tasting.notiz, whisky.name, aspnet_Users.UserName, tasting.ID
 FROM            tasting INNER JOIN
                          whisky ON tasting.whiskyID = whisky.ID INNER JOIN
                          aspnet_Users ON tasting.userID = aspnet_Users.UserId
@@ -5942,11 +5941,16 @@ WHERE        (tasting.userID = @OWNUSERID)";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OWNUSERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT ID, abgang, art, frucht, gesamt, geschmack, notiz, qualitaet, suesse, user" +
-                "ID, whiskyID FROM tasting WHERE (userID IN (SELECT freundID FROM freunde WHERE (" +
-                "userID = @OWNUSERID) AND (aktiv = 1)))";
+            this._commandCollection[2].CommandText = @"SELECT        tasting.ID, tasting.notiz, tasting.userID, tasting.whiskyID, aspnet_Users.UserName, whisky.name
+FROM            tasting INNER JOIN
+                         aspnet_Users ON tasting.userID = aspnet_Users.UserId INNER JOIN
+                         whisky ON tasting.whiskyID = whisky.ID
+WHERE        (tasting.userID IN
+                             (SELECT        freundID
+                               FROM            freunde
+                               WHERE        (userID = @OWNUSERID) AND (aktiv = 1)))";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OWNUSERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OWNUSERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT ID, abgang, art, frucht, gesamt, geschmack, notiz, qualitaet, suesse, user" +
