@@ -38,6 +38,9 @@
                 Text='<%# Bind("whiskyID") %>' />
             <br />
             notiz:
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="notizTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie eine Notiz ein</asp:RequiredFieldValidator>
             <asp:TextBox ID="notizTextBox" runat="server" Text='<%# Bind("notiz") %>' />
             <br />
             art:
@@ -83,6 +86,9 @@
 
             <div class="clearfix">
                 <asp:Label ID="lblLabelNotiz" runat="server" CssClass="label" Text="Notiz"></asp:Label>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="notizTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie eine Notiz ein</asp:RequiredFieldValidator>
                 <asp:TextBox ID="notizTextBox" runat="server" Text='<%# Bind("notiz") %>' 
                     TextMode="MultiLine" />
             </div>
