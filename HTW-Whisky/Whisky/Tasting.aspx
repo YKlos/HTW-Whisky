@@ -2,8 +2,30 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
+    <asp:ObjectDataSource ID="TastingObjectDataSource" runat="server" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetTastingByID" 
+        
+        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.tastingTableAdapter" 
+        InsertMethod="InsertQuery">
+        <InsertParameters>
+            <asp:Parameter DbType="Guid" Name="userID" />
+            <asp:Parameter Name="whiskyID" Type="Int32" />
+            <asp:Parameter Name="notiz" Type="String" />
+            <asp:Parameter Name="art" Type="Int32" />
+            <asp:Parameter Name="geschmack" Type="Int32" />
+            <asp:Parameter Name="suesse" Type="Int32" />
+            <asp:Parameter Name="frucht" Type="Int32" />
+            <asp:Parameter Name="abgang" Type="Int32" />
+            <asp:Parameter Name="gesamt" Type="Int32" />
+            <asp:Parameter Name="qualitaet" Type="Int32" />
+        </InsertParameters>
+        <SelectParameters>
+            <asp:QueryStringParameter Name="TastingID" QueryStringField="tid" 
+                Type="Int32" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
     <asp:FormView ID="fvTasting" runat="server" DataKeyNames="ID" 
-        DataSourceID="TastingObjectDataSource" Width="100%">
+        DataSourceID="TastingObjectDataSource" RenderOuterTable="False">
         <EditItemTemplate>
             ID:
             <asp:Label ID="IDLabel1" runat="server" Text='<%# Eval("ID") %>' />
@@ -144,7 +166,6 @@
             </div>
             
             <div class="clearfix">
-                <div class="clearfix">
                 <asp:ImageButton ID="imgBtnInser" runat="server" CommandName="Insert" 
                     Height="48px" ImageAlign="Middle" ImageUrl="~/img/action_accept.png" 
                     Width="48px" />
@@ -203,37 +224,14 @@
                 <asp:Label ID="lblLabelQualitaet" runat="server" CssClass="label" Text="Qualität"></asp:Label>
                 <asp:Label ID="qualitaetLabel" runat="server" Text='<%# Bind("qualitaet") %>' />
             </div>
-            
-            
         </ItemTemplate>
     </asp:FormView>
-    <asp:ObjectDataSource ID="TastingObjectDataSource" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetTastingByID" 
-        
-        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.tastingTableAdapter" 
-        InsertMethod="InsertQuery">
-        <InsertParameters>
-            <asp:Parameter DbType="Guid" Name="userID" />
-            <asp:Parameter Name="whiskyID" Type="Int32" />
-            <asp:Parameter Name="notiz" Type="String" />
-            <asp:Parameter Name="art" Type="Int32" />
-            <asp:Parameter Name="geschmack" Type="Int32" />
-            <asp:Parameter Name="suesse" Type="Int32" />
-            <asp:Parameter Name="frucht" Type="Int32" />
-            <asp:Parameter Name="abgang" Type="Int32" />
-            <asp:Parameter Name="gesamt" Type="Int32" />
-            <asp:Parameter Name="qualitaet" Type="Int32" />
-        </InsertParameters>
-        <SelectParameters>
-            <asp:QueryStringParameter Name="TastingID" QueryStringField="tid" 
-                Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
-    <asp:Label ID="lblInfo" runat="server" Text="" BackColor=""></asp:Label>
-    <br /><br />
-    <asp:HyperLink ID="linkWhiskyList" runat="server" NavigateUrl="~/Whisky/WhiskyList.aspx" Visible="false"> Zur Whiskyübersicht </asp:HyperLink>
-    <asp:HyperLink ID="linkMyTastings" runat="server" NavigateUrl="~/Whisky/Tastings.aspx" Visible="false"> Zu meinen Tastings </asp:HyperLink>
+
+    <div class="clearfix">
+        <asp:Label ID="lblInfo" runat="server" Text="" BackColor=""></asp:Label>
+        <asp:HyperLink ID="linkWhiskyList" runat="server" NavigateUrl="~/Whisky/WhiskyList.aspx" Visible="false"> Zur Whiskyübersicht </asp:HyperLink>
+        <asp:HyperLink ID="linkMyTastings" runat="server" NavigateUrl="~/Whisky/Tastings.aspx" Visible="false"> Zu meinen Tastings </asp:HyperLink>
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
-    
 </asp:Content>

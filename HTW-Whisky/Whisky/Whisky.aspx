@@ -34,7 +34,6 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     <asp:ValidationSummary ID="vsWhisky" runat="server" 
         ValidationGroup="WhiskyValidationGroup" />
     <asp:FormView ID="fvWhisky" runat="server" DataKeyNames="ID" 
@@ -246,7 +245,7 @@
                 <asp:ImageButton ID="imgBtnImages" runat="server" Height="48px" 
                     ImageAlign="Middle" ImageUrl="~/img/action_photos.png" 
                     onclick="imgBtnImages_Click" Width="48px" />
-                <asp:ImageButton ID="imgButtonAddTasting" runat="server" Height="48px" 
+                <asp:ImageButton ID="imgBtnAddTasting" runat="server" Height="48px" 
                     ImageAlign="Middle" ImageUrl="~/img/action_tasting.png" 
                     onclick="imgButtonAddTasting_Click" Width="48px" />
             </div>
