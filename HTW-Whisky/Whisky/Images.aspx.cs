@@ -39,8 +39,10 @@ namespace HTW_Whisky.Whisky
 
         protected void selectImage_Click(object sender, ImageClickEventArgs e)
         {
+            MembershipUser currentUser = System.Web.Security.Membership.GetUser();
             ImageButton imgBtnControl = sender as ImageButton;
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "img", "<script type = 'text/javascript'>alert('ImageButton Clicked:" + imgBtnControl.ID.ToString() + "; " + Request.QueryString["id"] + "');</script>");
+            userwhiskyTableAdapter userWhiskyTable = new userwhiskyTableAdapter();
+            userWhiskyTable.UpdatePicture(int.Parse(imgBtnControl.ID.ToString()), Guid.Parse(currentUser.ProviderUserKey.ToString()), int.Parse(Request.QueryString["id"].ToString()));
         }
 
         protected void btnUploadImage_Click(object sender, EventArgs e)
