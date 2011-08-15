@@ -29,10 +29,12 @@
                 Type="Int32" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     <asp:ValidationSummary ID="vsWhisky" runat="server" 
         ValidationGroup="WhiskyValidationGroup" />
     <asp:FormView ID="fvWhisky" runat="server" DataKeyNames="ID" 
-        DataSourceID="WhiskyObjectDataSource" RenderOuterTable="False">
+        DataSourceID="WhiskyObjectDataSource" RenderOuterTable="False" 
+        style="margin-right: 408px">
         <EditItemTemplate>
             <div class="clearfix">
                 <asp:Label ID="lblLabelName" runat="server" CssClass="label" Text="Name"></asp:Label>

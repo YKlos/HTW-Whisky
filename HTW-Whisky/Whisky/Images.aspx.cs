@@ -15,13 +15,38 @@ namespace HTW_Whisky.Whisky
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            pictureTableAdapter pictureTable = new pictureTableAdapter();
-            MembershipUser currentUser = System.Web.Security.Membership.GetUser();
+            Guid currentUserID = Guid.Parse(System.Web.Security.Membership.GetUser().ProviderUserKey.ToString());
             int whiskyID = int.Parse(Request.QueryString["id"]);
-            //DataTable pictures = pictureTable.GetImagesByFreeForUser(Guid.Parse(currentUser.ProviderUserKey.ToString()), whiskyID);
-            DataTable pictures = pictureTable.GetImagesByWhisky(int.Parse(Request.QueryString["id"]));
 
-            foreach (DataRow picture in pictures.Rows)
+            freundeTableAdapter freundeTable = new freundeTableAdapter();
+            pictureTableAdapter pictureTable = new pictureTableAdapter();
+
+            DataTable freePictures = new DataTable();
+            DataTable freunde = freundeTable.GetFriendsByUserID(currentUserID);
+            DataTable allPictures = pictureTable.GetImagesByWhisky(whiskyID);
+
+            if (freunde.Rows.Count == 0 || allPictures.Rows.Count == 0)
+                return;
+
+            // Die veroeffentlichten Bilder der freunde herraussuchen bzw. mit freigabe fuer alle User
+            foreach (DataRow picture in allPictures.Rows)
+            {
+                foreach (DataRow friend in freunde.Rows)
+                {
+                    if ( (picture["userID"].Equals(friend["freundID"]) && (int.Parse(picture["allowFriends"].ToString()) == 1))
+                        || (int.Parse(picture["allowAll"].ToString()) == 1) )
+                    {
+                        freePictures.Rows.Add(picture);
+                    }
+                }
+            }
+
+            //Falls noch Bilder anzuzeigen sind...
+            if (freePictures.Rows.Count == 0)
+                return;
+
+            //Image-Buttons erstellen
+            foreach (DataRow picture in freePictures.Rows)
             {
                 Panel imgPanel = new Panel();
                 imgPanel.CssClass = "imgpanel";
