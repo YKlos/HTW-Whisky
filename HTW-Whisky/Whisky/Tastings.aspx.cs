@@ -29,8 +29,23 @@ namespace HTW_Whisky.Whisky
             gvFriendsTastings.DataBind();
         }
 
-        protected void TastingsGv_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvOwnTastings_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            if (e.CommandName.CompareTo("ShowTasting") == 0)
+            {
+                int tastingID = (int)gvOwnTastings.DataKeys[Convert.ToInt32(e.CommandArgument)].Value;
+                Response.Redirect("~/Whisky/Tasting.aspx?tid=" + tastingID.ToString());
+            }
+
+
+        }
+        protected void gvFriendsTastings_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.CompareTo("ShowTasting") == 0)
+            {
+                int tastingID = (int)gvFriendsTastings.DataKeys[Convert.ToInt32(e.CommandArgument)].Value;
+                Response.Redirect("~/Whisky/Tasting.aspx?tid=" + tastingID.ToString());
+            }
 
         }
     }
