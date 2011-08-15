@@ -17,6 +17,7 @@
           <siteMapNode url="~/Rollen/RoleBasedAuthorization.aspx" title="Role- Based Authorization" />
         </siteMapNode>-->
         <siteMapNode url="~/Membership/Friends.aspx" title="Freunde" roles="*" />
-        <siteMapNode url="~/Whisky/MyFavorites.aspx" title="Favoriten" /> 
+        <siteMapNode url="~/Whisky/MyFavorites.aspx" title="Favoriten" />
+        <siteMapNode url="~/Whisky/Tastings.aspx" title="Tastingübersicht" />
     </siteMapNode>
 </siteMap>

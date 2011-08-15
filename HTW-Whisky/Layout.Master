@@ -47,12 +47,14 @@
                     <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Logout.aspx" />
                     <br />
                     <br />
+                    <hr />
+                    <br />
                     <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
                 </div>
             </div>
 
             <div id="footer">
-                Inhalt Footer - More to come!
+                &copy; Eric Eifler, Yassir Klos, Tobias Lana - 2011
             </div>
         </div>
     </form>
