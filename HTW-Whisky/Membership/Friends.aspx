@@ -2,13 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
-    <asp:GridView ID="GridView1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" runat="server" AutoGenerateColumns="False" 
+<div class="clearfix" style="float:left; width: 442px;">
+    <asp:GridView ID="GridView1" 
+        OnSelectedIndexChanged="GridView1_SelectedIndexChanged" runat="server" AutoGenerateColumns="False" 
         DataSourceID="SqlDataSource1" CellPadding="4" ForeColor="#333333" 
-        GridLines="None" Width="560px">
+        GridLines="None" Width="439px">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowSelectButton="True" />
-            <asp:BoundField DataField="UserName" HeaderText="UserName" 
+            <asp:BoundField DataField="UserName" HeaderText="Benutzer" 
                 SortExpression="UserName" />
         </Columns>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -21,16 +23,25 @@
         <SortedDescendingCellStyle BackColor="#FCF6C0" />
         <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
+</div>
+<div class="clearfix" style="float:right;">
     <asp:RadioButtonList ID="rbtnlFilter" runat="server" AutoPostBack="True" 
         onselectedindexchanged="RadioButtonList1_SelectedIndexChanged" 
-        style="margin-top: 0px">
+        style="margin-top: 0px" BackColor="#00CCFF" BorderColor="Black" 
+        BorderWidth="2px">
         <asp:ListItem Selected="True">Alle Benutzer anzeigen</asp:ListItem>
         <asp:ListItem>Nur Freunde anzeigen</asp:ListItem>
 <asp:ListItem>Eingehende Freundschaftsanfragen</asp:ListItem>
         <asp:ListItem>Ausgehende Freunschfatsabfragen</asp:ListItem>
         <asp:ListItem>Gebannte Benutzer anzeigen</asp:ListItem>
     </asp:RadioButtonList>
-    <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
+</div>
+    <asp:Button ID="btnDoAction" runat="server" Text="als Freund hinzufügen" 
+        Visible="False" onclick="btnDoAction_Click" />
+    <asp:Button ID="btnBlock" runat="server" 
+        Text="Benutzer auf Blockierliste setzen" Visible="False" 
+        onclick="btnBlock_Click" />
+            <asp:SqlDataSource ID="SqlDataSource5" runat="server" 
         ConnectionString="<%$ ConnectionStrings:Database1ConnectionString %>" 
         
         SelectCommand="SELECT UserName FROM aspnet_Users WHERE (UserId IN (SELECT freundID FROM freunde WHERE (userID = @userID) AND (blockiert = 1)))">
@@ -74,12 +85,6 @@
                 Type="Object" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:Button ID="btnDoAction" runat="server" Text="als Freund hinzufügen" 
-        Visible="False" onclick="btnDoAction_Click" />
-    <asp:Button ID="btnBlock" runat="server" 
-        Text="Benutzer auf Blockierliste setzen" Visible="False" 
-        onclick="btnBlock_Click" />
-    <br />
     </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
 </asp:Content>
