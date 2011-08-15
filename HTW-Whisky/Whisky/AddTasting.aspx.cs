@@ -19,12 +19,21 @@ namespace HTW_Whisky.Whisky
             if (String.IsNullOrEmpty(Request.QueryString["wid"]))
             {
                 lblInfo.Text = "Sie muessen einen Whisky auswählen verdammt!";
+                linkWhiskyList.Visible = true;
                 FormView1.Visible = false;
             } else {
                 whiskyID = Request.QueryString["wid"];  
             }
             TextBox tbWhiskeyID = (TextBox)FormView1.FindControl("whiskyIDTextBox");
             tbWhiskeyID.Text = whiskyID;
+
+            if (Page.IsPostBack)
+            {
+                FormView1.Visible = false;
+                lblInfo.Text = "Vielen Dank fürs Feedback";
+                linkMyTastings.Visible = true;
+                linkWhiskyList.Visible = true;
+            }
         }
     }
 }

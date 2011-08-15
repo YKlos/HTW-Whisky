@@ -221,7 +221,11 @@
             <asp:Parameter Name="Original_ID" Type="Int32" />
         </UpdateParameters>
     </asp:ObjectDataSource>
+    <asp:Label ID="lblInfo" runat="server" Text="" BackColor=""></asp:Label>
+    <br /><br />
+    <asp:HyperLink ID="linkWhiskyList" runat="server" NavigateUrl="~/Whisky/WhiskyList.aspx" Visible="false"> Zur Whiskyübersicht </asp:HyperLink>
+    <asp:HyperLink ID="linkMyTastings" runat="server" NavigateUrl="~/Whisky/Tastings.aspx" Visible="false"> Zu meinen Tastings </asp:HyperLink>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
-    <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
+    
 </asp:Content>
