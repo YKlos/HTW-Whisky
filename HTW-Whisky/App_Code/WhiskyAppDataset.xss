@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:whisky" ZOrder="8" X="70" Y="70" Height="381" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:typen" ZOrder="12" X="447" Y="322" Height="134" Width="189" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
     <Shape ID="DesignTable:freunde" ZOrder="5" X="1063" Y="389" Height="192" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="24" SplitterPosition="102" />
-    <Shape ID="DesignTable:tasting" ZOrder="1" X="83" Y="536" Height="362" Width="295" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:tasting" ZOrder="1" X="83" Y="536" Height="132" Width="254" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="254" SplitterPosition="24" />
     <Shape ID="DesignTable:userwhisky" ZOrder="2" X="365" Y="568" Height="191" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:picture" ZOrder="10" X="626" Y="17" Height="267" Width="234" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:aspnet_Users" ZOrder="7" X="774" Y="395" Height="210" Width="220" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
