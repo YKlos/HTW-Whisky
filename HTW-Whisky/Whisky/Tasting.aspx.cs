@@ -11,11 +11,9 @@ namespace HTW_Whisky.Whisky
     public partial class AddTasting : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {   
+        {
             if (!String.IsNullOrEmpty(Request.QueryString["action"]) && Request.QueryString["action"] == "new")
-            {
                 fvTasting.ChangeMode(FormViewMode.Insert);
-            }
 
             if (fvTasting.CurrentMode == FormViewMode.Insert)
             {

@@ -208,7 +208,7 @@
         </ItemTemplate>
     </asp:FormView>
     <asp:ObjectDataSource ID="TastingObjectDataSource" runat="server" 
-        OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
+        OldValuesParameterFormatString="original_{0}" SelectMethod="GetTastingByID" 
         
         TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.tastingTableAdapter" 
         InsertMethod="InsertQuery">
@@ -224,6 +224,10 @@
             <asp:Parameter Name="gesamt" Type="Int32" />
             <asp:Parameter Name="qualitaet" Type="Int32" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:QueryStringParameter Name="TastingID" QueryStringField="tid" 
+                Type="Int32" />
+        </SelectParameters>
     </asp:ObjectDataSource>
     <asp:Label ID="lblInfo" runat="server" Text="" BackColor=""></asp:Label>
     <br /><br />
