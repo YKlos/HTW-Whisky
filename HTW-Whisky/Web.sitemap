@@ -2,24 +2,21 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="~/Default.aspx" title="Home"  description="Startseite">
         <siteMapNode url="~/Whisky/WhiskyList.aspx" title="Whiskys"  description="Whiskys durchsuchen" />
-        <siteMapNode title="Membership" description="Membershipverwaltung">
+        <!--<siteMapNode title="Membership" description="Membershipverwaltung">
           <siteMapNode url="~/Membership/CreatingUserAccounts.aspx" title="Register" description="Create User" />
-        </siteMapNode>
-        <siteMapNode title="test" description="test" roles="*">
+        </siteMapNode>-->
+        <!--<siteMapNode title="test" description="test" roles="*">
           <siteMapNode url="~/test/OnlyYassir.aspx" title="OnlyYassir" description="OnlyYassir" />
           <siteMapNode url="~/test/AllUsers.aspx" title="AllUsers" description="AllUsers" />
           <siteMapNode url="~/test/Everybody.aspx" title="Everybody" description="Everybody" />
-        </siteMapNode>
-        <siteMapNode title="Rollen" roles="*">
+        </siteMapNode>-->
+        <!--<siteMapNode title="Rollen" roles="*">
           <siteMapNode url="~/Rollen/ManageRoles.aspx" title="Manage Roles" />
           <siteMapNode url="~/Rollen/UsersAndRoles.aspx" title="Users and Roles" />
           <siteMapNode url="~/Rollen/CreateUserWizardWithRoles.aspx" title="Create Account (with Roles)" />
           <siteMapNode url="~/Rollen/RoleBasedAuthorization.aspx" title="Role- Based Authorization" />
-        </siteMapNode>
-        <siteMapNode title="Freunde" roles="*">
-          <siteMapNode url="~/Membership/FriendsOverview.aspx" title="Übersicht" />
-          <siteMapNode url="~/Membership/AddFriends.aspx" title="Freund hinzufügen" />
-        </siteMapNode>
-        <siteMapNode url="~/Whisky/MyFavorites.aspx" title="Favoriten" />
+        </siteMapNode>-->
+        <siteMapNode url="~/Membership/AddFriends.aspx" title="Freunde" roles="*" />
+        <siteMapNode url="~/Whisky/MyFavorites.aspx" title="Favoriten" /> 
     </siteMapNode>
 </siteMap>
