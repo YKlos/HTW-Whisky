@@ -46,12 +46,7 @@
                     <br />
                     <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Logout.aspx" />
                     <br />
-                    <hr />
-                    Systeminfos
                     <br />
-                    <asp:Label ID="lblSysUser" runat="server" Text=""></asp:Label><br />
-                    <asp:Label ID="lblSysWhiskys" runat="server" Text=""></asp:Label><br />
-                    <asp:Label ID="lblSysTastings" runat="server" Text=""></asp:Label><br />
                     <hr />
                     <br />
                     <asp:ContentPlaceHolder ID="phToolbar" runat="server"></asp:ContentPlaceHolder>
