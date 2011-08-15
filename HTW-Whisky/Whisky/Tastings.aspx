@@ -4,60 +4,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
 <h2>Übersicht eigene Tastings</h2>
     <asp:GridView ID="gvOwnTastings" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="ID">
+        DataKeyNames="ID" OnRowCommand="TastingsGv_RowCommand">
         <Columns>
-            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" 
-                ReadOnly="True" SortExpression="ID" />
-            <asp:BoundField DataField="userID" HeaderText="userID" 
-                SortExpression="userID" />
-            <asp:BoundField DataField="whiskyID" HeaderText="whiskyID" 
-                SortExpression="whiskyID" />
-            <asp:BoundField DataField="notiz" HeaderText="notiz" SortExpression="notiz" />
-            <asp:BoundField DataField="art" HeaderText="art" SortExpression="art" />
-            <asp:BoundField DataField="geschmack" HeaderText="geschmack" 
-                SortExpression="geschmack" />
-            <asp:BoundField DataField="suesse" HeaderText="suesse" 
-                SortExpression="suesse" />
-            <asp:BoundField DataField="frucht" HeaderText="frucht" 
-                SortExpression="frucht" />
-            <asp:BoundField DataField="abgang" HeaderText="abgang" 
-                SortExpression="abgang" />
-            <asp:BoundField DataField="gesamt" HeaderText="gesamt" 
-                SortExpression="gesamt" />
-            <asp:BoundField DataField="qualitaet" HeaderText="qualitaet" 
-                SortExpression="qualitaet" />
-            <asp:BoundField DataField="datum" HeaderText="datum" SortExpression="datum" />
-            <asp:CheckBoxField DataField="aktiv" HeaderText="aktiv" 
-                SortExpression="aktiv" />
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+            <asp:BoundField DataField="name" HeaderText="Whisky" SortExpression="name" />
+            <asp:BoundField DataField="UserName" HeaderText="Benutzer" SortExpression="UserName" />
+            <asp:BoundField DataField="notiz" HeaderText="Notiz" SortExpression="notiz" />
+            <asp:ButtonField Text="zum Whisky" CommandName="ShowWhisky" ButtonType="Link" />
+            <asp:ButtonField Text="zum Tasting" CommandName="Showtasting" ButtonType="Link" />
         </Columns>
     </asp:GridView>
     <h2>Übersicht Tastings von Freunden</h2>
     <asp:GridView ID="gvFriendsTastings" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="ID">
+        DataKeyNames="ID" OnRowCommand="TastingsGv_RowCommand">
         <Columns>
-            <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" 
-                ReadOnly="True" SortExpression="ID" />
-            <asp:BoundField DataField="userID" HeaderText="userID" 
-                SortExpression="userID" />
-            <asp:BoundField DataField="whiskyID" HeaderText="whiskyID" 
-                SortExpression="whiskyID" />
-            <asp:BoundField DataField="notiz" HeaderText="notiz" SortExpression="notiz" />
-            <asp:BoundField DataField="art" HeaderText="art" SortExpression="art" />
-            <asp:BoundField DataField="geschmack" HeaderText="geschmack" 
-                SortExpression="geschmack" />
-            <asp:BoundField DataField="suesse" HeaderText="suesse" 
-                SortExpression="suesse" />
-            <asp:BoundField DataField="frucht" HeaderText="frucht" 
-                SortExpression="frucht" />
-            <asp:BoundField DataField="abgang" HeaderText="abgang" 
-                SortExpression="abgang" />
-            <asp:BoundField DataField="gesamt" HeaderText="gesamt" 
-                SortExpression="gesamt" />
-            <asp:BoundField DataField="qualitaet" HeaderText="qualitaet" 
-                SortExpression="qualitaet" />
-            <asp:BoundField DataField="datum" HeaderText="datum" SortExpression="datum" />
-            <asp:CheckBoxField DataField="aktiv" HeaderText="aktiv" 
-                SortExpression="aktiv" />
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+            <asp:BoundField DataField="name" HeaderText="Whisky" SortExpression="name" />
+            <asp:BoundField DataField="UserName" HeaderText="Benutzer" SortExpression="UserName" />
+            <asp:BoundField DataField="notiz" HeaderText="Notiz" SortExpression="notiz" />
+            <asp:ButtonField Text="zum Whisky" CommandName="ShowWhisky" ButtonType="Link" />
+            <asp:ButtonField Text="zum Tasting" CommandName="Showtasting" ButtonType="Link" />
         </Columns>
     </asp:GridView>
 

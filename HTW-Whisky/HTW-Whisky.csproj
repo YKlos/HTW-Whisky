@@ -63,6 +63,9 @@
     <Content Include="img\action_tasting.png" />
     <Content Include="img\banner.png" />
     <Content Include="img\action_photos.png" />
+    <Content Include="img\EmptyStar.png" />
+    <Content Include="img\FilledStar.png" />
+    <Content Include="img\SavedStar.png" />
     <Content Include="Logout.aspx" />
     <Content Include="Membership\AdditionalUserInfo.aspx" />
     <Content Include="Membership\CreatingUserAccounts.aspx" />

@@ -28,5 +28,10 @@ namespace HTW_Whisky.Whisky
             gvOwnTastings.DataBind();
             gvFriendsTastings.DataBind();
         }
+
+        protected void TastingsGv_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }
