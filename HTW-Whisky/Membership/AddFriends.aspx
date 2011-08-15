@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="SqlDataSource1" Width="697px" CellPadding="4" 
+        DataSourceID="SqlDataSource1" Width="714px" CellPadding="4" 
         GridLines="None" ForeColor="#333333" 
         OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
@@ -22,6 +22,14 @@
         <SortedDescendingCellStyle BackColor="#FCF6C0" />
         <SortedDescendingHeaderStyle BackColor="#820000" />
     </asp:GridView>
+    <asp:RadioButtonList ID="rbtnlFilter" runat="server" AutoPostBack="True" 
+        onselectedindexchanged="RadioButtonList1_SelectedIndexChanged" 
+        style="margin-top: 0px">
+        <asp:ListItem Selected="True">Alle Benutzer anzeigen</asp:ListItem>
+        <asp:ListItem>Nur Freunde anzeigen</asp:ListItem>
+<asp:ListItem>Offene Freundschaftsanfragen anzeigen</asp:ListItem>
+        <asp:ListItem>Gebannte Leute anzeigen</asp:ListItem>
+    </asp:RadioButtonList>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
         ConnectionString="<%$ ConnectionStrings:Database1ConnectionString %>" 
         SelectCommand="SELECT        UserName
@@ -61,13 +69,6 @@ WHERE        (UserId IN
                 Type="Object" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:RadioButtonList ID="rbtnlFilter" runat="server" AutoPostBack="True" 
-        onselectedindexchanged="RadioButtonList1_SelectedIndexChanged">
-        <asp:ListItem Selected="True">Alle Benutzer anzeigen</asp:ListItem>
-        <asp:ListItem>Nur Freunde anzeigen</asp:ListItem>
-<asp:ListItem>Offene Freundschaftsanfragen anzeigen</asp:ListItem>
-        <asp:ListItem>Gebannte Leute anzeigen</asp:ListItem>
-    </asp:RadioButtonList>
     <asp:Button ID="btnAddFriend" runat="server" Text="als Freund hinzufügen" 
         Visible="False" Enabled="False" onclick="btnAddFriend_Click" />
     <br />

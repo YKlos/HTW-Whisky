@@ -61,6 +61,7 @@
     <Content Include="img\action_edit.png" />
     <Content Include="img\action_new.png" />
     <Content Include="img\banner.png" />
+    <Content Include="img\action_photos.png" />
     <Content Include="Logout.aspx" />
     <Content Include="Membership\AdditionalUserInfo.aspx" />
     <Content Include="Membership\CreatingUserAccounts.aspx" />
@@ -101,7 +102,7 @@
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\ImageHandler.ashx.cs">
+    <Compile Include="Whisky\ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\Images.aspx.cs">
@@ -311,7 +312,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="App_Code\ImageHandler.ashx" />
+    <Content Include="Whisky\ImageHandler.ashx" />
     <None Include="App_Code\WhiskyAppDataset.xsc">
       <DependentUpon>WhiskyAppDataset.xsd</DependentUpon>
     </None>

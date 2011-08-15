@@ -14,5 +14,10 @@ namespace HTW_Whisky.Whisky
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+
+        protected void imgBtnImages_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Images.aspx?id=" + Request.QueryString["id"]);
+        }
     }
 }
