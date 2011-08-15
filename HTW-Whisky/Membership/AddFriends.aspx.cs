@@ -173,7 +173,8 @@ namespace HTW_Whisky.Membership
             
             //Nun blockierung setzen
             FreundeAdapter.UserBlockieren((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
-            btnDoAction.Text = "Benutzer wird noch geblockt";
+            btnDoAction.Visible = false;
+            btnBlock.Text = "Benutzer wird nun geblockt";
             btnBlock.Enabled = false;
         }
     }
