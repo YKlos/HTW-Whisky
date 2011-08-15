@@ -31,13 +31,13 @@ namespace HTW_Whisky.Whisky {
         protected global::System.Web.UI.WebControls.ObjectDataSource WhiskyObjectDataSource;
         
         /// <summary>
-        /// Label1-Steuerelement
+        /// imgWhisky-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Image imgWhisky;
         
         /// <summary>
         /// vsWhisky-Steuerelement

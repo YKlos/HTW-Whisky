@@ -25,7 +25,7 @@
         
         
         TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.whiskyTableAdapter" 
-        DeleteMethod="DeleteDataByID">
+        DeleteMethod="DeleteDataByID" UpdateMethod="UpdateQuery">
         <DeleteParameters>
             <asp:Parameter Name="Original_ID" Type="Int32" />
         </DeleteParameters>
@@ -33,7 +33,22 @@
             <asp:QueryStringParameter DefaultValue="" Name="WhiskyID" QueryStringField="id" 
                 Type="Int32" />
         </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="ID" Type="Int32" />
+            <asp:Parameter Name="name" Type="String" />
+            <asp:Parameter Name="aroma" Type="String" />
+            <asp:Parameter Name="geschmack" Type="String" />
+            <asp:Parameter Name="abgang" Type="String" />
+            <asp:Parameter Name="fasstyp" Type="String" />
+            <asp:Parameter Name="beschreibung" Type="String" />
+            <asp:Parameter Name="jahrgang" Type="Int32" />
+            <asp:Parameter Name="alkoholgehalt" Type="Double" />
+            <asp:Parameter Name="liter" Type="Double" />
+            <asp:Parameter Name="typID" Type="Int32" />
+            <asp:Parameter Name="aktiv" Type="Boolean" />
+        </UpdateParameters>
     </asp:ObjectDataSource>
+    <asp:Image ID="imgWhisky" runat="server" />
     <asp:ValidationSummary ID="vsWhisky" runat="server" 
         ValidationGroup="WhiskyValidationGroup" />
     <asp:FormView ID="fvWhisky" runat="server" DataKeyNames="ID" 

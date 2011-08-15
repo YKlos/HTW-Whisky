@@ -13,6 +13,7 @@ namespace HTW_Whisky.Whisky
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Guid currentUserID = Guid.Parse(System.Web.Security.Membership.GetUser().ProviderUserKey.ToString());
             if (!String.IsNullOrEmpty(Request.QueryString["action"]) && Request.QueryString["action"].Equals("new"))
                 fvWhisky.ChangeMode(FormViewMode.Insert);
 
@@ -29,6 +30,14 @@ namespace HTW_Whisky.Whisky
 
                 if (!System.Web.Security.Roles.IsUserInRole("Administratoren"))
                 {
+                    pictureTableAdapter pictureTable = new pictureTableAdapter();
+                    DataTable pictures = pictureTable.GetImageForWhisky(currentUserID,int.Parse(Request.QueryString["id"]));
+
+                    if (pictures.Rows.Count == 1)
+                    {
+                        imgWhisky.ImageUrl = "ImageHandler.ashx?imgid=" + pictures.Rows[0]["id"];
+                    }
+
                     fvWhisky.FindControl("imgBtnEdit").Visible = false;
                     fvWhisky.FindControl("imgBtnDelete").Visible = false;
                     fvWhisky.FindControl("rowAktiv").Visible = false;
