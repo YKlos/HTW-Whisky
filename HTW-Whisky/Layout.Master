@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>TasteWhisky</title>
+    <title>RateWhisky</title>
     <link href="css/screen.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -52,7 +52,7 @@
             </div>
 
             <div id="footer">
-                Inhalt Footer - More to come!
+                Eric Eifler (3479617) - Yassir Klos (Matr. Nr.) - Tobias Lana (Matr. Nr.)
             </div>
         </div>
     </form>

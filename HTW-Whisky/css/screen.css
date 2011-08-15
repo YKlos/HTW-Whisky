@@ -27,6 +27,41 @@ body
 *:first-child+html .clearfix { zoom: 1; } /* IE 7 */
 
 /*****************************************************************************/
+/*                                 RATING                                    */
+/*****************************************************************************/
+
+.emptystar
+{
+    background-image: url(../img/EmptyStar.png);
+    width: 12px;
+    height: 12px;
+    background-repeat: no-repeat;
+}
+
+.filledstar
+{
+    background-image: url(../img/FilledStar.png);
+    background-repeat: no-repeat;
+}
+
+.waitingstar
+{
+    background-image: url(../img/SavedStar.png);
+    background-repeat: no-repeat;
+}
+
+.ratingstar {
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    height: 12px;
+    margin: 0;
+    padding: 0;
+    width: 13px;
+}
+
+/*****************************************************************************/
 /*                         HEADER / NAVIGATION                               */
 /*****************************************************************************/
 div#header_wrapper div#navigation_wrapper

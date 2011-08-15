@@ -28,6 +28,9 @@
             <asp:HyperLinkField DataNavigateUrlFields="ID" 
                 DataNavigateUrlFormatString="Whisky.aspx?id={0}" HeaderText="Details" 
                 Text="Whisky anschauen" />
+            <asp:HyperLinkField DataNavigateUrlFields="ID"
+                DataNavigateUrlFormatString="AddTasting.aspx?wid={0}" HeaderText="Tasting"
+                Text="Tasting hinzufügen" />
         </Columns>
     </asp:GridView>
     <asp:ObjectDataSource ID="WhiskyObjectDataSource" runat="server" 
