@@ -12,7 +12,6 @@ namespace HTW_Whisky.Membership
     public partial class WebForm1 : System.Web.UI.Page
     {
         int currentView = 1;
-        int selectedAction = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +21,8 @@ namespace HTW_Whisky.Membership
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnAddFriend.Visible = true;
+            btnDoAction.Enabled = true;
+            btnBlock.Enabled = true;
             checkFriendStatus(User.Identity.Name, GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString());
         }
 
@@ -31,117 +31,151 @@ namespace HTW_Whisky.Membership
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
             DataTable dt = FreundeAdapter.CheckFriendStatusByID((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(freundName).ProviderUserKey);
 
+            btnDoAction.Visible = true;
+            btnBlock.Visible = true;
+
             switch (currentView)
             {
-                case 1: //Ansicht aller Users
-                    /*if (dt.Rows.Count > 0)
+                case 1: //Übersicht aller Users
+                    if (dt.Rows.Count > 0)
                     {
-                        if (dt.Rows[0]["aktiv"].Equals(false))
+                        if (dt.Rows[0]["aktiv"].Equals(false) && dt.Rows[0]["blockiert"].Equals(false))
                         {
-                            btnAddFriend.Enabled = false;
-                            btnAddFriend.Text = "Freundschaftsanfrage beantworten";
-
+                            if (dt.Rows[0]["userID"].Equals(System.Web.Security.Membership.GetUser().ProviderUserKey))
+                            {
+                                btnDoAction.Text = "Freundschaftsanfrage zurück ziehen";
+                                Session["action"] = 1;
+                            }
+                            else
+                            {
+                                btnDoAction.Text = "Freundschaftsanfrage bestätigen";
+                                Session["action"] = 2;
+                            }
                         }
-                        else
+                        if (dt.Rows[0]["aktiv"].Equals(true) && dt.Rows[0]["blockiert"].Equals(false))
                         {
-                            btnAddFriend.Enabled = false;
-                            btnAddFriend.Text = "Freundschaft beenden";
+                            btnDoAction.Text = "Freundschaft beenden";
+                            Session["action"] = 3;
                         }
-                        if (dt.Rows[0]["blockiert"].Equals(true))
+                        if (dt.Rows[0]["aktiv"].Equals(false) && dt.Rows[0]["blockiert"].Equals(true))
                         {
-                            btnAddFriend.Enabled = false;
-                            btnAddFriend.Text = "Sie sind bereits befreundet";
+                            btnBlock.Visible = false;
+                            btnDoAction.Text = "Blockierung aufheben";
+                            Session["action"] = 4;
                         }
                     }
                     else
                     {
-                        btnAddFriend.Enabled = true;
-                        btnAddFriend.Text = "Als Freund hinzufügen";
+                        btnDoAction.Text = "Freundschaftsanfrage senden";
+                        Session["action"] = 5;
                     }
-                }*/
                     break;
                 case 2: //Übersicht über Freunde
-                    btnAddFriend.Text = "Freundschaft beenden";
-                    selectedAction = 9;
+                    btnDoAction.Text = "Freundschaft beenden";
+                    Session["action"] = 3;
                     break;
-                case 3: //Prüfen ob du die Freundschaftsanfrage gesendet hast, oder ob du eine Bekommen hast
-                    if (dt.Rows[0]["aktiv"].Equals(System.Web.Security.Membership.GetUser().ProviderUserKey.ToString()))
+                case 3: //Eingehende Freundschaftsanfragen
+                    //Prüfen ob du die Freundschaftsanfrage gesendet hast, oder ob du eine Bekommen hast
+                    if (dt.Rows[0]["freundID"].Equals(System.Web.Security.Membership.GetUser().ProviderUserKey.ToString()))
                     {
-                        btnAddFriend.Text = "Freundschaftsanfrage zurück ziehen";
-                        selectedAction = 10;
-                    }
-                    else
-                    {
-                        btnAddFriend.Text = "Freundschaftsanfrage beantworten";
-                        selectedAction = 11;
+                        btnDoAction.Text = "Freundschaftsanfrage bestätigen";
+                        Session["action"] = 2;
                     }
                     break;
                 case 4:
-                    btnAddFriend.Text = "Blockierung aufheben";
-                    selectedAction = 11;
+                    //Prüfen ob du die Freundschaftsanfrage gesendet hast, oder ob du eine Bekommen hast
+                    if (dt.Rows[0]["userID"].Equals(System.Web.Security.Membership.GetUser().ProviderUserKey.ToString()))
+                    {
+                        btnDoAction.Text = "Freundschaftsanfrage zurück ziehen";
+                        Session["action"] = 1;
+                    }
                     break;
-                default:
+                case 5: //Übersicht blockierter Nutzer
+                    btnBlock.Visible = false;
+                    btnDoAction.Text = "Blockierung aufheben";
+                    Session["action"] = 4;
                     break;
             }
         }
 
-
-        protected void btnAddFriend_Click(object sender, EventArgs e)
+        protected void btnDoAction_Click(object sender, EventArgs e)
         {
             freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
-            FreundeAdapter.InsertNewFriend((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey, false, false);
-            btnAddFriend.Enabled = false;
-            btnAddFriend.Text = "Freundschaftsanfrage wurde versendet";
+            switch (Session["action"].ToString())
+            {
+                case "1": //Freundschaftsanfrage zurück ziehen
+                    FreundeAdapter.FreundschaftsanfrageZurueckziehen((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
+                    btnDoAction.Text = "Freundschaftsanfrage wurde zurück gezogen";
+                    btnDoAction.Enabled = false;
+                    break;
+                case "2": //Freundschaftsanfrage bestätigen
+                    FreundeAdapter.FreundschaftsanfrageSenden((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
+                    FreundeAdapter.FreundschaftsanfrageBestaetigen((Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser().ProviderUserKey);
+                    btnDoAction.Text = "Sie sind nun befreundet!";
+                    btnDoAction.Enabled = false;
+                    break;
+                case "3": //Freundschaft beenden
+                    FreundeAdapter.FreundschaftBeenden((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
+                    btnDoAction.Text = "Freundschaft wurde beendet";
+                    btnDoAction.Enabled = false;
+                    break;
+                case "4": //Blockierung aufheben
+                    FreundeAdapter.BlockierungAufheben((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
+                    btnDoAction.Text = "Die blockierung wurde aufgehoben";
+                    btnDoAction.Enabled = false;
+                    break;
+                case "5": //Freundschaftsanfrage senden
+                    FreundeAdapter.FreundschaftsanfrageSenden((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
+                    btnDoAction.Text = "Freundschaftsanfrage wurde versendet";
+                    btnDoAction.Enabled = false;
+                    break;
+            }
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btnDoAction.Visible = false;
+            btnBlock.Visible = false;
+            GridView1.SelectedIndex = -1;
+
             switch (rbtnlFilter.SelectedIndex)
             {
-
-                case 0:
+                case 0: //Alle Users
                     GridView1.DataSourceID = "SqlDataSource1";
-                    GridView1.SelectedIndex = -1;
-                    btnAddFriend.Visible = false;
-                    currentView = 0;
-                    break;
-                case 1:
-                    GridView1.DataSourceID = "SqlDataSource2";
-                    GridView1.SelectedIndex = -1;
-                    btnAddFriend.Visible = false;
                     currentView = 1;
                     break;
-                case 2:
-                    GridView1.DataSourceID = "SqlDataSource3";
-                    GridView1.SelectedIndex = -1;
-                    btnAddFriend.Visible = false;
+                case 1: //Nur Freunde
+                    GridView1.DataSourceID = "SqlDataSource2";
                     currentView = 2;
                     break;
-                case 3:
-                    GridView1.DataSourceID = "SqlDataSource4";
-                    GridView1.SelectedIndex = -1;
-                    btnAddFriend.Visible = false;
+                case 2: //Eingehende Freundschaftsanfragen
+                    GridView1.DataSourceID = "SqlDataSource3";
                     currentView = 3;
+                    break;
+                case 3: //Ausgehende Freundschaftsanfragen
+                    GridView1.DataSourceID = "SqlDataSource4";
+                    currentView = 4;
+                    break;
+                case 4: //Blockier Liste
+                    GridView1.DataSourceID = "SqlDataSource5";
+                    currentView = 5;
                     break;
             }
         }
 
-        protected void viewUsers(object sender, EventArgs e)
+        protected void btnBlock_Click(object sender, EventArgs e)
         {
-            currentView = 1;
-            GridView1.DataSourceID = "SqlDataSource1";
-            GridView1.SelectedIndex = -1;
-            btnAddFriend.Visible = false;
-            btnAddFriend.Text = "Freundschaftsanfrage versenden";
-        }
+            //UserBlockieren
+            freundeTableAdapter FreundeAdapter = new freundeTableAdapter();
 
-        protected void viewFriends(object sender, EventArgs e)
-        {
-            currentView =  2;
-            GridView1.DataSourceID = "SqlDataSource2";
-            GridView1.SelectedIndex = -1;
-            btnAddFriend.Visible = false;
-            btnAddFriend.Text = "Freundschaftsanfrage versenden";
+            //Erst Freundschaft beenden falls eine besteht
+            FreundeAdapter.FreundschaftBeenden((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
+            
+            //Nun blockierung setzen
+            FreundeAdapter.UserBlockieren((Guid)System.Web.Security.Membership.GetUser().ProviderUserKey, (Guid)System.Web.Security.Membership.GetUser(GridView1.Rows[GridView1.SelectedIndex].Cells[1].Text.ToString()).ProviderUserKey);
+            btnDoAction.Visible = false;
+            btnBlock.Text = "Benutzer wird nun geblockt";
+            btnBlock.Enabled = false;
         }
     }
 }

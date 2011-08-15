@@ -31,6 +31,15 @@ namespace HTW_Whisky.Membership {
         protected global::System.Web.UI.WebControls.RadioButtonList rbtnlFilter;
         
         /// <summary>
+        /// SqlDataSource5-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
+        
+        /// <summary>
         /// SqlDataSource4-Steuerelement
         /// </summary>
         /// <remarks>
@@ -67,21 +76,21 @@ namespace HTW_Whisky.Membership {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// btnAddFriend-Steuerelement
+        /// btnDoAction-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddFriend;
+        protected global::System.Web.UI.WebControls.Button btnDoAction;
         
         /// <summary>
-        /// lbtnGoBack-Steuerelement
+        /// btnBlock-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Um dies zu ändern, verschieben Sie die Felddeklaration aus der Designerdatei in eine Code-Behind-Datei.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnGoBack;
+        protected global::System.Web.UI.WebControls.Button btnBlock;
     }
 }
