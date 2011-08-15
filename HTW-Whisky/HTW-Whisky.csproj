@@ -100,6 +100,7 @@
     </Content>
     <Content Include="Whisky\AddTasting.aspx" />
     <Content Include="Whisky\Images.aspx" />
+    <Content Include="Whisky\Tastings.aspx" />
     <Content Include="Whisky\WhiskyList.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +130,13 @@
     </Compile>
     <Compile Include="Whisky\Images.aspx.designer.cs">
       <DependentUpon>Images.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Whisky\Tastings.aspx.cs">
+      <DependentUpon>Tastings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Whisky\Tastings.aspx.designer.cs">
+      <DependentUpon>Tastings.aspx</DependentUpon>
     </Compile>
     <Compile Include="Whisky\WhiskyList.aspx.cs">
       <DependentUpon>WhiskyList.aspx</DependentUpon>
