@@ -109,7 +109,11 @@
         <InsertItemTemplate>
             <div class="clearfix">
                 <asp:Label ID="lblLabelName" runat="server" CssClass="label" Text="Name"></asp:Label>
-                <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' />
+                <asp:TextBox ID="nameTextBox" runat="server" Text='<%# Bind("name") %>' 
+                    CausesValidation="True" ValidationGroup="leer" />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="nameTextBox" Display="Dynamic" ErrorMessage="*" 
+                    ForeColor="Red">Geben Sie einen Namen ein</asp:RequiredFieldValidator>
             </div>
             <div class="clearfix">
                 <asp:Label ID="lblLabelAroma" runat="server" CssClass="label" Text="Aroma"></asp:Label>
