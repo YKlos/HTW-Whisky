@@ -21,6 +21,11 @@ namespace HTW_Whisky.Whisky
             freundeTableAdapter freundeTable = new freundeTableAdapter();
             pictureTableAdapter pictureTable = new pictureTableAdapter();
 
+            DataTable uploadedImages = pictureTable.GetImageByUserAndWhisky(currentUserID,int.Parse(Request.QueryString["id"]));
+
+            if (uploadedImages.Rows.Count > 0)
+                panUpload.Visible = false;
+
             DataTable freePictures = new DataTable();
             DataTable freunde = freundeTable.GetFriendsByUserID(currentUserID);
             DataTable allPictures = pictureTable.GetImagesByWhisky(whiskyID);
@@ -40,7 +45,12 @@ namespace HTW_Whisky.Whisky
 
             //Falls noch Bilder anzuzeigen sind...
             if (freePictures.Rows.Count == 0)
+            {
+                Label noSee = new Label();
+                noSee.Text = "Hier gibt es nichts zu sehen!";
+                panImages.Controls.Add(noSee);
                 return;
+            }
 
             //Image-Buttons erstellen
             foreach (DataRow picture in freePictures.Rows)
@@ -78,15 +88,15 @@ namespace HTW_Whisky.Whisky
                 HttpPostedFile imageFile = fuImageUpload.PostedFile;
                 byte[] imageData = new byte[imageFile.ContentLength];
                 imageFile.InputStream.Read(imageData, 0, imageFile.ContentLength);
-                int picID = pictureTable.Insert(
+                pictureTable.Insert(
                     currentUserID,
                     int.Parse(this.Request.QueryString["id"]),
                     radioFriendsOnly.Checked,
                     radioAllowAll.Checked,
                     imageData,
                     imageFile.ContentType);
-                Label1.Text = picID.ToString();
-                userwhiskyTable.UpdatePicture(picID,currentUserID,int.Parse(this.Request.QueryString["id"]));
+                DataTable pictures = pictureTable.GetImageByUserAndWhisky(currentUserID, int.Parse(this.Request.QueryString["id"]));
+                userwhiskyTable.UpdatePicture(int.Parse(pictures.Rows[0]["id"].ToString()),currentUserID,int.Parse(this.Request.QueryString["id"]));
             }
         }
 

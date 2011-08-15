@@ -11,7 +11,7 @@
     <Shape ID="DesignTable:freunde" ZOrder="6" X="1063" Y="389" Height="192" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="24" SplitterPosition="102" />
     <Shape ID="DesignTable:tasting" ZOrder="3" X="83" Y="536" Height="381" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="24" SplitterPosition="254" />
     <Shape ID="DesignTable:userwhisky" ZOrder="2" X="446" Y="619" Height="191" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
-    <Shape ID="DesignTable:picture" ZOrder="1" X="626" Y="17" Height="286" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:picture" ZOrder="1" X="626" Y="17" Height="305" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
     <Shape ID="DesignTable:aspnet_Users" ZOrder="8" X="774" Y="395" Height="210" Width="220" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
   </Shapes>
   <Connectors>
@@ -75,7 +75,7 @@
         </Point>
         <Point>
           <X>815</X>
-          <Y>303</Y>
+          <Y>322</Y>
         </Point>
       </RoutePoints>
     </Connector>

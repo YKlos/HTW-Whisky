@@ -6956,7 +6956,7 @@ SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM pic
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        picture.*\r\nFROM            picture";
@@ -6975,16 +6975,24 @@ SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM pic
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT ID, allowAll, allowFriends, contentType, image, userID, whiskyID FROM pict" +
-                "ure WHERE (whiskyID = @WhiskyID)";
+            this._commandCollection[3].CommandText = "SELECT        ID, userID, whiskyID, allowAll, allowFriends, image, contentType\r\nF" +
+                "ROM            picture\r\nWHERE        (userID = @UserID) AND (whiskyID = @WhiskyI" +
+                "D)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WhiskyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"SELECT picture.ID, picture.allowAll, picture.allowFriends, picture.contentType, picture.image, picture.userID, picture.whiskyID FROM picture INNER JOIN userwhisky ON picture.ID = userwhisky.picID AND picture.whiskyID = userwhisky.whiskyID WHERE (picture.userID = @USERID) AND (picture.whiskyID = @WHISKYID)";
+            this._commandCollection[4].CommandText = "SELECT ID, allowAll, allowFriends, contentType, image, userID, whiskyID FROM pict" +
+                "ure WHERE (whiskyID = @WhiskyID)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WHISKYID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WhiskyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = @"SELECT picture.ID, picture.allowAll, picture.allowFriends, picture.contentType, picture.image, picture.userID, picture.whiskyID FROM picture INNER JOIN userwhisky ON picture.ID = userwhisky.picID AND picture.whiskyID = userwhisky.whiskyID WHERE (picture.userID = @USERID) AND (picture.whiskyID = @WHISKYID)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@USERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "userID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WHISKYID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "whiskyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7067,8 +7075,36 @@ SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM pic
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByWhisky(WhiskyAppDataset.pictureDataTable dataTable, int WhiskyID) {
+        public virtual int FillByUserAndWhisky(WhiskyAppDataset.pictureDataTable dataTable, System.Guid UserID, int WhiskyID) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(UserID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WhiskyID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual WhiskyAppDataset.pictureDataTable GetImageByUserAndWhisky(System.Guid UserID, int WhiskyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(UserID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WhiskyID));
+            WhiskyAppDataset.pictureDataTable dataTable = new WhiskyAppDataset.pictureDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByWhisky(WhiskyAppDataset.pictureDataTable dataTable, int WhiskyID) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(WhiskyID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7082,7 +7118,7 @@ SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM pic
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual WhiskyAppDataset.pictureDataTable GetImagesByWhisky(int WhiskyID) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(WhiskyID));
             WhiskyAppDataset.pictureDataTable dataTable = new WhiskyAppDataset.pictureDataTable();
             this.Adapter.Fill(dataTable);
@@ -7094,7 +7130,7 @@ SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM pic
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByWhiskyUser(WhiskyAppDataset.pictureDataTable dataTable, System.Guid USERID, int WHISKYID) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(USERID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WHISKYID));
             if ((this.ClearBeforeFill == true)) {
@@ -7109,7 +7145,7 @@ SELECT ID, userID, whiskyID, allowAll, allowFriends, image, contentType FROM pic
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual WhiskyAppDataset.pictureDataTable GetImageForWhisky(System.Guid USERID, int WHISKYID) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             this.Adapter.SelectCommand.Parameters[0].Value = ((System.Guid)(USERID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(WHISKYID));
             WhiskyAppDataset.pictureDataTable dataTable = new WhiskyAppDataset.pictureDataTable();

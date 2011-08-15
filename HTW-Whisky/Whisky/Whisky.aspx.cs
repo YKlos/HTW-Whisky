@@ -18,6 +18,7 @@ namespace HTW_Whisky.Whisky
 
             if (fvWhisky.CurrentMode == FormViewMode.ReadOnly)
             {
+                imgWhisky.Visible = false;
                 if (!Request.IsAuthenticated)
                 {
                     fvWhisky.FindControl("imgBtnEdit").Visible = false;
@@ -25,6 +26,7 @@ namespace HTW_Whisky.Whisky
                     fvWhisky.FindControl("imgBtnNew").Visible = false;
                     fvWhisky.FindControl("imgBtnImages").Visible = false;
                     fvWhisky.FindControl("imgBtnAddTasting").Visible = false;
+                    return;
                 }
 
                 if (!System.Web.Security.Roles.IsUserInRole("Administratoren"))
@@ -38,7 +40,11 @@ namespace HTW_Whisky.Whisky
                 pictureTableAdapter pictureTable = new pictureTableAdapter();
                 DataTable pictures = pictureTable.GetImageForWhisky(currentUserID, int.Parse(Request.QueryString["id"]));
 
-                imgWhisky.ImageUrl = "ImageHandler.ashx?imgid=" + pictures.Rows[0]["id"];
+                if (pictures.Rows.Count > 0)
+                {
+                    imgWhisky.ImageUrl = "ImageHandler.ashx?imgid=" + pictures.Rows[0]["id"];
+                    imgWhisky.Visible = true;
+                }
             }
         }
 
