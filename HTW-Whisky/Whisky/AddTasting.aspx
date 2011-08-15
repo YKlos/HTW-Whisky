@@ -224,8 +224,4 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phToolbar" runat="server">
     <asp:Label ID="lblInfo" runat="server" Text=""></asp:Label>
-    <asp:DropDownList ID="DropDownList1" runat="server">
-        <asp:ListItem Value="1">1</asp:ListItem>
-        <asp:ListItem Value="2">2</asp:ListItem>
-    </asp:DropDownList>
 </asp:Content>

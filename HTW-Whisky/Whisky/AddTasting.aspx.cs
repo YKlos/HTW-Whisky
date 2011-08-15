@@ -15,16 +15,16 @@ namespace HTW_Whisky.Whisky
             Guid usersuid = (Guid)System.Web.Security.Membership.GetUser().ProviderUserKey;
             TextBox tbUserID = (TextBox)FormView1.FindControl("userIDTextBox");
             tbUserID.Text = usersuid.ToString();
-            //String whiskyID = "-1";
-            if (Request.QueryString["wid"].Equals(null))
+            String whiskyID = "0";
+            if (String.IsNullOrEmpty(Request.QueryString["wid"]))
             {
-                lblInfo.Text = "null";
+                lblInfo.Text = "Sie muessen einen Whisky auswählen verdammt!";
+                FormView1.Visible = false;
             } else {
-                String whiskyID = Request.QueryString["wid"];
-                TextBox tbWhiskeyID = (TextBox)FormView1.FindControl("whiskyIDTextBox");
-                tbWhiskeyID.Text = whiskyID;
-                lblInfo.Text = "not null"; 
+                whiskyID = Request.QueryString["wid"];  
             }
+            TextBox tbWhiskeyID = (TextBox)FormView1.FindControl("whiskyIDTextBox");
+            tbWhiskeyID.Text = whiskyID;
         }
     }
 }
