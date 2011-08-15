@@ -5935,8 +5935,12 @@ WHERE        (tasting.userID IN
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OWNUSERID", global::System.Data.SqlDbType.UniqueIdentifier, 16, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT ID, abgang, art, frucht, gesamt, geschmack, notiz, qualitaet, suesse, user" +
-                "ID, whiskyID FROM tasting WHERE (ID = @TastingID)";
+            this._commandCollection[3].CommandText = @"SELECT        tasting.ID, tasting.userID, tasting.whiskyID, tasting.notiz, tasting.art, tasting.geschmack, tasting.suesse, tasting.frucht, tasting.abgang, tasting.gesamt, 
+                         tasting.qualitaet, aspnet_Users.UserName, whisky.name AS WhiskyName
+FROM            tasting INNER JOIN
+                         aspnet_Users ON tasting.userID = aspnet_Users.UserId INNER JOIN
+                         whisky ON tasting.ID = whisky.ID
+WHERE        (tasting.ID = @TastingID)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TastingID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
@@ -6061,7 +6065,7 @@ WHERE        (tasting.userID IN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual WhiskyAppDataset.tastingDataTable GetDataByID(int TastingID) {
+        public virtual WhiskyAppDataset.tastingDataTable GetTastingByID(int TastingID) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TastingID));
             WhiskyAppDataset.tastingDataTable dataTable = new WhiskyAppDataset.tastingDataTable();
