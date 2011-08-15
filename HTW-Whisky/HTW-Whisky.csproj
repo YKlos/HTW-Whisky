@@ -346,6 +346,7 @@
     <Content Include="Membership\Web.config" />
     <Content Include="test\Web.config" />
     <Content Include="Whisky\Web.config" />
+    <Content Include="Type\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
