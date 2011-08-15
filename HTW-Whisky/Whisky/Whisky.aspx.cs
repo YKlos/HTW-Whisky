@@ -54,7 +54,7 @@ namespace HTW_Whisky.Whisky
 
         protected void imgButtonAddTasting_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("AddTasting.aspx?wid=" + Request.QueryString["id"]);
+            Response.Redirect("Tasting.aspx?wid=" + Request.QueryString["id"] + "&action=new");
         }
     }
 }

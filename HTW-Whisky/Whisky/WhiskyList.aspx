@@ -29,7 +29,7 @@
                 DataNavigateUrlFormatString="Whisky.aspx?id={0}" HeaderText="Details" 
                 Text="Whisky anschauen" />
             <asp:HyperLinkField DataNavigateUrlFields="ID"
-                DataNavigateUrlFormatString="AddTasting.aspx?wid={0}" HeaderText="Tasting"
+                DataNavigateUrlFormatString="Tasting.aspx?wid={0}&action=new" HeaderText="Tasting"
                 Text="Tasting hinzufügen" />
         </Columns>
     </asp:GridView>

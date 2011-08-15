@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="AddTasting.aspx.cs" Inherits="HTW_Whisky.Whisky.AddTasting" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Tasting.aspx.cs" Inherits="HTW_Whisky.Whisky.AddTasting" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phMain" runat="server">
@@ -205,21 +205,13 @@
             </div>
             
             
-            <div class="clearfix">
-                <asp:ImageButton ID="imgBtnNew" runat="server" CausesValidation="False" 
-                    CommandName="New" Height="48px" ImageAlign="Middle" 
-                    ImageUrl="~/img/action_new.png" Width="48px" />
-            </div>
         </ItemTemplate>
     </asp:FormView>
     <asp:ObjectDataSource ID="TastingObjectDataSource" runat="server" 
-        DeleteMethod="Delete" InsertMethod="Insert" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
-        TypeName="WhiskyAppDatasetTableAdapters.tastingTableAdapter" 
-        UpdateMethod="Update">
-        <DeleteParameters>
-            <asp:Parameter Name="Original_ID" Type="Int32" />
-        </DeleteParameters>
+        
+        TypeName="HTW_Whisky.App_Code.WhiskyAppDatasetTableAdapters.tastingTableAdapter" 
+        InsertMethod="InsertQuery">
         <InsertParameters>
             <asp:Parameter DbType="Guid" Name="userID" />
             <asp:Parameter Name="whiskyID" Type="Int32" />
@@ -231,24 +223,7 @@
             <asp:Parameter Name="abgang" Type="Int32" />
             <asp:Parameter Name="gesamt" Type="Int32" />
             <asp:Parameter Name="qualitaet" Type="Int32" />
-            <asp:Parameter Name="datum" Type="DateTime" />
-            <asp:Parameter Name="aktiv" Type="Boolean" />
         </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter DbType="Guid" Name="userID" />
-            <asp:Parameter Name="whiskyID" Type="Int32" />
-            <asp:Parameter Name="notiz" Type="String" />
-            <asp:Parameter Name="art" Type="Int32" />
-            <asp:Parameter Name="geschmack" Type="Int32" />
-            <asp:Parameter Name="suesse" Type="Int32" />
-            <asp:Parameter Name="frucht" Type="Int32" />
-            <asp:Parameter Name="abgang" Type="Int32" />
-            <asp:Parameter Name="gesamt" Type="Int32" />
-            <asp:Parameter Name="qualitaet" Type="Int32" />
-            <asp:Parameter Name="datum" Type="DateTime" />
-            <asp:Parameter Name="aktiv" Type="Boolean" />
-            <asp:Parameter Name="Original_ID" Type="Int32" />
-        </UpdateParameters>
     </asp:ObjectDataSource>
     <asp:Label ID="lblInfo" runat="server" Text="" BackColor=""></asp:Label>
     <br /><br />
